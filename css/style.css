@@ -9982,5 +9982,9 @@ a {
           font-size: 22px;
         }
       }
-      
-      
+      /*fixed margin top single-project carousel*/
+      @media(max-width: 767px){
+      .home .carousel-item{
+      margin-top: -13px;
+      }
+      }
