@@ -82,46 +82,45 @@
 
 
 
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
+	<section class="home">
+		<div id="carousel" class="carousel slide" data-ride="carousel">
+		<div class="carousel-controls">
+		  <ol class="carousel-indicators">
+			<li data-target="#carousel" data-slide-to="0" class="active" style="background-image:url('images/01_Photo-1.jpg')"></li>
+			<li data-target="#carousel" data-slide-to="1" style="background-image:url('images/01_Photo-2.jpg')"></li>
+			<li data-target="#carousel" data-slide-to="2" style="background-image:url('images/01_Photo-3.jpg')"></li>
+			
+		  </ol>
+		  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+		   <img src="images\left-arrow.svg" alt="Prev"> 
+		</a>
+		<a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+		  <img src="images\right-arrow.svg" alt="Next">
+		</a>
+		</div>
 		<div class="carousel-inner">
-		  <div class="carousel-item active">
-			<img class="d-block w-100" src="images\01_Photo-2.jpg" alt="First slide" style="margin-top">
-			<div class="carousel-caption d-none d-md-block">
-				<h5>Titulo</h5>
-				<p>Texto descriptivo</p>
-			  </div>  
-		</div>
-		  <div class="carousel-item">
-			<img class="d-block w-100" src="images\01_Photo-1.jpg" alt="Second slide">
-			<div class="carousel-caption d-none d-md-block">
-				<h5>Titulo</h5>
-				<p>Texto descriptivo</p>
-			  </div>  
-		</div>
+		  <div class="carousel-item active" style="background-image:url('images/01_Photo-1.jpg">
+			<div class="container">
+			   <h2>Frente</h2>
+			   <p>Descripccion especifica de la casa</p>
+			</div>
 		  </div>
-		  <div class="carousel-item">
-			<img class="d-block w-100" src="images\01_Photo-3.jpg" alt="Third slide">
-			<div class="carousel-caption d-none d-md-block">
-				<h5>Titulo</h5>
-				<p>Texto descriptivo</p>
-			  </div>  
-		</div>
+		  <div class="carousel-item" style="background-image:url('images/01_Photo-2.jpg')">
+			<div class="container">
+			   <h2>costado</h2>
+			   <p>Descripccion de construccion etc</p>
+			</div>
+		  </div>
+		  <div class="carousel-item" style="background-image:url('images/01_Photo-3.jpg')">
+			<div class="container">
+			   <h2>Parte trasera</h2>
+			   <p>Ejemplo de desarrollo </p>
+			</div>
 		  </div>
 		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Next</span>
-		</a>
 	  </div>
+	   </section>
+	  
 
 
 
@@ -296,7 +295,7 @@
 			<span class="visually-hidden">Loading...</span>
 		</div>
 	</div>
-
+	
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/aos.js"></script>
