@@ -1,0 +1,28 @@
+.site-mobile-menu {
+    background: rgba(28, 28, 28, 0.95) !important;
+}
+
+.site-mobile-menu .site-nav-wrap a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.site-mobile-menu .site-nav-wrap a:hover {
+    color: #ffffff !important;
+}
+
+.site-mobile-menu .site-nav-wrap li.active > a {
+    color: #ffffff !important;
+}
+
+.site-mobile-menu-close > span:before,
+.site-mobile-menu-close > span:after {
+    background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.site-mobile-menu .site-nav-wrap .arrow-collapse {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.site-mobile-menu .site-nav-wrap .arrow-collapse:before {
+    color: rgba(255, 255, 255, 0.8);
+}

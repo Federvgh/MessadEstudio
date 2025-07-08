@@ -359,7 +359,7 @@ legend {
   right: 0;
   z-index: 2000;
   padding-top: 20px;
-  background: #1c1c1c;
+  background: rgba(28, 28, 28, 0.95);
   height: 100vh;
   -webkit-transform: translateX(110%);
   -ms-transform: translateX(110%);
@@ -375,7 +375,7 @@ legend {
   padding: 20px;
   padding-bottom: 150px;
   height: calc(100vh - 52px);
-  background: #1c1c1c;
+  background: rgba(28, 28, 28, 0.95);
 }
 
 .site-mobile-menu.active {
