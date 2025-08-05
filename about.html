@@ -18,7 +18,7 @@
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -49,18 +49,18 @@
 					<li class="active"><a href="index.html">Home</a></li>
 					<li class="has-children">
 						<a href="projects.html">Proyectos</a>
-						<ul class="dropdown">
-							<li><a href="#">Edificios Comerciales</a></li>
-							<li><a href="#">Casas</a></li>
-							<li class="has-children">
-								<a href="#">Tour Virtual</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
+						<ul class="dropdown navbar__proyectos-dropdown" aria-label="Proyectos">
+							<li class="has-children navbar__proyectos-root">
+								<a href="#">Categorías</a>
+								<ul class="dropdown navbar__proyectos-submenu">
+									<li class="has-children navbar__proyectos-subroot"><a href="institucional.html">Institucional</a></li>
+									<li class="has-children navbar__proyectos-subroot"><a href="comercial.html">Comercial</a></li>
+									<li class="has-children navbar__proyectos-subroot"><a href="vivienda.html">Vivienda</a></li>
+									<li class="has-children navbar__proyectos-subroot"><a href="edificios.html">Edificios</a></li>
 								</ul>
 							</li>
 						</ul>
+					</li>
 					</li>
 					<li class="has-children">
 						<a href="services.html">Servicios</a>
