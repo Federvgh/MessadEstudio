@@ -18,8 +18,8 @@
 	<meta name="Arquitectura" content="bootstrap, bootstrap5" />
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -52,43 +52,123 @@
 					<li class="active"><a href="index.html">Home</a></li>
 					<li class="has-children">
 						<a href="projects.html">Proyectos</a>
-						<ul class="dropdown">
-							<li><a href="#">Edificios Comerciales</a></li>
-							<li><a href="#">Casas</a></li>
-							<li class="has-children">
-								<a href="#">Tour Virtual</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
+						<ul class="dropdown navbar__proyectos-dropdown" aria-label="Proyectos">
+							<li class="has-children navbar__proyectos-root">
+								<a href="#">Categorías</a>
+								<ul class="dropdown navbar__proyectos-submenu">
+									<li class="has-children navbar__proyectos-subroot">
+										<a href="#">Institucional</a>
+										<ul class="dropdown navbar__proyectos-submenu">
+											<li><a href="#">caja forense</a></li>
+											<li><a href="#">camara hotel</a></li>
+											<li><a href="#">fundacion base</a></li>
+											<li><a href="#">ampliacion palacio de justicia SDE</a></li>
+											<li><a href="#">SLTC Santiago Lawn Tennis Club</a></li>
+											<li><a href="#">CCOlimpico</a></li>
+											<li><a href="#">Costanera Sur</a></li>
+										</ul>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+										<a href="#">Comercial <span class="badge"></a>
+										<ul class="dropdown navbar__proyectos-submenu">
+											<li><a href="#">Recapadora Funes</a></li>
+											<li><a href="#">Suc. BSE Sumampa</a></li>
+											<li><a href="#">Gimnasio AL</a></li>
+											<li><a href="#">Local Nader</a></li>
+											<li><a href="#">Galería Suncho Corral</a></li>
+											<li><a href="#">Maximo Joyas</a></li>
+											<li><a href="#">Nodos Termas de Rio Hondo</a></li>
+											<li><a href="#">Perez Curbelo Neumaticos LB</a></li>
+											<li><a href="#">Consultora Laphitzborde-Barrios</a></li>
+											<li><a href="#">Escenografia Libertad de Opinión</a></li>
+											<li><a href="#">Oficinas Victorina Arroz</a></li>
+											<li><a href="#">Local Daniels</a></li>
+											<li><a href="#">Panaderia Sanchez</a></li>
+											<li><a href="#">Mofid Belgrano</a></li>
+											<li><a href="#">Oficinas Dubai Protesalud</a></li>
+											<li><a href="#">PC Ricci 88</a></li>
+											<li><a href="#">PC BTS</a></li>
+											<li><a href="#">PC Ricci 37-41</a></li>
+											<li><a href="#">Local Roca Bar AR</a></li>
+											<li><a href="#">EESS SJLD</a></li>
+											<li><a href="#">Metalnor</a></li>
+										</ul>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+										<a href="#">Vivienda <span class="badge"></a>
+										<ul class="dropdown navbar__proyectos-submenu">
+											<li><a href="#">Aguilera</a></li>
+											<li><a href="#">Aru</a></li>
+											<li><a href="#">ALopez</a></li>
+											<li><a href="#">CZonni</a></li>
+											<li><a href="#">Cerrillos</a></li>
+											<li><a href="#">Lami Edison</a></li>
+											<li><a href="#">Eduardo Garay 18</a></li>
+											<li><a href="#">Federico Gerez</a></li>
+											<li><a href="#">Fernando Angelet SMG</a></li>
+											<li><a href="#">Fernando Angelet Tatu</a></li>
+											<li><a href="#">Juani Scarafia</a></li>
+											<li><a href="#">Leandro Carrizo</a></li>
+											<li><a href="#">Mario Suarez</a></li>
+											<li><a href="#">Scarafia Atahona</a></li>
+											<li><a href="#">Pablo Cazzaniga</a></li>
+											<li><a href="#">Loteo Santa Teresita</a></li>
+										</ul>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+										<a href="#">Edificios <span class="badge"></a>
+										<ul class="dropdown navbar__proyectos-submenu">
+											<li><a href="#">Salomon Urquiza</a></li>
+											<li><a href="#">Sanchez Catamarca</a></li>
+											<li><a href="#">Complejo Vivalto</a></li>
+											<li><a href="#">Moreno y Güemes</a></li>
+											<li><a href="#">Rivadavia 25</a></li>
+											<li><a href="#">Lavalle 220</a></li>
+											<li><a href="#">Belgrano 500</a></li>
+											<li><a href="#">ISSPSE IV</a></li>
+											<li><a href="#">Paso de los Libres</a></li>
+											<li><a href="#">Gauna B° Belgrano</a></li>
+											<li><a href="#">ISSPSE 1</a></li>
+											<li><a href="#">ISSPSE 2</a></li>
+										</ul>
+									</li>
 								</ul>
 							</li>
 						</ul>
 					</li>
 					<li class="has-children">
 						<a href="services.html">Servicios</a>
-						<ul class="dropdown">
-							<li class="has-children">
+						<ul class="dropdown navbar__servicios-dropdown" aria-label="Servicios">
+							<li class="has-children navbar__servicios-root">
 								<a href="#">Diseño</a>
-								<ul class="dropdown">
-									<li><a href="#interior_design">Evaluacion De Factiblilidad de Proyecto</a></li>
-									<li><a href="#">Anteproyecto</a></li>
-									<li><a href="#">Documentacion para Obra</a></li>
-									<li><a href="#">Interiorismo</a></li>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="#">Factibilidades</a></li>
+									<li><a href="#">Proyectos e Interiorismo</a></li>
+									<li><a href="#">Documentación para obra</a></li>
 									<li><a href="#">Refacciones</a></li>
-									<li><a href="#">Puesta en valor de obra</a></li>
+									<li><a href="#">REVITalización de obras</a></li>
 								</ul>
 							</li>
-
-							<li class="has-children">
-								<a href="#">Gestion</a>
-								<ul class="dropdown">
-									<li><a href="#">Masterplanes</a></li>
-									<li><a href="#">Organizacion y control de recursos</a></li>
-									<li><a href="#">Documentacion y licencia</a></li>
-									<li><a href="#">consultaria tecnica y administrativa</a></li>
-									<li><a href="#">Direccion y conduccion de obrass</a></li>
-									<li><a href="#">Cotizaciones</a></li>
+							<li class="has-children navbar__servicios-root">
+								<a href="#">Gestión</a>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="#">Masterplan</a></li>
+									<li><a href="#">Gestión de permisos</a></li>
+									<li><a href="#">Dirección de obra</a></li>
+									<li><a href="#">Cómputos y presupuestos</a></li>
+								</ul>
+							</li>
+							<li class="has-children navbar__servicios-root">
+								<a href="#">BIM</a>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="#">Desarrollo de Proyectos y Documentación bajo Metodología BIM</a></li>
+									<li><a href="#">Modelado Integral Multidisciplinario</a></li>
+									<li><a href="#">Documentación Técnica Automatizada</a></li>
+									<li><a href="#">Simulaciones y Análisis Técnicos</a></li>
+									<li><a href="#">Gestión de Información del Proyecto</a></li>
+									<li><a href="#">Modelos 4D y 5D</a></li>
+									<li><a href="#">Entrega de Modelos As-Built</a></li>
+									<li><a href="#">Capacitación y Consultoría BIM</a></li>
 								</ul>
 							</li>
 						</ul>
