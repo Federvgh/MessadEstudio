@@ -86,7 +86,6 @@
 					</li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contacto</a></li>
-					<li><a href="#" id="loginBtn">Login</a></li>
 				</ul>
 
 				<a href="#" class="burger ml-auto float-end site-menu-toggle light js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
@@ -116,37 +115,6 @@
 
 	<div class="container">
 		<!-- Aquí puedes agregar el contenido específico de Institucional, como una galería de proyectos -->
-	</div>
-
-	<!-- Login Modal -->
-	<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
-	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        <form>
-	          <div class="mb-3">
-	            <label for="email" class="form-label">Email</label>
-	            <input type="email" class="form-control" id="email" required>
-	          </div>
-	          <div class="mb-3">
-	            <label for="password" class="form-label">Contraseña</label>
-	            <input type="password" class="form-control" id="password" required>
-	          </div>
-	          <button type="submit" class="btn btn-primary w-100 mb-3">Iniciar Sesión</button>
-	        </form>
-	        <div class="text-center">
-	          <p class="mb-3">O inicia sesión con:</p>
-	          <button type="button" class="btn btn-outline-danger w-100" id="googleSignIn">
-	            <i class="icon-google"></i> Continuar con Google
-	          </button>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
 	</div>
 
 	<div class="site-footer bg-light">
@@ -193,29 +161,5 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
-	<script>
-	  // Modal logic
-	  const loginBtn = document.getElementById('loginBtn');
-	  const loginModal = document.getElementById('loginModal');
-	  const closeLoginModal = document.getElementById('closeLoginModal');
-	  loginBtn.addEventListener('click', function(e) {
-	    e.preventDefault();
-	    loginModal.style.display = 'block';
-	    loginModal.classList.add('show');
-	    document.body.classList.add('modal-open');
-	  });
-	  closeLoginModal.addEventListener('click', function() {
-	    loginModal.style.display = 'none';
-	    loginModal.classList.remove('show');
-	    document.body.classList.remove('modal-open');
-	  });
-	  window.onclick = function(event) {
-	    if (event.target == loginModal) {
-	      loginModal.style.display = 'none';
-	      loginModal.classList.remove('show');
-	      document.body.classList.remove('modal-open');
-	    }
-	  }
-	</script>
 </body>
 </html>

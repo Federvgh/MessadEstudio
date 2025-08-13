@@ -18,7 +18,7 @@
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -27,9 +27,6 @@
 	<link rel="stylesheet" href="css/aos.css">
 	<link rel="stylesheet" href="css/glightbox.min.css">
 	<link rel="stylesheet" href="css/style.css">
-
-	<!-- MSAL.js for Azure AD B2C Authentication -->
-	<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
 
 	<title>Messad Estudio de Arquitectura</title>
 </head>
@@ -44,38 +41,6 @@
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
-	<!-- Login Modal -->
-	<div id="loginModal" class="modal login-modal" tabindex="-1" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">Iniciar Sesión</h5>
-	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        <form class="login-form">
-	          <div class="mb-3">
-	            <label for="loginEmail" class="form-label">Email</label>
-	            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
-	          </div>
-	          <div class="mb-3">
-	            <label for="loginPassword" class="form-label">Contraseña</label>
-	            <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required>
-	          </div>
-	          <button type="submit" class="btn btn-primary w-100 mb-2">Ingresar</button>
-	          <div class="text-center mb-2">o</div>
-	          <button type="button" class="btn btn-outline-dark w-100" id="googleSignInBtn">
-	            <img src="images/google-logo.svg" alt="Google" style="width:20px; margin-right:8px; vertical-align:middle;"> Ingresar con Google
-	          </button>
-	        </form>
-	      </div>
-	      <div class="modal-footer">
-	        <small>¿No tienes cuenta? <a href="#" id="signupLink">Regístrate</a></small>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
 	<nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
@@ -84,18 +49,18 @@
 					<li class="active"><a href="index.html">Home</a></li>
 					<li class="has-children">
 						<a href="projects.html">Proyectos</a>
-						<ul class="dropdown navbar__proyectos-dropdown" aria-label="Proyectos">
-							<li class="has-children navbar__proyectos-root">
-								<a href="#">Categorías</a>
-								<ul class="dropdown navbar__proyectos-submenu">
-									<li class="has-children navbar__proyectos-subroot"><a href="institucional.html">Institucional</a></li>
-									<li class="has-children navbar__proyectos-subroot"><a href="comercial.html">Comercial</a></li>
-									<li class="has-children navbar__proyectos-subroot"><a href="vivienda.html">Vivienda</a></li>
-									<li class="has-children navbar__proyectos-subroot"><a href="edificios.html">Edificios</a></li>
+						<ul class="dropdown">
+							<li><a href="#">Edificios Comerciales</a></li>
+							<li><a href="#">Casas</a></li>
+							<li class="has-children">
+								<a href="#">Tour Virtual</a>
+								<ul class="dropdown">
+									<li><a href="#">Sub Menu One</a></li>
+									<li><a href="#">Sub Menu Two</a></li>
+									<li><a href="#">Sub Menu Three</a></li>
 								</ul>
 							</li>
 						</ul>
-					</li>
 					</li>
 					<li class="has-children">
 						<a href="services.html">Servicios</a>
@@ -127,7 +92,6 @@
 					</li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contacto</a></li>
-					<li><a href="#" id="loginBtn">Login</a></li>
 				</ul>
 
 				
@@ -357,44 +321,5 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
-	
-	<!-- Authentication Scripts -->
-	<script src="js/auth-config.js"></script>
-	<script src="js/auth-manager.js"></script>
-	
-	<script>
-	  // Enhanced Modal Logic with Authentication
-	  document.addEventListener('DOMContentLoaded', function() {
-	    const loginModal = document.getElementById('loginModal');
-	    const closeLoginModal = document.getElementById('closeLoginModal');
-	    const loginForm = document.querySelector('.login-form');
-	    const googleSignInBtn = document.getElementById('googleSignInBtn');
-
-	    // Close modal handlers
-	    closeLoginModal.addEventListener('click', function() {
-	      window.authManager.closeLoginModal();
-	    });
-
-	    window.onclick = function(event) {
-	      if (event.target == loginModal) {
-	        window.authManager.closeLoginModal();
-	      }
-	    }
-
-	    // Handle traditional email/password login (will redirect to Azure B2C)
-	    loginForm.addEventListener('submit', function(e) {
-	      e.preventDefault();
-	      window.authManager.hideLoginError();
-	      window.authManager.login();
-	    });
-
-	    // Handle Google sign-in (will redirect to Azure B2C with Google option)
-	    googleSignInBtn.addEventListener('click', function(e) {
-	      e.preventDefault();
-	      window.authManager.hideLoginError();
-	      window.authManager.login();
-	    });
-	  });
-	</script>
 </body>
 </html>
