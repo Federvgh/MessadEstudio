@@ -30,6 +30,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/mobile-menu.css">
 
+	<!-- MSAL.js for Azure AD B2C Authentication -->
+	<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+
 	<title>Messad Estudio</title>
 </head>
 <body>
@@ -51,6 +54,9 @@
 	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
+	        <div class="alert alert-info">
+	          <small><strong>Note:</strong> Both login options will redirect you to a secure Azure authentication page where you can sign in with your email/password or choose to sign in with Google.</small>
+	        </div>
 	        <form class="login-form">
 	          <div class="mb-3">
 	            <label for="loginEmail" class="form-label">Email</label>
@@ -60,10 +66,10 @@
 	            <label for="loginPassword" class="form-label">Contraseña</label>
 	            <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required>
 	          </div>
-	          <button type="submit" class="btn btn-primary w-100 mb-2">Ingresar</button>
+	          <button type="submit" class="btn btn-primary w-100 mb-2">Iniciar Sesión con Azure</button>
 	          <div class="text-center mb-2">o</div>
-	          <button type="button" class="btn btn-outline-dark w-100" id="googleSignInBtn">
-	            <img src="images/google-logo.svg" alt="Google" style="width:20px; margin-right:8px; vertical-align:middle;"> Ingresar con Google
+	          <button type="button" class="btn btn-outline-danger w-100" id="googleSignInBtn">
+	            <i class="icon-google"></i> Continuar con Google (via Azure)
 	          </button>
 	        </form>
 	      </div>
@@ -550,29 +556,44 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	
+	<!-- Authentication Scripts -->
+	<script src="js/auth-config.js"></script>
+	<script src="js/auth-manager.js"></script>
+	
 	<script>
-	  // Modal logic
-	  const loginBtn = document.getElementById('loginBtn');
-	  const loginModal = document.getElementById('loginModal');
-	  const closeLoginModal = document.getElementById('closeLoginModal');
-	  loginBtn.addEventListener('click', function(e) {
-	    e.preventDefault();
-	    loginModal.style.display = 'block';
-	    loginModal.classList.add('show');
-	    document.body.classList.add('modal-open');
-	  });
-	  closeLoginModal.addEventListener('click', function() {
-	    loginModal.style.display = 'none';
-	    loginModal.classList.remove('show');
-	    document.body.classList.remove('modal-open');
-	  });
-	  window.onclick = function(event) {
-	    if (event.target == loginModal) {
-	      loginModal.style.display = 'none';
-	      loginModal.classList.remove('show');
-	      document.body.classList.remove('modal-open');
+	  // Enhanced Modal Logic with Authentication
+	  document.addEventListener('DOMContentLoaded', function() {
+	    const loginModal = document.getElementById('loginModal');
+	    const closeLoginModal = document.getElementById('closeLoginModal');
+	    const loginForm = document.querySelector('.login-form');
+	    const googleSignInBtn = document.getElementById('googleSignInBtn');
+
+	    // Close modal handlers
+	    closeLoginModal.addEventListener('click', function() {
+	      window.authManager.closeLoginModal();
+	    });
+
+	    window.onclick = function(event) {
+	      if (event.target == loginModal) {
+	        window.authManager.closeLoginModal();
+	      }
 	    }
-	  }
+
+	    // Handle traditional email/password login (will redirect to Azure B2C)
+	    loginForm.addEventListener('submit', function(e) {
+	      e.preventDefault();
+	      window.authManager.hideLoginError();
+	      window.authManager.login();
+	    });
+
+	    // Handle Google sign-in (will redirect to Azure B2C with Google option)
+	    googleSignInBtn.addEventListener('click', function(e) {
+	      e.preventDefault();
+	      window.authManager.hideLoginError();
+	      window.authManager.login();
+	    });
+	  });
 	</script>
 </body>
 </html>
