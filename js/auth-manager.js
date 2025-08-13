@@ -24,6 +24,7 @@ class AuthManager {
             const response = await this.msalInstance.handleRedirectPromise();
             if (response) {
                 this.currentAccount = response.account;
+                await this.handleSuccessfulLogin(response.account);
                 this.updateUI();
                 this.closeLoginModal();
                 console.log('Login successful:', response);
@@ -33,13 +34,24 @@ class AuthManager {
         }
     }
 
-    async login() {
-        console.log('Login function called');
+    async login(options = {}) {
+        console.log('Login function called with options:', options);
         try {
             console.log('Attempting MSAL login popup...');
-            const response = await this.msalInstance.loginPopup(loginRequest);
+            
+            // Create login request with optional hints
+            const loginRequestWithHints = { ...loginRequest };
+            
+            if (options.hint === 'google') {
+                loginRequestWithHints.domainHint = 'google.com';
+                loginRequestWithHints.prompt = 'select_account';
+                console.log('Google hint applied to login request');
+            }
+            
+            const response = await this.msalInstance.loginPopup(loginRequestWithHints);
             console.log('Login successful:', response);
             this.currentAccount = response.account;
+            await this.handleSuccessfulLogin(response.account);
             this.updateUI();
             this.closeLoginModal();
             return response;
@@ -57,12 +69,46 @@ class AuthManager {
         };
 
         try {
+            // Clear user data first
+            if (window.userManager) {
+                window.userManager.clearUserSession();
+            }
+            
             await this.msalInstance.logoutPopup(logoutRequest);
             this.currentAccount = null;
             this.updateUI();
             console.log('Logout successful');
         } catch (error) {
             console.error('Logout failed:', error);
+        }
+    }
+
+    // Handle successful login - integrate with UserManager
+    async handleSuccessfulLogin(account) {
+        console.log('Handling successful login for:', account.username);
+        
+        // Wait for UserManager to be available
+        if (window.userManager) {
+            try {
+                await window.userManager.loadUserProfile();
+                console.log('User profile loaded successfully');
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+                // Continue with basic auth even if user management fails
+            }
+        } else {
+            console.warn('UserManager not available, will retry in 1 second');
+            // Retry after UserManager loads
+            setTimeout(async () => {
+                if (window.userManager) {
+                    try {
+                        await window.userManager.loadUserProfile();
+                        console.log('User profile loaded successfully (delayed)');
+                    } catch (error) {
+                        console.error('Error loading user profile (delayed):', error);
+                    }
+                }
+            }, 1000);
         }
     }
 
@@ -110,10 +156,12 @@ class AuthManager {
         
         console.log('Updating UI, login button found');
         const userInfo = this.getUserInfo();
+        const userData = window.userManager ? window.userManager.getCurrentUser() : null;
 
         if (this.isLoggedIn() && userInfo) {
             // User is logged in - show user name and logout option
-            loginBtn.innerHTML = `${userInfo.name} <span class="ms-1">▾</span>`;
+            const displayName = userData?.profileData?.firstName || userInfo.name.split(' ')[0] || userInfo.name;
+            loginBtn.innerHTML = `${displayName} <span class="ms-1">▾</span>`;
             loginBtn.onclick = (e) => {
                 e.preventDefault();
                 this.showUserMenu();
@@ -155,11 +203,68 @@ class AuthManager {
     }
 
     showUserMenu() {
-        // Create a simple dropdown menu for logged-in users
+        // Create enhanced dropdown menu for logged-in users
         const userInfo = this.getUserInfo();
-        const confirmed = confirm(`Logged in as: ${userInfo.name}\n\nClick OK to logout, Cancel to close.`);
-        if (confirmed) {
+        const userData = window.userManager ? window.userManager.getCurrentUser() : null;
+        
+        const displayName = userData?.profileData?.firstName || userInfo.name.split(' ')[0] || userInfo.name;
+        const email = userInfo.email;
+        const provider = userData?.provider || 'azure';
+        
+        const menuOptions = [
+            `👤 ${displayName}`,
+            `📧 ${email}`,
+            `🔗 Via ${provider.charAt(0).toUpperCase() + provider.slice(1)}`,
+            '',
+            '⚙️ Profile Settings',
+            '🔓 Logout'
+        ];
+        
+        const choice = prompt(
+            `Usuario Autenticado:\n\n${menuOptions.slice(0, 4).join('\n')}\n\nSelecciona una opción:\n5. ${menuOptions[4]}\n6. ${menuOptions[5]}`,
+            ''
+        );
+        
+        if (choice === '5') {
+            this.showProfileSettings();
+        } else if (choice === '6') {
             this.logout();
+        }
+    }
+
+    showProfileSettings() {
+        // Show profile settings modal or redirect
+        const userData = window.userManager ? window.userManager.getCurrentUser() : null;
+        
+        if (!userData) {
+            alert('No se pudieron cargar los datos del usuario.');
+            return;
+        }
+        
+        const currentFirstName = userData.profileData?.firstName || '';
+        const currentLastName = userData.profileData?.lastName || '';
+        
+        const firstName = prompt('Nombre:', currentFirstName);
+        if (firstName === null) return; // User cancelled
+        
+        const lastName = prompt('Apellido:', currentLastName);
+        if (lastName === null) return; // User cancelled
+        
+        // Update profile
+        if (window.userManager) {
+            window.userManager.updateProfile({
+                profileData: {
+                    ...userData.profileData,
+                    firstName: firstName,
+                    lastName: lastName
+                }
+            }).then(() => {
+                alert('Perfil actualizado exitosamente!');
+                this.updateUI(); // Refresh UI
+            }).catch(error => {
+                console.error('Profile update error:', error);
+                alert('Error al actualizar el perfil. Inténtalo de nuevo.');
+            });
         }
     }
 
