@@ -2,7 +2,8 @@
 class SimpleAuthManager {
     constructor() {
         this.currentUser = null;
-        this.apiBaseUrl = 'https://your-backend-api.com/api'; // You'll replace this with your backend
+        this.apiBaseUrl = 'http://localhost:3001/api'; // Backend API URL
+        this.authToken = localStorage.getItem('messad_auth_token');
         this.init();
     }
 
@@ -12,8 +13,8 @@ class SimpleAuthManager {
         // Initialize Google Sign-In
         await this.initializeGoogleSignIn();
         
-        // Check for existing session
-        this.loadUserSession();
+        // Check for existing session and token
+        await this.loadUserSession();
         this.updateUI();
         
         console.log('SimpleAuthManager initialization complete');
@@ -28,7 +29,7 @@ class SimpleAuthManager {
             
             // Initialize Google Sign-In
             await window.google.accounts.id.initialize({
-                client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", // You'll need to get this
+                client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", // Replace with your actual Google Client ID
                 callback: (response) => this.handleGoogleSignIn(response),
                 auto_select: false,
                 cancel_on_tap_outside: true
@@ -55,27 +56,32 @@ class SimpleAuthManager {
         try {
             console.log('Google Sign-In response:', response);
             
-            // Decode the JWT token to get user info
-            const userInfo = this.decodeJWT(response.credential);
-            console.log('Google user info:', userInfo);
+            // Send Google credential to backend
+            const backendResponse = await fetch(`${this.apiBaseUrl}/auth/google`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    credential: response.credential 
+                })
+            });
             
-            // Create user object
-            const user = {
-                id: userInfo.sub,
-                email: userInfo.email,
-                name: userInfo.name,
-                picture: userInfo.picture,
-                provider: 'google',
-                firstName: userInfo.given_name,
-                lastName: userInfo.family_name
-            };
+            const data = await backendResponse.json();
             
-            // Register or login the user
-            await this.registerOrLoginUser(user);
+            if (!backendResponse.ok) {
+                throw new Error(data.message || 'Google authentication failed');
+            }
+            
+            // Save auth token
+            this.authToken = data.token;
+            localStorage.setItem('messad_auth_token', data.token);
+            
+            await this.setCurrentUser(data.user);
             
         } catch (error) {
             console.error('Google Sign-In error:', error);
-            this.showError('Error signing in with Google');
+            this.showError('Error signing in with Google: ' + error.message);
         }
     }
 
@@ -98,7 +104,7 @@ class SimpleAuthManager {
         try {
             console.log('Attempting email/password login for:', email);
             
-            // Call your backend API
+            // Call backend API
             const response = await fetch(`${this.apiBaseUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
@@ -107,22 +113,21 @@ class SimpleAuthManager {
                 body: JSON.stringify({ email, password })
             });
             
+            const data = await response.json();
+            
             if (!response.ok) {
-                throw new Error('Login failed');
+                throw new Error(data.message || 'Login failed');
             }
             
-            const userData = await response.json();
-            await this.setCurrentUser(userData.user);
+            // Save auth token
+            this.authToken = data.token;
+            localStorage.setItem('messad_auth_token', data.token);
             
-            return userData;
+            await this.setCurrentUser(data.user);
+            return data;
+            
         } catch (error) {
             console.error('Email/password login error:', error);
-            
-            // For development - simulate login
-            if (this.isDevelopmentMode()) {
-                return this.simulateEmailLogin(email, password);
-            }
-            
             throw error;
         }
     }
@@ -131,7 +136,7 @@ class SimpleAuthManager {
         try {
             console.log('Attempting email/password registration for:', email);
             
-            // Call your backend API
+            // Call backend API
             const response = await fetch(`${this.apiBaseUrl}/auth/register`, {
                 method: 'POST',
                 headers: {
@@ -140,100 +145,45 @@ class SimpleAuthManager {
                 body: JSON.stringify({ 
                     email, 
                     password, 
-                    name,
-                    provider: 'email'
+                    name
                 })
             });
             
+            const data = await response.json();
+            
             if (!response.ok) {
-                throw new Error('Registration failed');
+                throw new Error(data.message || 'Registration failed');
             }
             
-            const userData = await response.json();
-            await this.setCurrentUser(userData.user);
+            // Save auth token
+            this.authToken = data.token;
+            localStorage.setItem('messad_auth_token', data.token);
             
-            return userData;
+            await this.setCurrentUser(data.user);
+            return data;
+            
         } catch (error) {
             console.error('Email/password registration error:', error);
-            
-            // For development - simulate registration
-            if (this.isDevelopmentMode()) {
-                return this.simulateEmailRegistration(email, password, name);
-            }
-            
             throw error;
         }
     }
 
-    async registerOrLoginUser(user) {
-        try {
-            // Try to register/login the user
-            const response = await fetch(`${this.apiBaseUrl}/users/google-auth`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(user)
-            });
-            
-            if (!response.ok) {
-                throw new Error('User registration/login failed');
-            }
-            
-            const userData = await response.json();
-            await this.setCurrentUser(userData.user);
-            
-        } catch (error) {
-            console.error('User registration/login error:', error);
-            
-            // For development - simulate user creation
-            if (this.isDevelopmentMode()) {
-                await this.setCurrentUser(user);
-            } else {
-                throw error;
-            }
+    // Trigger Google Sign-In
+    triggerGoogleSignIn() {
+        if (window.google) {
+            window.google.accounts.id.prompt();
+        } else {
+            this.showError('Google Sign-In no está disponible');
         }
     }
 
-    async setCurrentUser(user) {
-        this.currentUser = user;
-        this.saveUserSession();
-        this.updateUI();
-        this.closeLoginModal();
-        this.showWelcomeMessage();
+    // Get current user
+    getCurrentUser() {
+        return this.currentUser;
     }
 
-    // Development mode simulations
-    isDevelopmentMode() {
-        return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    }
-
-    simulateEmailLogin(email, password) {
-        const user = {
-            id: 'sim_' + Math.random().toString(36).substr(2, 9),
-            email: email,
-            name: email.split('@')[0],
-            provider: 'email',
-            firstName: email.split('@')[0],
-            lastName: ''
-        };
-        
-        setTimeout(() => this.setCurrentUser(user), 500);
-        return Promise.resolve({ user });
-    }
-
-    simulateEmailRegistration(email, password, name) {
-        const user = {
-            id: 'sim_' + Math.random().toString(36).substr(2, 9),
-            email: email,
-            name: name,
-            provider: 'email',
-            firstName: name.split(' ')[0] || name,
-            lastName: name.split(' ')[1] || ''
-        };
-        
-        setTimeout(() => this.setCurrentUser(user), 500);
-        return Promise.resolve({ user });
+    isLoggedIn() {
+        return this.currentUser !== null;
     }
 
     // Session management
@@ -246,27 +196,77 @@ class SimpleAuthManager {
         }
     }
 
-    loadUserSession() {
+    async loadUserSession() {
         try {
+            // First check if we have a valid token
+            if (this.authToken) {
+                const isValid = await this.verifyToken();
+                if (isValid) {
+                    return this.currentUser;
+                }
+            }
+
+            // Fallback to local session storage
             const session = localStorage.getItem('messad_user_session');
             if (session) {
                 const data = JSON.parse(session);
-                // Check if session is less than 7 days old
-                if (Date.now() - data.timestamp < 7 * 24 * 60 * 60 * 1000) {
+                // Check if session is less than 1 day old (since we also verify with token)
+                if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
                     this.currentUser = data.user;
-                    console.log('User session loaded:', this.currentUser.email);
+                    console.log('User session loaded from storage:', this.currentUser.email);
                     return this.currentUser;
                 }
             }
         } catch (error) {
             console.error('Error loading user session:', error);
+            this.clearUserSession();
         }
         return null;
     }
 
+    async setCurrentUser(user) {
+        this.currentUser = user;
+        this.saveUserSession();
+        this.updateUI();
+        this.closeLoginModal();
+        this.showWelcomeMessage();
+    }
+
+    async verifyToken() {
+        if (!this.authToken) return false;
+
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/auth/verify-token`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: this.authToken })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                this.currentUser = data.user;
+                this.saveUserSession();
+                return true;
+            } else {
+                // Token is invalid, clear it
+                this.clearUserSession();
+                return false;
+            }
+        } catch (error) {
+            console.error('Token verification error:', error);
+            this.clearUserSession();
+            return false;
+        }
+    }
+
     clearUserSession() {
         this.currentUser = null;
+        this.authToken = null;
         localStorage.removeItem('messad_user_session');
+        localStorage.removeItem('messad_auth_token');
     }
 
     // UI Management
@@ -372,6 +372,21 @@ class SimpleAuthManager {
     }
 
     async logout() {
+        try {
+            // Call backend logout endpoint
+            if (this.authToken) {
+                await fetch(`${this.apiBaseUrl}/auth/logout`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${this.authToken}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
+            }
+        } catch (error) {
+            console.log('Logout API call failed:', error);
+        }
+        
         // Sign out from Google if applicable
         if (this.currentUser?.provider === 'google' && window.google) {
             try {
@@ -380,6 +395,10 @@ class SimpleAuthManager {
                 console.log('Google sign-out error:', error);
             }
         }
+        
+        // Clear local storage
+        this.authToken = null;
+        localStorage.removeItem('messad_auth_token');
         
         this.clearUserSession();
         this.updateUI();

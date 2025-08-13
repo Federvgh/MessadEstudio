@@ -37,9 +37,9 @@ class AuthManager {
     async login(options = {}) {
         console.log('Login function called with options:', options);
         try {
-            console.log('Attempting MSAL login popup...');
+            console.log('Attempting MSAL login redirect (to avoid popup blocking)...');
             
-            // Create login request with optional hints
+            // Use redirect instead of popup to avoid blocking issues
             const loginRequestWithHints = { ...loginRequest };
             
             if (options.hint === 'google') {
@@ -48,13 +48,9 @@ class AuthManager {
                 console.log('Google hint applied to login request');
             }
             
-            const response = await this.msalInstance.loginPopup(loginRequestWithHints);
-            console.log('Login successful:', response);
-            this.currentAccount = response.account;
-            await this.handleSuccessfulLogin(response.account);
-            this.updateUI();
-            this.closeLoginModal();
-            return response;
+            // Use redirect instead of popup to avoid browser blocking
+            await this.msalInstance.loginRedirect(loginRequestWithHints);
+            
         } catch (error) {
             console.error('Login failed:', error);
             this.showLoginError(error.message);
