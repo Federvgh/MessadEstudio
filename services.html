@@ -37,6 +37,38 @@
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal login-modal" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Iniciar Sesión</h5>
+	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <form class="login-form">
+	          <div class="mb-3">
+	            <label for="loginEmail" class="form-label">Email</label>
+	            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+	          </div>
+	          <div class="mb-3">
+	            <label for="loginPassword" class="form-label">Contraseña</label>
+	            <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required>
+	          </div>
+	          <button type="submit" class="btn btn-primary w-100 mb-2">Ingresar</button>
+	          <div class="text-center mb-2">o</div>
+	          <button type="button" class="btn btn-outline-dark w-100" id="googleSignInBtn">
+	            <img src="images/google-logo.svg" alt="Google" style="width:20px; margin-right:8px; vertical-align:middle;"> Ingresar con Google
+	          </button>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <small>¿No tienes cuenta? <a href="#" id="signupLink">Regístrate</a></small>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
@@ -90,6 +122,7 @@
 					</li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contacto</a></li>
+					<li><a href="#" id="loginBtn">Login</a></li>
 				</ul>
 
 				
@@ -460,5 +493,29 @@ Trabajamos de manera interdisciplinaria con especialistas en la materia, para ge
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	<script>
+	  // Modal logic
+	  const loginBtn = document.getElementById('loginBtn');
+	  const loginModal = document.getElementById('loginModal');
+	  const closeLoginModal = document.getElementById('closeLoginModal');
+	  loginBtn.addEventListener('click', function(e) {
+	    e.preventDefault();
+	    loginModal.style.display = 'block';
+	    loginModal.classList.add('show');
+	    document.body.classList.add('modal-open');
+	  });
+	  closeLoginModal.addEventListener('click', function() {
+	    loginModal.style.display = 'none';
+	    loginModal.classList.remove('show');
+	    document.body.classList.remove('modal-open');
+	  });
+	  window.onclick = function(event) {
+	    if (event.target == loginModal) {
+	      loginModal.style.display = 'none';
+	      loginModal.classList.remove('show');
+	      document.body.classList.remove('modal-open');
+	    }
+	  }
+	</script>
 </body>
 </html>
