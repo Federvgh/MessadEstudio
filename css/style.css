@@ -49,6 +49,156 @@
   :root {
     scroll-behavior: smooth; } }
 
+/* Custom Login Modal Styles */
+.login-modal {
+  z-index: 99999 !important;
+}
+
+.login-modal .modal-dialog {
+  margin: 1.75rem auto;
+  max-width: 500px;
+}
+
+.login-modal .modal-content {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.login-modal .modal-header {
+  border-bottom: 1px solid #dee2e6;
+  padding: 1.5rem;
+}
+
+.login-modal .modal-header .modal-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #333;
+}
+
+.login-modal .modal-header .btn-close {
+  margin: -0.5rem -0.5rem -0.5rem auto;
+}
+
+.login-modal .modal-body {
+  padding: 2rem;
+}
+
+.login-modal .modal-body .alert-info {
+  background-color: #e7f3ff;
+  border-color: #b3d7ff;
+  color: #004085;
+}
+
+.login-modal .modal-body .google-signin-section .btn {
+  font-weight: 500;
+  padding: 12px;
+}
+
+.login-modal .modal-body .google-signin-section .btn .icon-google {
+  margin-right: 8px;
+}
+
+.login-modal .modal-body .auth-tabs .btn {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.login-modal .modal-body .auth-tabs .btn.btn-outline-primary {
+  border-color: #fc5404;
+  color: #fc5404;
+}
+
+.login-modal .modal-body .auth-tabs .btn.btn-outline-primary:hover,
+.login-modal .modal-body .auth-tabs .btn.btn-outline-primary.active {
+  background-color: #fc5404;
+  color: white;
+}
+
+.login-modal .modal-body .auth-form .form-label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.login-modal .modal-body .auth-form .form-control {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.login-modal .modal-body .auth-form .form-control:focus {
+  border-color: #fc5404;
+  box-shadow: 0 0 0 0.2rem rgba(252, 84, 4, 0.25);
+}
+
+.login-modal .modal-body .auth-form .btn {
+  padding: 12px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.login-modal .modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.login-modal .modal-footer small {
+  color: #6c757d;
+}
+
+.login-modal .modal-footer small a {
+  color: #fc5404;
+  text-decoration: none;
+}
+
+.login-modal .modal-footer small a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure modal backdrop is properly positioned */
+.modal-backdrop {
+  z-index: 99998 !important;
+}
+
+/* Fix for mobile responsive */
+@media (max-width: 576px) {
+  .login-modal .modal-dialog {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  
+  .login-modal .modal-body {
+    padding: 1.5rem;
+  }
+}
+
+/* Ensure login button is always clickable */
+#loginBtn {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  display: inline-block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure navigation menu is properly displayed on desktop */
+.site-nav .site-navigation .site-menu {
+  pointer-events: auto !important;
+}
+
+.site-nav .site-navigation .site-menu > li {
+  pointer-events: auto !important;
+}
+
+.site-nav .site-navigation .site-menu > li > a {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 100 !important;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);

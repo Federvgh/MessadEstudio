@@ -43,6 +43,78 @@
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal login-modal" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Iniciar Sesión</h5>
+	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Cerrar modal de inicio de sesión"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="alert alert-info">
+	          <small><strong>Opciones de Autenticación:</strong> Puedes crear una cuenta con tu email y contraseña, o usar tu cuenta de Google para acceso rápido.</small>
+	        </div>
+	        
+	        <!-- Google Sign-In Button -->
+	        <div class="google-signin-section mb-4">
+	          <button type="button" class="btn btn-danger w-100 mb-2" id="googleSignInBtn" aria-label="Iniciar sesión con Google">
+	            <i class="icon-google"></i> Continuar con Google
+	          </button>
+	          <div class="text-center mb-3">
+	            <small class="text-muted">o</small>
+	          </div>
+	        </div>
+	        
+	        <!-- Email/Password Section -->
+	        <div class="email-auth-section">
+	          <div class="auth-tabs mb-3">
+	            <button type="button" class="btn btn-outline-primary me-2" id="loginTabBtn" aria-label="Cambiar a formulario de inicio de sesión">Iniciar Sesión</button>
+	            <button type="button" class="btn btn-outline-secondary" id="registerTabBtn" aria-label="Cambiar a formulario de registro">Registrarse</button>
+	          </div>
+	          
+	          <!-- Login Form -->
+	          <form id="loginForm" class="auth-form" role="form" aria-label="Formulario de inicio de sesión">
+	            <div class="mb-3">
+	              <label for="loginEmail" class="form-label">Email</label>
+	              <input type="email" class="form-control" id="loginEmail" name="loginEmail" placeholder="tu@email.com" autocomplete="email" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="loginPassword" class="form-label">Contraseña</label>
+	              <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Contraseña" autocomplete="current-password" required>
+	            </div>
+	            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+	          </form>
+	          
+	          <!-- Register Form -->
+	          <form id="registerForm" class="auth-form" style="display: none;" role="form" aria-label="Formulario de registro">
+	            <div class="mb-3">
+	              <label for="registerName" class="form-label">Nombre Completo</label>
+	              <input type="text" class="form-control" id="registerName" name="registerName" placeholder="Tu nombre completo" autocomplete="name" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerEmail" class="form-label">Email</label>
+	              <input type="email" class="form-control" id="registerEmail" name="registerEmail" placeholder="tu@email.com" autocomplete="email" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerPassword" class="form-label">Contraseña</label>
+	              <input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required minlength="6">
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerPasswordConfirm" class="form-label">Confirmar Contraseña</label>
+	              <input type="password" class="form-control" id="registerPasswordConfirm" name="registerPasswordConfirm" placeholder="Confirma tu contraseña" autocomplete="new-password" required>
+	            </div>
+	            <button type="submit" class="btn btn-success w-100">Crear Cuenta</button>
+	          </form>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <small>Tus datos están seguros y protegidos. <a href="contact.html">¿Necesitas ayuda?</a></small>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
@@ -269,5 +341,131 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	<!-- Simple Authentication Script -->
+	<script src="js/simple-auth.js"></script>
+	
+	<script>
+	  // Simple Authentication Modal Logic
+	  document.addEventListener('DOMContentLoaded', function() {
+	    console.log('DOM loaded - setting up modal handlers');
+	    
+	    const loginModal = document.getElementById('loginModal');
+	    const closeLoginModal = document.getElementById('closeLoginModal');
+	    const googleSignInBtn = document.getElementById('googleSignInBtn');
+	    const loginTabBtn = document.getElementById('loginTabBtn');
+	    const registerTabBtn = document.getElementById('registerTabBtn');
+	    const loginForm = document.getElementById('loginForm');
+	    const registerForm = document.getElementById('registerForm');
+
+	    console.log('Elements found:', {
+	      loginModal: !!loginModal,
+	      closeLoginModal: !!closeLoginModal
+	    });
+
+	    // Use event delegation for login buttons (handles both original and cloned)
+	    document.addEventListener('click', function(e) {
+	      // Check if clicked element is a login button
+	      if (e.target && e.target.id === 'loginBtn') {
+	        e.preventDefault();
+	        console.log('Login button clicked via delegation:', e.target.id);
+	        
+	        if (window.simpleAuthManager) {
+	          console.log('Using SimpleAuthManager');
+	          window.simpleAuthManager.showLoginModal();
+	        } else {
+	          console.log('SimpleAuthManager not available, showing modal directly');
+	          if (loginModal) {
+	            loginModal.style.display = 'block';
+	            loginModal.classList.add('show');
+	            document.body.classList.add('modal-open');
+	          }
+	        }
+	      }
+	    });
+
+	    // Close modal handlers
+	    if (closeLoginModal) {
+	      closeLoginModal.addEventListener('click', function() {
+	        if (window.simpleAuthManager) {
+	          window.simpleAuthManager.closeLoginModal();
+	        }
+	      });
+	    }
+
+	    window.onclick = function(event) {
+	      if (event.target == loginModal) {
+	        if (window.simpleAuthManager) {
+	          window.simpleAuthManager.closeLoginModal();
+	        }
+	      }
+	    }
+
+	    // Tab switching
+	    if (loginTabBtn) {
+	      loginTabBtn.addEventListener('click', function() {
+	        loginTabBtn.classList.remove('btn-outline-primary');
+	        loginTabBtn.classList.add('btn-primary');
+	        registerTabBtn.classList.remove('btn-primary');
+	        registerTabBtn.classList.add('btn-outline-secondary');
+	        
+	        loginForm.style.display = 'block';
+	        registerForm.style.display = 'none';
+	      });
+	    }
+
+	    if (registerTabBtn) {
+	      registerTabBtn.addEventListener('click', function() {
+	        registerTabBtn.classList.remove('btn-outline-secondary');
+	        registerTabBtn.classList.add('btn-primary');
+	        loginTabBtn.classList.remove('btn-primary');
+	        loginTabBtn.classList.add('btn-outline-primary');
+	        
+	        loginForm.style.display = 'none';
+	        registerForm.style.display = 'block';
+	      });
+	    }
+
+	    // Form submissions
+	    if (loginForm) {
+	      loginForm.addEventListener('submit', function(e) {
+	        e.preventDefault();
+	        if (window.simpleAuthManager) {
+	          const email = document.getElementById('loginEmail').value;
+	          const password = document.getElementById('loginPassword').value;
+	          window.simpleAuthManager.handleEmailLogin(email, password);
+	        }
+	      });
+	    }
+
+	    if (registerForm) {
+	      registerForm.addEventListener('submit', function(e) {
+	        e.preventDefault();
+	        if (window.simpleAuthManager) {
+	          const name = document.getElementById('registerName').value;
+	          const email = document.getElementById('registerEmail').value;
+	          const password = document.getElementById('registerPassword').value;
+	          const confirmPassword = document.getElementById('registerPasswordConfirm').value;
+	          
+	          if (password !== confirmPassword) {
+	            alert('Las contraseñas no coinciden');
+	            return;
+	          }
+	          
+	          window.simpleAuthManager.handleEmailRegistration(name, email, password);
+	        }
+	      });
+	    }
+
+	    // Google Sign-In
+	    if (googleSignInBtn) {
+	      googleSignInBtn.addEventListener('click', function(e) {
+	        e.preventDefault();
+	        if (window.simpleAuthManager) {
+	          window.simpleAuthManager.initiateGoogleSignIn();
+	        }
+	      });
+	    }
+	  });
+	</script>
 </body>
 </html>

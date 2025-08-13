@@ -18,6 +18,27 @@
         setTimeout(function(){
             var hasChildrens = document.querySelector('.site-mobile-menu').querySelectorAll('.has-children');
             
+            // Handle login button in cloned menu
+            var clonedLoginBtn = document.querySelector('.site-mobile-menu #loginBtn');
+            if (clonedLoginBtn) {
+                console.log('Found cloned login button, adding event listener');
+                clonedLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Cloned login button clicked');
+                    if (window.simpleAuthManager) {
+                        window.simpleAuthManager.showLoginModal();
+                    } else {
+                        // Fallback: show modal directly
+                        var loginModal = document.getElementById('loginModal');
+                        if (loginModal) {
+                            loginModal.style.display = 'block';
+                            loginModal.classList.add('show');
+                            document.body.classList.add('modal-open');
+                        }
+                    }
+                });
+            }
+            
             hasChildrens.forEach(hasChild => {
                 // Agregar la flecha
                 var arrow = document.createElement('span');
