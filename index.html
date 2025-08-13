@@ -30,6 +30,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/mobile-menu.css">
 
+	<!-- MSAL.js for Azure Authentication -->
+	<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+
 	<title>Messad Estudio</title>
 </head>
 <body>
@@ -41,6 +44,41 @@
 			</div>
 		</div>
 		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal login-modal" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Iniciar Sesión</h5>
+	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="alert alert-info">
+	          <small><strong>Nota:</strong> Ambas opciones te redirigirán a una página segura de Azure donde podrás iniciar sesión con tu email/contraseña o elegir iniciar sesión con Google.</small>
+	        </div>
+	        <form class="login-form">
+	          <div class="mb-3">
+	            <label for="loginEmail" class="form-label">Email</label>
+	            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+	          </div>
+	          <div class="mb-3">
+	            <label for="loginPassword" class="form-label">Contraseña</label>
+	            <input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required>
+	          </div>
+	          <button type="submit" class="btn btn-primary w-100 mb-2">Iniciar Sesión con Azure</button>
+	          <div class="text-center mb-2">o</div>
+	          <button type="button" class="btn btn-outline-danger w-100" id="googleSignInBtn">
+	            <i class="icon-google"></i> Continuar con Google (via Azure)
+	          </button>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <small>¿No tienes cuenta? <a href="#" id="signupLink">Regístrate</a></small>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<nav class="site-nav">
@@ -111,6 +149,7 @@
 					</li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contacto</a></li>
+					<li><a href="#" id="loginBtn" onclick="console.log('Login clicked!'); if(window.authManager) window.authManager.showLoginModal(); return false;">Login</a></li>
 				</ul>
 
 				
@@ -446,7 +485,7 @@
 				<!-- Grid column -->
 				<div class="col-md-2 mb-3">
 				  <h6 class="text-uppercase font-weight-bold">
-					<a href="#!">Home</a>
+					<a href="index.html">Home</a>
 				  </h6>
 				</div>
 				<!-- Grid column -->
@@ -454,7 +493,7 @@
 				<!-- Grid column -->
 				<div class="col-md-2 mb-3">
 				  <h6 class="text-uppercase font-weight-bold">
-					<a href="#!">Proyectos</a>
+					<a href="projects.html">Proyectos</a>
 				  </h6>
 				</div>
 				<!-- Grid column -->
@@ -462,7 +501,7 @@
 				<!-- Grid column -->
 				<div class="col-md-2 mb-3">
 				  <h6 class="text-uppercase font-weight-bold">
-					<a href="#!">Servicios</a>
+					<a href="services.html">Servicios</a>
 				  </h6>
 				</div>
 				<!-- Grid column -->
@@ -470,7 +509,7 @@
 				<!-- Grid column -->
 				<div class="col-md-2 mb-3">
 				  <h6 class="text-uppercase font-weight-bold">
-					<a href="#!">About</a>
+					<a href="about.html">About</a>
 				  </h6>
 				</div>
 				<!-- Grid column -->
@@ -478,7 +517,7 @@
 				<!-- Grid column -->
 				<div class="col-md-2 mb-3">
 				  <h6 class="text-uppercase font-weight-bold">
-					<a href="#!">Contacto</a>
+					<a href="contact.html">Contacto</a>
 				  </h6>
 				</div>
 				<!-- Grid column -->
@@ -518,5 +557,44 @@
 	<script src="js/navbar.js"></script>
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
+	
+	<!-- Authentication Scripts -->
+	<script src="js/auth-config.js"></script>
+	<script src="js/auth-manager.js"></script>
+	
+	<script>
+	  // Enhanced Modal Logic with Authentication
+	  document.addEventListener('DOMContentLoaded', function() {
+	    const loginModal = document.getElementById('loginModal');
+	    const closeLoginModal = document.getElementById('closeLoginModal');
+	    const loginForm = document.querySelector('.login-form');
+	    const googleSignInBtn = document.getElementById('googleSignInBtn');
+
+	    // Close modal handlers
+	    closeLoginModal.addEventListener('click', function() {
+	      window.authManager.closeLoginModal();
+	    });
+
+	    window.onclick = function(event) {
+	      if (event.target == loginModal) {
+	        window.authManager.closeLoginModal();
+	      }
+	    }
+
+	    // Handle traditional email/password login (will redirect to Azure)
+	    loginForm.addEventListener('submit', function(e) {
+	      e.preventDefault();
+	      window.authManager.hideLoginError();
+	      window.authManager.login();
+	    });
+
+	    // Handle Google sign-in (will redirect to Azure with Google option)
+	    googleSignInBtn.addEventListener('click', function(e) {
+	      e.preventDefault();
+	      window.authManager.hideLoginError();
+	      window.authManager.login();
+	    });
+	  });
+	</script>
 </body>
 </html>
