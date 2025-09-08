@@ -1,0 +1,26 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Test files with credentials
+*-google-test.html
+*debug*.html
+oauth-debug.html
+
+# Development files and backups
+*.backup
+*.sh
+
+# IDE and system files
+.DS_Store
+.vscode/
+*.log
+
+# Node modules (if any at root level)
+node_modules/
+
+# Claude agents and configuration
+.claude-agents/
+.claude/
+CLAUDE.md

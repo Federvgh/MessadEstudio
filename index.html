@@ -32,6 +32,9 @@
 
 	<!-- MSAL.js for Azure Authentication -->
 	<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+	
+	<!-- Google Sign-In -->
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 	<title>Messad Estudio</title>
 </head>
@@ -47,7 +50,7 @@
 	</div>
 
 	<!-- Login Modal -->
-	<div id="loginModal" class="modal login-modal" tabindex="-1" aria-hidden="true">
+	<div id="loginModal" class="modal login-modal" tabindex="-1" style="display: none;">
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -596,7 +599,8 @@
 	<script src="js/custom.js"></script>
 	
 	<!-- Authentication Scripts -->
-	<script src="js/simple-auth.js"></script>
+	<script src="js/config.js"></script>
+<script src="js/simple-auth.js"></script>
 	
 	<script>
 	  // Simple Authentication Modal Logic

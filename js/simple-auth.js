@@ -2,7 +2,7 @@
 class SimpleAuthManager {
     constructor() {
         this.currentUser = null;
-        this.apiBaseUrl = 'http://localhost:3001/api'; // Backend API URL
+        this.apiBaseUrl = window.MessadConfig ? window.MessadConfig.getApiBaseUrl() : 'http://localhost:3001/api';
         this.authToken = localStorage.getItem('messad_auth_token');
         this.init();
     }
@@ -22,23 +22,48 @@ class SimpleAuthManager {
 
     async initializeGoogleSignIn() {
         try {
+            console.log('Initializing Google Sign-In...');
+            
             // Load Google Sign-In library
             if (!window.google) {
+                console.log('Loading Google Sign-In script...');
                 await this.loadGoogleScript();
             }
             
-            // Initialize Google Sign-In
-            await window.google.accounts.id.initialize({
-                client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com", // Replace with your actual Google Client ID
+            // Wait a bit for the script to fully load
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (!window.google || !window.google.accounts || !window.google.accounts.id) {
+                throw new Error('Google Sign-In library not loaded properly');
+            }
+            
+            // Initialize Google Sign-In with configuration
+            const clientId = window.MessadConfig ? window.MessadConfig.googleClientId : 'YOUR_GOOGLE_CLIENT_ID_HERE';
+            console.log('Configuring Google Sign-In with client ID:', clientId.substring(0, 20) + '...');
+            
+            if (clientId === 'YOUR_GOOGLE_CLIENT_ID_HERE') {
+                console.warn('Google Client ID not configured. Please set googleClientId in config.js');
+                return;
+            }
+            
+            window.google.accounts.id.initialize({
+                client_id: clientId,
                 callback: (response) => this.handleGoogleSignIn(response),
                 auto_select: false,
-                cancel_on_tap_outside: true
+                cancel_on_tap_outside: false,
+                itp_support: true,
+                use_fedcm_for_prompt: false,
+                ux_mode: 'popup', // Use popup mode instead of redirect
+                context: 'signin'
             });
+            
+            // Render the Google button immediately
+            this.renderGoogleButton();
             
             console.log('Google Sign-In initialized successfully');
         } catch (error) {
             console.error('Error initializing Google Sign-In:', error);
-            // Continue without Google Sign-In if it fails
+            this.showError('Error al inicializar Google Sign-In. Verifica la configuración.');
         }
     }
 
@@ -168,12 +193,99 @@ class SimpleAuthManager {
         }
     }
 
+    renderGoogleButton() {
+        try {
+            // Create container for the Google button (make it visible for testing)
+            let container = document.getElementById('google-signin-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'google-signin-container';
+                container.style.position = 'fixed';
+                container.style.top = '10px';
+                container.style.right = '10px';
+                container.style.zIndex = '10000';
+                container.style.backgroundColor = 'white';
+                container.style.padding = '10px';
+                container.style.border = '1px solid #ccc';
+                container.style.borderRadius = '5px';
+                container.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+                document.body.appendChild(container);
+                
+                // Add a label
+                const label = document.createElement('div');
+                label.textContent = 'Direct Google Button (for testing):';
+                label.style.fontSize = '12px';
+                label.style.marginBottom = '5px';
+                label.style.color = '#666';
+                container.appendChild(label);
+                
+                // Create button container
+                const buttonContainer = document.createElement('div');
+                container.appendChild(buttonContainer);
+                
+                // Render the Google button
+                window.google.accounts.id.renderButton(
+                    buttonContainer,
+                    {
+                        theme: 'outline',
+                        size: 'large',
+                        type: 'standard',
+                        text: 'signin_with',
+                        shape: 'rectangular',
+                        logo_alignment: 'left'
+                    }
+                );
+                
+                console.log('Google Sign-In button rendered (visible for testing)');
+            }
+        } catch (error) {
+            console.error('Error rendering Google button:', error);
+        }
+    }
+
     // Trigger Google Sign-In
     triggerGoogleSignIn() {
-        if (window.google) {
-            window.google.accounts.id.prompt();
-        } else {
-            this.showError('Google Sign-In no está disponible');
+        console.log('triggerGoogleSignIn called');
+        
+        if (!window.google || !window.google.accounts || !window.google.accounts.id) {
+            console.error('Google Sign-In not available');
+            this.showError('Google Sign-In no está disponible. Recarga la página e intenta nuevamente.');
+            return;
+        }
+        
+        try {
+            console.log('Triggering Google Sign-In...');
+            
+            // Try the popup approach first (more reliable)
+            const hiddenContainer = document.getElementById('google-signin-container');
+            if (hiddenContainer) {
+                const button = hiddenContainer.querySelector('div[role="button"]');
+                if (button) {
+                    console.log('Clicking Google Sign-In button');
+                    button.click();
+                    return;
+                }
+            }
+            
+            // Fallback to prompt method
+            console.log('Using prompt method as fallback');
+            window.google.accounts.id.prompt((notification) => {
+                console.log('Google prompt notification:', notification);
+                if (notification.isNotDisplayed()) {
+                    const reason = notification.getNotDisplayedReason();
+                    console.log('Prompt not displayed:', reason);
+                    if (reason === 'invalid_client') {
+                        this.showError('Error de configuración de Google. Por favor contacta al administrador.');
+                    } else {
+                        this.showError('Google Sign-In no disponible. Asegúrate de estar conectado a Google.');
+                    }
+                } else if (notification.isSkippedMoment()) {
+                    this.showError('Inicio de sesión cancelado. Intenta nuevamente.');
+                }
+            });
+        } catch (error) {
+            console.error('Error triggering Google Sign-In:', error);
+            this.showError('Error al iniciar Google Sign-In: ' + error.message);
         }
     }
 
@@ -447,15 +559,6 @@ class SimpleAuthManager {
 
     showError(message) {
         this.showToast(message, 'error');
-    }
-
-    // Trigger Google Sign-In
-    triggerGoogleSignIn() {
-        if (window.google) {
-            window.google.accounts.id.prompt();
-        } else {
-            this.showError('Google Sign-In no está disponible');
-        }
     }
 
     // Get current user
