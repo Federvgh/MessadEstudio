@@ -1,0 +1,179 @@
+/*
+ * Custom Typography System 2025
+ * Maximalist, bold typography with serif headings
+ */
+
+// Headings - Serif bold y dramáticos
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: $font-family-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em; // Tighter tracking para serif
+  color: #2C3639;
+}
+
+// H1 - HERO SIZE (Maximalist)
+h1, .h1 {
+  font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+
+  // Highlight accent (opcional)
+  .highlight {
+    color: var(--accent-warm);
+    font-style: italic;
+  }
+}
+
+// H2 - Section Headings
+h2, .h2 {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+// H3 - Subsection Headings
+h3, .h3 {
+  font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+// H4, H5, H6 - Sans serif para contraste
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: $font-family-sans-serif-secondary; // Montserrat
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h4, .h4 {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+}
+
+h5, .h5 {
+  font-size: clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem);
+}
+
+h6, .h6 {
+  font-size: clamp(1rem, 1vw + 0.25rem, 1.25rem);
+}
+
+// Body text - Clean sans serif
+body {
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
+  line-height: 1.7;
+  color: #333;
+}
+
+// Lead text (intro paragraphs)
+.lead {
+  font-size: clamp(1.125rem, 1vw + 1rem, 1.5rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+}
+
+// Hero section typography override
+.hero-2 {
+  h1 {
+    font-size: clamp(2.75rem, 7vw + 1rem, 5.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+
+    // Highlight span styling
+    .highlight {
+      display: block;
+      color: var(--accent-warm);
+      font-style: italic;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+  }
+
+  .lead {
+    font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem);
+    font-weight: 300;
+  }
+}
+
+// Stats bar - Bold numbers
+.stats-bar {
+  h3 {
+    font-family: $font-family-sans-serif-secondary;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: clamp(0.875rem, 1vw, 1.125rem);
+  }
+}
+
+// Heading class for special cases
+.heading {
+  font-family: $font-family-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #2C3639;
+}
+
+// Subheading utility
+.subheading {
+  font-family: $font-family-sans-serif-secondary;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-warm);
+  margin-bottom: 0.75rem;
+}
+
+// Font weight utilities
+.fw-light { font-weight: 300; }
+.fw-normal { font-weight: 400; }
+.fw-medium { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
+.fw-extrabold { font-weight: 800; }
+
+// Animation for hero text
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  // Reduce line height on mobile for tighter design
+  h1, .h1 {
+    line-height: 1.15;
+  }
+
+  h2, .h2 {
+    line-height: 1.2;
+  }
+
+  // Reduce letter spacing on mobile
+  h1, h2, h3 {
+    letter-spacing: -0.01em;
+  }
+}

@@ -9,7 +9,10 @@
 */
 
 $primary: #fc5404;
-$font-family-sans-serif: 'Roboto', sans-serif;
+
+// Typography System 2025 - Dual Font Approach
+$font-family-serif: 'Playfair Display', Georgia, serif;
+$font-family-sans-serif: 'Roboto', -apple-system, sans-serif;
 $font-family-sans-serif-secondary: 'Montserrat', sans-serif;
 
 @import 'bootstrap/mixins';
@@ -18,6 +21,8 @@ $font-family-sans-serif-secondary: 'Montserrat', sans-serif;
 
 @import 'bootstrap/bootstrap';
 
+@import 'components/custom-typography';
+@import 'components/portfolio-animations';
 @import 'components/site-navbar';
 @import 'components/site-base';
 @import 'components/site-blocks';

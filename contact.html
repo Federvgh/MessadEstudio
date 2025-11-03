@@ -17,20 +17,38 @@
 	<meta name="keywords" content="bootstrap, bootstrap5" />
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+	<!-- Typography 2025: Serif headings + Sans body -->
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap&display=swap" as="style">
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/glightbox.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<!-- Critical CSS - Async loaded to prevent render blocking -->
+	<link rel="preload" href="css/style.css" as="style">
+	<link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+	<!-- Deferred CSS for performance -->
+	<link rel="stylesheet" href="fonts/icomoon/style.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/tiny-slider.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/mobile-menu.css" media="print" onload="this.media='all'">
+	<noscript>
+		<link rel="stylesheet" href="fonts/icomoon/style.css">
+		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+		<link rel="stylesheet" href="css/tiny-slider.css">
+		<link rel="stylesheet" href="css/aos.css">
+		<link rel="stylesheet" href="css/glightbox.min.css">
+		<link rel="stylesheet" href="css/mobile-menu.css">
+	</noscript>
 
 	<title>Messad Estudio</title>
 	<!-- MSAL.js for Azure AD B2C Authentication -->
-	<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+	<!-- Performance optimizations -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" as="image" href="images/02_Photo-12.webp" type="image/webp">
 </head>
 <body>
 
@@ -184,14 +202,14 @@
 		</div>
 	</nav>
 
-	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.jpg');">
+	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto ">
-					<h1 class="mb-5 text-center"><span>Contacto</span></h1>
+					<h1 data-aos="fade-up" data-aos-duration="1000" class="mb-5 text-center"><span>Contacto</span></h1>
 
 
-					<div class="intro-desc text-left">
+					<div class="intro-desc" data-aos="fade-up" data-aos-delay="200" text-left">
 						<div class="line"></div>
 						<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
 					</div>
@@ -335,16 +353,16 @@
 		</div>
 	</div>
 
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/glightbox.min.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="js/bootstrap.bundle.min.js" defer></script>
+	<script src="js/tiny-slider.js" defer></script>
+	<script src="js/aos.js" defer></script>
+	<script src="js/glightbox.min.js" defer></script>
+	<script src="js/navbar.js" defer></script>
+	<script src="js/counter.js" defer></script>
+	<script src="js/custom.js" defer></script>
 	<!-- Simple Authentication Script -->
-	<script src="js/config.js"></script>
-<script src="js/simple-auth.js"></script>
+	<script src="js/config.js" defer></script>
+<script src="js/simple-auth.js" defer></script>
 	
 	<script>
 	  // Simple Authentication Modal Logic
