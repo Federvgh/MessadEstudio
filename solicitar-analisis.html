@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Solicita tu análisis normativo gratuito para Santiago del Estero. Descubre el potencial de construcción de tu lote.">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/calculadora.css">
+
+	<title>Solicitar Análisis Normativo - Messad Estudio</title>
+</head>
+<body>
+
+	<nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation">
+				<a href="index.html" class="logo m-0 float-start">Messad Estudio<span class="text-primary">.</span> </a>
+				<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="projects.html">Proyectos</a></li>
+					<li><a href="services.html">Servicios</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contacto</a></li>
+					<li class="active"><a href="solicitar-analisis.html">Calculadora</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero -->
+	<div class="calculator-hero" style="background: linear-gradient(135deg, var(--bs-primary) 0%, #3a4245 100%); padding: 80px 0 50px; color: white;">
+		<div class="container text-center">
+			<h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 15px;">
+				Solicită tu Análisis Normativo Gratuito
+			</h1>
+			<p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+				Completá el formulario y te enviamos el análisis completo en 24 horas
+			</p>
+		</div>
+	</div>
+
+	<!-- Formulario Simple -->
+	<section style="padding: 60px 0; background-color: #f8f9fa;">
+		<div class="container">
+			<div class="row">
+				<!-- Formulario -->
+				<div class="col-lg-7 mx-auto">
+					<div id="lead-form" class="calculator-form" style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+
+						<h3 class="mb-4" style="color: var(--bs-primary); font-weight: 600;">📋 Datos de tu Lote</h3>
+
+						<form id="analisis-form" onsubmit="handleSubmit(event)">
+
+							<!-- Dirección -->
+							<div class="mb-4">
+								<label for="direccion" class="form-label" style="font-weight: 600;">📍 Dirección del lote *</label>
+								<input type="text" class="form-control form-control-lg" id="direccion" name="direccion" placeholder="Ej: Belgrano 850" required autocomplete="street-address">
+								<small class="text-muted">Solo calle y número (agregaremos Santiago del Estero automáticamente)</small>
+							</div>
+
+							<!-- Entre calles -->
+							<div class="mb-4">
+								<label for="entre_calles" class="form-label" style="font-weight: 600;">📌 Entre calles (opcional)</label>
+								<input type="text" class="form-control form-control-lg" id="entre_calles" name="entre_calles" placeholder="Ej: Entre Tucumán y Santiago">
+							</div>
+
+							<hr class="my-4">
+
+							<h3 class="mb-3" style="color: var(--bs-primary); font-weight: 600;">📏 Dimensiones del Lote (opcional)</h3>
+							<p class="text-muted mb-4" style="font-size: 0.95rem;">
+								Si conocés las medidas del lote, ingresalas acá. Esto nos ayudará a hacer un análisis más preciso.
+							</p>
+
+							<!-- Dimensiones en fila -->
+							<div class="row mb-4">
+								<div class="col-md-6 mb-3 mb-md-0">
+									<label for="frente" class="form-label" style="font-weight: 600;">📐 Frente (metros)</label>
+									<input type="number" step="0.01" class="form-control form-control-lg" id="frente" name="frente" placeholder="Ej: 15.00">
+									<small class="text-muted">Ancho del lote sobre la calle</small>
+								</div>
+								<div class="col-md-6">
+									<label for="profundidad" class="form-label" style="font-weight: 600;">📐 Profundidad (metros)</label>
+									<input type="number" step="0.01" class="form-control form-control-lg" id="profundidad" name="profundidad" placeholder="Ej: 40.00">
+									<small class="text-muted">Largo del lote hacia el fondo</small>
+								</div>
+							</div>
+
+							<!-- Superficie calculada automáticamente -->
+							<div id="superficie-display" style="display: none; background-color: #e7f3ff; border-left: 4px solid var(--accent-cool); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+								<strong style="color: var(--bs-primary);">📊 Superficie del lote:</strong>
+								<span id="superficie-calculada" style="font-size: 1.3rem; font-weight: 700; color: var(--accent-warm); margin-left: 10px;">0 m²</span>
+							</div>
+
+							<hr class="my-4">
+
+							<h3 class="mb-4" style="color: var(--bs-primary); font-weight: 600;">👤 Tus Datos de Contacto</h3>
+
+							<!-- Email -->
+							<div class="mb-4">
+								<label for="email" class="form-label" style="font-weight: 600;">📧 Email *</label>
+								<input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+								<small class="text-muted">Enviaremos el análisis a este email</small>
+							</div>
+
+							<!-- WhatsApp -->
+							<div class="mb-4">
+								<label for="whatsapp" class="form-label" style="font-weight: 600;">📱 WhatsApp (opcional)</label>
+								<input type="tel" class="form-control form-control-lg" id="whatsapp" name="whatsapp" placeholder="+54 9 385 123 4567" autocomplete="tel">
+								<small class="text-muted">Para contactarte más rápido</small>
+							</div>
+
+							<!-- Nombre -->
+							<div class="mb-4">
+								<label for="nombre" class="form-label" style="font-weight: 600;">👤 Nombre (opcional)</label>
+								<input type="text" class="form-control form-control-lg" id="nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name">
+							</div>
+
+							<!-- Comentarios -->
+							<div class="mb-4">
+								<label for="comentarios" class="form-label" style="font-weight: 600;">💬 Comentarios adicionales (opcional)</label>
+								<textarea class="form-control" id="comentarios" name="comentarios" rows="4" placeholder="Ej: Quiero construir departamentos para alquilar, tengo el título de propiedad, etc."></textarea>
+								<small class="text-muted">Cualquier información adicional que nos ayude</small>
+							</div>
+
+							<!-- Submit Button -->
+							<div class="d-grid gap-2 mt-4">
+								<button type="submit" id="submit-btn" class="btn btn-lg" style="background-color: var(--accent-warm); color: white; border: none; padding: 18px; font-weight: 700; font-size: 1.1rem; border-radius: 10px;">
+									📨 Solicitar Análisis Gratuito
+								</button>
+							</div>
+
+							<p class="text-center mt-3 mb-0">
+								<small class="text-muted">* Campos obligatorios • Te responderemos en menos de 24 horas</small>
+							</p>
+						</form>
+
+					</div>
+
+					<!-- Mensaje de Éxito -->
+					<div id="success-message" class="calculator-form" style="display: none; background: white; border-radius: 20px; padding: 50px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;">
+
+						<div style="font-size: 5rem; margin-bottom: 20px;">✅</div>
+
+						<h2 style="color: var(--accent-cool); font-weight: 700; margin-bottom: 20px;">
+							¡Solicitud Recibida!
+						</h2>
+
+						<p style="font-size: 1.2rem; margin-bottom: 30px; color: #666;">
+							Recibimos tu solicitud correctamente.<br>
+							Te enviaremos el análisis normativo a <strong id="confirm-email"></strong>
+						</p>
+
+						<div class="alert alert-info" style="background-color: #e7f3ff; border-left: 4px solid var(--accent-cool); padding: 20px; margin-bottom: 30px;">
+							<h5 style="font-weight: 600; margin-bottom: 10px;">📋 Próximos pasos:</h5>
+							<ol style="text-align: left; margin-bottom: 0; padding-left: 20px;">
+								<li>Revisaremos la ubicación de tu lote</li>
+								<li>Analizaremos la normativa aplicable</li>
+								<li>Generaremos el informe completo</li>
+								<li>Te lo enviaremos por email en menos de 24hs</li>
+							</ol>
+						</div>
+
+						<p style="margin-bottom: 20px;">
+							<strong>¿Necesitás algo urgente?</strong><br>
+							Contactanos por WhatsApp: <a href="https://wa.me/542924392327" target="_blank" style="color: var(--accent-warm); font-weight: 600;">+54 2 292 4392 327</a>
+						</p>
+
+						<div class="row mt-4">
+							<div class="col-md-6 mb-2">
+								<a href="index.html" class="btn btn-outline-secondary btn-lg w-100">
+									← Volver al inicio
+								</a>
+							</div>
+							<div class="col-md-6 mb-2">
+								<a href="projects.html" class="btn btn-lg w-100" style="background-color: var(--bs-primary); color: white; border: none;">
+									Ver Proyectos →
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<!-- Sidebar Info -->
+				<div class="col-lg-4 mt-5 mt-lg-0">
+					<div class="info-box" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
+						<h4 style="color: var(--bs-primary); font-weight: 600; margin-bottom: 20px;">
+							✨ ¿Qué incluye el análisis?
+						</h4>
+						<ul style="list-style: none; padding-left: 0;">
+							<li style="margin-bottom: 15px;">
+								<span style="color: var(--accent-warm); font-size: 1.3rem;">✓</span>
+								<strong>Zona normativa aplicable</strong><br>
+								<small class="text-muted">Según Digesto de SDE</small>
+							</li>
+							<li style="margin-bottom: 15px;">
+								<span style="color: var(--accent-warm); font-size: 1.3rem;">✓</span>
+								<strong>Superficie construible</strong><br>
+								<small class="text-muted">FOS y FOT aplicables</small>
+							</li>
+							<li style="margin-bottom: 15px;">
+								<span style="color: var(--accent-warm); font-size: 1.3rem;">✓</span>
+								<strong>Altura máxima permitida</strong><br>
+								<small class="text-muted">Cantidad de pisos posibles</small>
+							</li>
+							<li style="margin-bottom: 15px;">
+								<span style="color: var(--accent-warm); font-size: 1.3rem;">✓</span>
+								<strong>Estimación de rentabilidad</strong><br>
+								<small class="text-muted">ROI aproximado del proyecto</small>
+							</li>
+							<li>
+								<span style="color: var(--accent-warm); font-size: 1.3rem;">✓</span>
+								<strong>Recomendaciones iniciales</strong><br>
+								<small class="text-muted">Mejor uso del terreno</small>
+							</li>
+						</ul>
+					</div>
+
+					<div class="info-box" style="background: linear-gradient(135deg, var(--accent-warm) 0%, #c97760 100%); border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); color: white;">
+						<h4 style="font-weight: 600; margin-bottom: 15px;">
+							🚀 ¿Querés el análisis completo?
+						</h4>
+						<p style="margin-bottom: 20px; opacity: 0.95;">
+							Incluye 15 páginas con 3 alternativas de proyecto, cálculos detallados de ROI y distribución óptima de unidades.
+						</p>
+						<div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 5px;">
+							$8,000
+						</div>
+						<small style="opacity: 0.9;">ARS - Entrega en 24hs</small>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<div class="site-footer bg-light">
+		<div class="container">
+			<div class="row text-center d-flex justify-content-center pt-5 mb-3">
+				<div class="col-md-2 mb-3">
+					<h6 class="text-uppercase font-weight-bold"><a href="index.html">Home</a></h6>
+				</div>
+				<div class="col-md-2 mb-3">
+					<h6 class="text-uppercase font-weight-bold"><a href="projects.html">Proyectos</a></h6>
+				</div>
+				<div class="col-md-2 mb-3">
+					<h6 class="text-uppercase font-weight-bold"><a href="services.html">Servicios</a></h6>
+				</div>
+				<div class="col-md-2 mb-3">
+					<h6 class="text-uppercase font-weight-bold"><a href="about.html">About</a></h6>
+				</div>
+				<div class="col-md-2 mb-3">
+					<h6 class="text-uppercase font-weight-bold"><a href="contact.html">Contacto</a></h6>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/simple-lead-capture.js"></script>
+
+	<script>
+	// Calcular superficie automáticamente
+	document.addEventListener('DOMContentLoaded', function() {
+		const frenteInput = document.getElementById('frente');
+		const profundidadInput = document.getElementById('profundidad');
+		const superficieDisplay = document.getElementById('superficie-display');
+		const superficieCalc = document.getElementById('superficie-calculada');
+
+		function calcularSuperficie() {
+			const frente = parseFloat(frenteInput.value) || 0;
+			const profundidad = parseFloat(profundidadInput.value) || 0;
+			const superficie = frente * profundidad;
+
+			if (superficie > 0) {
+				superficieCalc.textContent = superficie.toFixed(2) + ' m²';
+				superficieDisplay.style.display = 'block';
+			} else {
+				superficieDisplay.style.display = 'none';
+			}
+		}
+
+		if (frenteInput && profundidadInput) {
+			frenteInput.addEventListener('input', calcularSuperficie);
+			profundidadInput.addEventListener('input', calcularSuperficie);
+		}
+	});
+
+	// Handler del formulario
+	async function handleSubmit(event) {
+		event.preventDefault();
+
+		// Obtener datos del formulario
+		const frente = document.getElementById('frente').value;
+		const profundidad = document.getElementById('profundidad').value;
+		const superficie = frente && profundidad ? parseFloat(frente) * parseFloat(profundidad) : null;
+
+		// Obtener dirección y agregar ciudad/provincia/país si no está incluida
+		let direccion = document.getElementById('direccion').value.trim();
+		if (!direccion.toLowerCase().includes('santiago')) {
+			direccion = direccion + ', Santiago del Estero, Santiago del Estero, Argentina';
+		} else if (!direccion.toLowerCase().includes('argentina')) {
+			direccion = direccion + ', Santiago del Estero, Argentina';
+		}
+
+		const formData = {
+			direccion: direccion,
+			entreCalles: document.getElementById('entre_calles').value,
+			frente: frente ? parseFloat(frente) : null,
+			profundidad: profundidad ? parseFloat(profundidad) : null,
+			superficie: superficie,
+			email_cliente: document.getElementById('email').value,
+			whatsapp: document.getElementById('whatsapp').value,
+			nombre: document.getElementById('nombre').value,
+			comentarios: document.getElementById('comentarios').value,
+			timestamp: new Date().toISOString()
+		};
+
+		console.log('Enviando solicitud...', formData);
+
+		// Guardar en localStorage como backup
+		try {
+			let leads = JSON.parse(localStorage.getItem('messad_leads') || '[]');
+			leads.push(formData);
+			localStorage.setItem('messad_leads', JSON.stringify(leads));
+		} catch (e) {
+			console.error('Error guardando en localStorage:', e);
+		}
+
+		// Enviar a Supabase + n8n
+		const result = await submitLead(formData);
+
+		if (result.success) {
+			// Mostrar email en mensaje de confirmación
+			document.getElementById('confirm-email').textContent = formData.email_cliente;
+		}
+	}
+	</script>
+
+</body>
+</html>
