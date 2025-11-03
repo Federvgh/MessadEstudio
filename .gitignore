@@ -23,4 +23,5 @@ node_modules/
 # Claude agents and configuration
 .claude-agents/
 .claude/
-CLAUDE.md
+CLAUDE.md.DS_Store
+**/.DS_Store
