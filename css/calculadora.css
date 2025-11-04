@@ -1,7 +1,25 @@
 /* Calculadora Normativa - Estilos Específicos */
+/* VERSION: 2025010402 - CACHE BUSTER */
 
-/* Calculator Hero */
+/* ============================================
+   OVERRIDE CSS VARIABLES - CRITICAL FIX
+   style.css sets --bs-primary to #fc5404 (orange)
+   We need to override it for this page ONLY
+   ============================================ */
+:root {
+    --bs-primary: #16697a !important;
+    --bs-primary-rgb: 22, 105, 122 !important;
+}
+
+/* TEST: Temporary background to confirm CSS is loading */
+body {
+    background: #f0f0f0 !important;
+}
+
+/* Override inline styles para consistencia con el resto del sitio */
 .calculator-hero {
+    /* Sobrescribir background inline con colores del sitio */
+    background: linear-gradient(135deg, #16697a 0%, #0d4f5c 100%) !important;
     position: relative;
     overflow: hidden;
 }
@@ -41,7 +59,7 @@
 }
 
 .step-label.active {
-    color: var(--accent-warm);
+    color: #007bff;
     font-weight: 700;
 }
 
@@ -83,8 +101,8 @@
 
 .calculator-form .form-control:focus,
 .calculator-form .form-select:focus {
-    border-color: var(--accent-warm);
-    box-shadow: 0 0 0 0.2rem rgba(212, 135, 110, 0.15);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
     outline: none;
 }
 
@@ -109,7 +127,7 @@
 /* Superficie Display */
 .superficie-auto {
     background-color: #e7f3ff;
-    border-left: 4px solid var(--accent-cool);
+    border-left: 4px solid #007bff;
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
@@ -130,7 +148,7 @@
 /* Zona Info Box */
 .zona-info-box {
     animation: fadeIn 0.4s ease;
-    border-left: 4px solid var(--accent-warm);
+    border-left: 4px solid #007bff;
 }
 
 .zona-info-box h5 {
@@ -177,7 +195,7 @@
 }
 
 .result-card:hover {
-    border-color: var(--accent-warm);
+    border-color: #007bff;
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
@@ -357,7 +375,7 @@
     position: relative;
     display: inline-block;
     cursor: help;
-    color: var(--accent-warm);
+    color: #007bff;
     margin-left: 5px;
 }
 
@@ -380,7 +398,7 @@
 .btn:focus,
 .form-control:focus,
 .form-select:focus {
-    outline: 2px solid var(--accent-warm);
+    outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
@@ -432,3 +450,186 @@
         color: #ccc !important;
     }
 }
+
+/* ============================================
+   OVERRIDE INLINE STYLES - CONSISTENCIA
+   Sobrescribir estilos inline del HTML para
+   mantener consistencia con el resto del sitio
+   ============================================ */
+
+/* Hero headings */
+.calculator-hero h1 {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+}
+
+/* Títulos de secciones */
+#lead-form h3 {
+    color: #16697a !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* Labels del formulario - CRITICAL OVERRIDE */
+.calculator-form label,
+.calculator-form .form-label,
+#analisis-form label,
+label[for],
+label[style*="color"] {
+    color: #16697a !important;
+}
+
+/* Labels con atributo style específico */
+label[style*="#D4876E"],
+label[style*="#2C3639"],
+label[style*="color: #"] {
+    color: #16697a !important;
+}
+
+/* Iconos y spans dentro de labels */
+label span,
+label .icon-location-pin,
+label .icon-envelope,
+label .icon-phone {
+    color: inherit !important;
+}
+
+/* Text color overrides for any inline styled elements */
+[style*="color: #D4876E"],
+[style*="color: #2C3639"],
+[style*="color:#D4876E"],
+[style*="color:#2C3639"] {
+    color: #16697a !important;
+}
+
+/* ULTRA-SPECIFIC label overrides by ID */
+#analisis-form .form-label,
+#analisis-form label[for="direccion"],
+#analisis-form label[for="entre_calles"],
+#analisis-form label[for="frente"],
+#analisis-form label[for="profundidad"],
+#analisis-form label[for="email"],
+#analisis-form label[for="whatsapp"],
+#analisis-form label[for="nombre"],
+#analisis-form label[for="comentarios"],
+#lead-form label,
+#lead-form .form-label {
+    color: #16697a !important;
+    font-weight: 600 !important;
+}
+
+/* Botón submit principal */
+#submit-btn {
+    background-color: #007bff !important;
+    background-image: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+#submit-btn:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3) !important;
+}
+
+/* Display de superficie calculada */
+#superficie-display {
+    background-color: #e7f3ff !important;
+    border-left: 4px solid #007bff !important;
+}
+
+#superficie-calculada {
+    color: #007bff !important;
+}
+
+/* Info boxes del sidebar */
+.info-box h4 {
+    color: #16697a !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* Check marks en lista de beneficios */
+.info-box li span {
+    color: #007bff !important;
+}
+
+/* Info box premium (naranja) - mantener pero ajustar al accent warm del sitio */
+.info-box[style*="linear-gradient"] {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+}
+
+/* Mensaje de éxito - usar colores del sitio */
+#success-message h2 {
+    color: #198754 !important;
+}
+
+#success-message .alert {
+    background-color: #e7f3ff !important;
+    border-left: 4px solid #007bff !important;
+}
+
+#success-message .alert h5 {
+    color: #16697a !important;
+}
+
+/* Links de WhatsApp en mensaje de éxito */
+#success-message a[href*="wa.me"] {
+    color: #007bff !important;
+}
+
+/* Botón secundario en mensaje de éxito */
+#success-message .btn[style*="#2C3639"] {
+    background-color: #16697a !important;
+    border-color: #16697a !important;
+}
+
+#success-message .btn[style*="#2C3639"]:hover {
+    background-color: #0d4f5c !important;
+}
+
+/* ============================================
+   NUCLEAR OPTION - MAXIMUM SPECIFICITY
+   Last resort overrides to ensure colors display
+   ============================================ */
+
+/* Force all form labels to use site colors - MAXIMUM PRIORITY */
+body #lead-form label,
+body .calculator-form label,
+body #analisis-form label,
+body #analisis-form .form-label,
+body label[for="direccion"],
+body label[for="entre_calles"],
+body label[for="frente"],
+body label[for="profundidad"],
+body label[for="email"],
+body label[for="whatsapp"],
+body label[for="nombre"],
+body label[for="comentarios"] {
+    color: #16697a !important;
+}
+
+/* Force removal of any potential inline or dynamic color styles */
+#lead-form *[style*="color"],
+#analisis-form *[style*="color"] {
+    /* This will be overridden by more specific selectors if needed */
+}
+
+/* Ensure heading colors are correct */
+body .calculator-hero h1,
+body #lead-form h3,
+body .info-box h4 {
+    color: inherit;
+}
+
+body .calculator-hero h1 {
+    color: white !important;
+}
+
+body #lead-form h3 {
+    color: #16697a !important;
+}
+
+body .info-box h4 {
+    color: #16697a !important;
+}
+
+/* Browser cache buster comment - v1.0.1 */

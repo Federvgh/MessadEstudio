@@ -11,40 +11,299 @@
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/calculadora.css">
+	<link rel="stylesheet" href="css/calculadora.css?v=2025010403">
+	<link rel="stylesheet" href="css/mobile-menu.css">
 	<!-- Phase 2 UX Enhancements -->
 	<link rel="stylesheet" href="css/loading-states.css">
 	<link rel="stylesheet" href="css/whatsapp-widget.css">
 
 	<title>Solicitar Análisis Normativo - Messad Estudio</title>
+
+	<!-- Color Override: Unificar con estética del sitio -->
+	<style>
+		/* Force all form labels to site primary color (orange) */
+		.calculator-form label,
+		.calculator-form .form-label,
+		#analisis-form label,
+		#lead-form label,
+		label[for="direccion"],
+		label[for="entre_calles"],
+		label[for="frente"],
+		label[for="profundidad"],
+		label[for="email"],
+		label[for="whatsapp"],
+		label[for="nombre"],
+		label[for="comentarios"] {
+			color: #212529 !important;
+		}
+
+		/* Section headings */
+		#lead-form h3 {
+			color: #212529 !important;
+			font-family: 'Playfair Display', serif !important;
+		}
+
+		/* Submit button - site primary orange */
+		#submit-btn {
+			background-color: #fc5404 !important;
+			border: none !important;
+		}
+
+		#submit-btn:hover {
+			background-color: #e04d03 !important;
+		}
+
+		/* Hero heading */
+		.calculator-hero h1 {
+			font-family: 'Playfair Display', serif !important;
+		}
+
+		/* Info box headings */
+		.info-box h4 {
+			color: #212529 !important;
+			font-family: 'Playfair Display', serif !important;
+		}
+
+		/* Checkmarks in info boxes - site primary orange */
+		.info-box li span {
+			color: #fc5404 !important;
+		}
+
+		/* Superficie display borders and colors */
+		#superficie-display {
+			border-left-color: #fc5404 !important;
+		}
+
+		#superficie-calculada {
+			color: #fc5404 !important;
+		}
+
+		/* Success message colors */
+		#success-message h2 {
+			color: #198754 !important;
+		}
+
+		#success-message .alert {
+			background-color: #fff3e6 !important;
+			border-left-color: #fc5404 !important;
+		}
+
+		#success-message .alert h5 {
+			color: #212529 !important;
+		}
+
+		/* WhatsApp and other links */
+		#success-message a[href*="wa.me"],
+		a[href*="wa.me"] {
+			color: #fc5404 !important;
+		}
+
+		/* Secondary buttons */
+		#success-message .btn[style*="2C3639"],
+		.btn[style*="2C3639"] {
+			background-color: #fc5404 !important;
+			border-color: #fc5404 !important;
+		}
+
+		#success-message .btn[style*="2C3639"]:hover,
+		.btn[style*="2C3639"]:hover {
+			background-color: #e04d03 !important;
+		}
+
+		/* Premium info box gradient - site orange */
+		.info-box[style*="linear-gradient"] {
+			background: linear-gradient(135deg, #fc5404 0%, #e04d03 100%) !important;
+		}
+	</style>
 </head>
 <body>
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal login-modal" tabindex="-1" style="display: none;">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Iniciar Sesión</h5>
+	        <button type="button" class="btn-close" id="closeLoginModal" aria-label="Cerrar modal de inicio de sesión"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="alert alert-info">
+	          <small><strong>Opciones de Autenticación:</strong> Puedes crear una cuenta con tu email y contraseña, o usar tu cuenta de Google para acceso rápido.</small>
+	        </div>
+
+	        <!-- Google Sign-In Button -->
+	        <div class="google-signin-section mb-4">
+	          <button type="button" class="btn btn-google w-100 mb-2" id="googleSignInBtn" aria-label="Iniciar sesión con Google">
+	            <svg class="google-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+	              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+	              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+	              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+	              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+	            </svg>
+	            Continuar con Google
+	          </button>
+	          <div class="text-center mb-3">
+	            <small class="text-muted">o</small>
+	          </div>
+	        </div>
+
+	        <!-- Email/Password Section -->
+	        <div class="email-auth-section">
+	          <div class="auth-tabs mb-3">
+	            <button type="button" class="btn btn-outline-primary me-2" id="loginTabBtn" aria-label="Cambiar a formulario de inicio de sesión">Iniciar Sesión</button>
+	            <button type="button" class="btn btn-outline-secondary" id="registerTabBtn" aria-label="Cambiar a formulario de registro">Registrarse</button>
+	          </div>
+
+	          <!-- Login Form -->
+	          <form id="loginForm" class="auth-form" role="form" aria-label="Formulario de inicio de sesión">
+	            <div class="mb-3">
+	              <label for="loginEmail" class="form-label">Email</label>
+	              <input type="email" class="form-control" id="loginEmail" name="loginEmail" placeholder="tu@email.com" autocomplete="email" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="loginPassword" class="form-label">Contraseña</label>
+	              <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Contraseña" autocomplete="current-password" required>
+	            </div>
+	            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+	          </form>
+
+	          <!-- Register Form -->
+	          <form id="registerForm" class="auth-form" style="display: none;" role="form" aria-label="Formulario de registro">
+	            <div class="mb-3">
+	              <label for="registerName" class="form-label">Nombre Completo</label>
+	              <input type="text" class="form-control" id="registerName" name="registerName" placeholder="Tu nombre completo" autocomplete="name" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerEmail" class="form-label">Email</label>
+	              <input type="email" class="form-control" id="registerEmail" name="registerEmail" placeholder="tu@email.com" autocomplete="email" required>
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerPassword" class="form-label">Contraseña</label>
+	              <input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required minlength="6">
+	            </div>
+	            <div class="mb-3">
+	              <label for="registerPasswordConfirm" class="form-label">Confirmar Contraseña</label>
+	              <input type="password" class="form-control" id="registerPasswordConfirm" name="registerPasswordConfirm" placeholder="Confirma tu contraseña" autocomplete="new-password" required>
+	            </div>
+	            <button type="submit" class="btn btn-success w-100">Crear Cuenta</button>
+	          </form>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <small>Tus datos están seguros y protegidos. <a href="contact.html">¿Necesitas ayuda?</a></small>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
 				<a href="index.html" class="logo m-0 float-start">Messad Estudio<span class="text-primary">.</span> </a>
+
 				<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="projects.html">Proyectos</a></li>
-					<li><a href="services.html">Servicios</a></li>
+					<li class="has-children">
+						<a href="projects.html">Proyectos</a>
+						<ul class="dropdown navbar__proyectos-dropdown" aria-label="Proyectos">
+							<li class="has-children navbar__proyectos-root">
+								<a href="#">Categorías</a>
+								<ul class="dropdown navbar__proyectos-submenu">
+									<li class="has-children navbar__proyectos-subroot">
+									<a href="institucional.html">Institucional</a>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+									<a href="comercial.html">Comercial</a>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+									<a href="vivienda.html">Vivienda</a>
+									</li>
+									<li class="has-children navbar__proyectos-subroot">
+									<a href="edificios.html">Edificios</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="has-children">
+						<a href="services.html">Servicios</a>
+						<ul class="dropdown navbar__servicios-dropdown" aria-label="Servicios">
+							<li class="has-children navbar__servicios-root">
+								<a href="#">Diseño</a>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="services.html#factibilidades">Factibilidades</a></li>
+									<li><a href="services.html#proyectos-interiorismo">Proyectos e Interiorismo</a></li>
+									<li><a href="services.html#documentacion-obra">Documentación para obra</a></li>
+									<li><a href="services.html#refacciones">Refacciones</a></li>
+									<li><a href="services.html#revitalizacion">REVITalización de obras</a></li>
+								</ul>
+							</li>
+							<li class="has-children navbar__servicios-root">
+								<a href="#">Gestión</a>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="services.html#masterplan">Masterplan</a></li>
+									<li><a href="services.html#gestion-permisos">Gestión de permisos</a></li>
+									<li><a href="services.html#direccion-obra">Dirección de obra</a></li>
+									<li><a href="services.html#computos-presupuestos">Cómputos y presupuestos</a></li>
+								</ul>
+							</li>
+							<li class="has-children navbar__servicios-root">
+								<a href="#">BIM</a>
+								<ul class="dropdown navbar__servicios-submenu">
+									<li><a href="services.html#bim-desarrollo">Desarrollo de Proyectos y Documentación bajo Metodología BIM</a></li>
+									<li><a href="services.html#bim-modelado">Modelado Integral Multidisciplinario</a></li>
+									<li><a href="services.html#bim-documentacion">Documentación Técnica Automatizada</a></li>
+									<li><a href="services.html#bim-simulaciones">Simulaciones y Análisis Técnicos</a></li>
+									<li><a href="services.html#bim-gestion">Gestión de Información del Proyecto</a></li>
+									<li><a href="services.html#bim-4d-5d">Modelos 4D y 5D</a></li>
+									<li><a href="services.html#bim-asbuilt">Entrega de Modelos As-Built</a></li>
+									<li><a href="services.html#bim-capacitacion">Capacitación y Consultoría BIM</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contacto</a></li>
 					<li class="active"><a href="solicitar-analisis.html">Calculadora</a></li>
+					<li><a href="#" id="loginBtn">Login</a></li>
 				</ul>
+
+
+
+				<a href="#" class="burger ml-auto float-end site-menu-toggle light js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+					<span></span>
+				</a>
+				<ul class="site-menu float-end d-none d-md-block">
+					<li><a href="#" class="d-flex align-items-center text-white h2 fw-bold"><span class="icon-phone me-2"></span> <span>+ 2 292 4392 327</span></a></li>
+				</ul>
+
 			</div>
 		</div>
 	</nav>
 
 	<!-- Hero -->
-	<div class="calculator-hero" style="background: linear-gradient(135deg, #2C3639 0%, #3a4245 100%); padding: 80px 0 50px; color: white;">
-		<div class="container text-center">
-			<h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 15px;">
-				Solicită tu Análisis Normativo Gratuito
-			</h1>
-			<p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
-				Completá el formulario y te enviamos el análisis completo en 24 horas
-			</p>
+	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 mx-auto text-center">
+					<h1 class="mb-4">
+						Solicitá tu Análisis Normativo
+						<span class="highlight">Gratis y en 24 horas</span>
+					</h1>
+					<p class="lead mb-5">
+						Completá el formulario y te enviamos el análisis completo de tu lote según las normativas de Santiago del Estero
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -244,74 +503,189 @@
 		</div>
 	</section>
 
-	<!-- Footer -->
-	<div class="site-footer bg-light">
+<!-- FAQ Section -->
+	<div class="section sec-faq bg-light">
 		<div class="container">
-
-			<div class="row text-center d-flex justify-content-center pt-5 mb-3">
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="index.html">Home</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="projects.html">Proyectos</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="services.html">Servicios</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="about.html">About</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="contact.html">Contacto</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="solicitar-analisis.html">Calculadora</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-
-			  </div>
-					<div class="widget row text-center d-flex justify-content-center pt-5 mb-3">
-						<ul class="social list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-						</ul>
-					</div>
+			<div class="row mb-5">
+				<div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+					<h2 class="heading">Preguntas Frecuentes</h2>
+					<p class="text-muted">Todo lo que necesitás saber sobre el análisis normativo gratuito</p>
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-lg-10 mx-auto">
+					<div class="accordion" id="faqAccordion">
+
+						<!-- FAQ 1 -->
+						<div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="0">
+							<h2 class="accordion-header" id="faq1">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+									¿En cuánto tiempo recibo el análisis?
+								</button>
+							</h2>
+							<div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Enviaremos el análisis normativo básico a tu email en un máximo de 24 horas hábiles. Generalmente lo recibís en pocas horas después de completar el formulario.
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ 2 -->
+						<div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
+							<h2 class="accordion-header" id="faq2">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+									¿Qué información incluye el análisis gratuito?
+								</button>
+							</h2>
+							<div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									El análisis gratuito incluye: zona normativa aplicable según el Digesto de Santiago del Estero, FOS y FOT (superficies construibles), altura máxima permitida, cantidad estimada de pisos, y recomendaciones iniciales sobre el mejor uso del terreno.
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ 3 -->
+						<div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
+							<h2 class="accordion-header" id="faq3">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+									¿Es realmente gratis? ¿Hay algún compromiso?
+								</button>
+							</h2>
+							<div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Sí, el análisis normativo básico es completamente gratuito y sin ningún compromiso. Es una forma de que conozcas el potencial de tu terreno y la calidad de nuestro trabajo. Si después querés contratar servicios adicionales, será totalmente tu decisión.
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ 4 -->
+						<div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="300">
+							<h2 class="accordion-header" id="faq4">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+									¿Necesito tener escritura del terreno para solicitar el análisis?
+								</button>
+							</h2>
+							<div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									No es necesario. Solo necesitás conocer la dirección exacta y las medidas aproximadas del terreno (frente y profundidad). El análisis se basa en normativas públicas y datos catastrales disponibles.
+								</div>
+							</div>
+						</div>
+
+						<!-- FAQ 5 -->
+						<div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="400">
+							<h2 class="accordion-header" id="faq5">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+									¿Qué diferencia hay entre el análisis gratuito y el completo?
+								</button>
+							</h2>
+							<div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									El análisis gratuito te da la información normativa básica y el potencial constructivo. El análisis completo incluye 3 alternativas de proyecto con distribución de unidades, cálculos detallados de ROI, estimación de costos, cronograma preliminar y renders conceptuales. Todo en un informe profesional de 15 páginas.
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- CTA después del FAQ -->
+					<div class="row mt-5 pt-4" data-aos="fade-up">
+						<div class="col-lg-8 mx-auto text-center">
+							<p class="lead mb-4">¿Tenés más preguntas? Contáctanos directamente</p>
+							<a href="contact.html" class="btn btn-outline-primary btn-lg">Contáctanos</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<!-- Footer -->
+	<footer class="site-footer bg-light">
+		<div class="container">
+			<div class="row pt-5 pb-4">
+
+				<!-- About Column -->
+				<div class="col-lg-4 col-md-6 mb-4">
+					<h5 class="mb-3 font-weight-bold">Messad Estudio</h5>
+					<p class="text-muted">
+						Estudio de arquitectura en Santiago del Estero especializado en diseño residencial,
+						comercial y proyectos BIM. Transformamos tus ideas en espacios únicos.
+					</p>
+					<a href="solicitar-analisis.html" class="btn btn-sm btn-primary mt-2">
+						Análisis Normativo Gratis
+					</a>
+				</div>
+
+				<!-- Quick Links Column -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Enlaces</h6>
+					<ul class="list-unstyled footer-links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="projects.html">Proyectos</a></li>
+						<li><a href="services.html">Servicios</a></li>
+						<li><a href="about.html">Nosotros</a></li>
+						<li><a href="contact.html">Contacto</a></li>
+					</ul>
+				</div>
+
+				<!-- Services Column -->
+				<div class="col-lg-3 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Servicios</h6>
+					<ul class="list-unstyled footer-links">
+						<li><a href="services.html#arquitectura">Proyectos Arquitectónicos</a></li>
+						<li><a href="services.html#bim">Metodología BIM</a></li>
+						<li><a href="services.html#renders">Renders 3D</a></li>
+						<li><a href="solicitar-analisis.html">Análisis Normativo</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Column -->
+				<div class="col-lg-3 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Contacto</h6>
+					<ul class="list-unstyled text-muted contact-info">
+						<li class="mb-2">
+							<span class="icon-location-pin me-2"></span>
+							Santiago del Estero, Argentina
+						</li>
+						<li class="mb-2">
+							<span class="icon-envelope me-2"></span>
+							<a href="mailto:contacto@messadestudio.com">contacto@messadestudio.com</a>
+						</li>
+						<li class="mb-2">
+							<span class="icon-phone me-2"></span>
+							<a href="tel:+5493854123456">+54 9 385 412-3456</a>
+						</li>
+					</ul>
+
+					<!-- Social Media -->
+					<div class="social-links mt-3">
+						<ul class="social list-unstyled d-flex">
+							<li><a href="#" aria-label="Facebook"><span class="icon-facebook"></span></a></li>
+							<li><a href="#" aria-label="Instagram"><span class="icon-instagram"></span></a></li>
+							<li><a href="#" aria-label="LinkedIn"><span class="icon-linkedin"></span></a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Copyright Row -->
+			<div class="row border-top pt-4 pb-4">
+				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+					<p class="mb-0 text-muted small">
+						© 2024 Messad Estudio. Todos los derechos reservados.
+					</p>
+				</div>
+				<div class="col-md-6 text-center text-md-end">
+					<p class="mb-0 text-muted small">
+						Diseñado con <span class="text-danger">♥</span> en Santiago del Estero
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<!-- Scripts -->
 	<script src="js/bootstrap.bundle.min.js"></script>
@@ -319,6 +693,87 @@
 	<script src="js/simple-lead-capture.js"></script>
 	<!-- WhatsApp Widget -->
 	<script src="js/whatsapp-widget.js"></script>
+	<!-- Authentication -->
+	<script src="js/config.js" defer></script>
+	<script src="js/simple-auth.js" defer></script>
+
+	<script>
+	// Simple Authentication Modal Logic
+	document.addEventListener('DOMContentLoaded', function() {
+	    console.log('DOM loaded - setting up modal handlers');
+
+	    // Login Button (navbar)
+	    const loginBtn = document.getElementById('loginBtn');
+	    const loginModal = document.getElementById('loginModal');
+	    const closeLoginModal = document.getElementById('closeLoginModal');
+
+	    if (loginBtn) {
+	      loginBtn.addEventListener('click', function(e) {
+	        e.preventDefault();
+	        if (loginModal) {
+	          loginModal.style.display = 'flex';
+	        }
+	      });
+	    }
+
+	    // Close modal
+	    if (closeLoginModal) {
+	      closeLoginModal.addEventListener('click', function() {
+	        if (loginModal) {
+	          loginModal.style.display = 'none';
+	        }
+	      });
+	    }
+
+	    // Close on outside click
+	    if (loginModal) {
+	      loginModal.addEventListener('click', function(e) {
+	        if (e.target === loginModal) {
+	          loginModal.style.display = 'none';
+	        }
+	      });
+	    }
+
+	    // Tab switching
+	    const loginTabBtn = document.getElementById('loginTabBtn');
+	    const registerTabBtn = document.getElementById('registerTabBtn');
+	    const loginForm = document.getElementById('loginForm');
+	    const registerForm = document.getElementById('registerForm');
+
+	    if (loginTabBtn) {
+	      loginTabBtn.addEventListener('click', function() {
+	        if (loginForm) loginForm.style.display = 'block';
+	        if (registerForm) registerForm.style.display = 'none';
+	        loginTabBtn.classList.add('btn-primary');
+	        registerTabBtn.classList.remove('btn-primary');
+	        loginTabBtn.classList.remove('btn-outline-primary');
+	        registerTabBtn.classList.add('btn-outline-secondary');
+	      });
+	    }
+
+	    if (registerTabBtn) {
+	      registerTabBtn.addEventListener('click', function() {
+	        if (registerForm) registerForm.style.display = 'block';
+	        if (loginForm) loginForm.style.display = 'none';
+	        registerTabBtn.classList.add('btn-primary');
+	        loginTabBtn.classList.remove('btn-primary');
+	        registerTabBtn.classList.remove('btn-outline-secondary');
+	        loginTabBtn.classList.add('btn-outline-primary');
+	      });
+	    }
+
+	    // Google Sign In Button
+	    const googleSignInBtn = document.getElementById('googleSignInBtn');
+	    if (googleSignInBtn) {
+	      googleSignInBtn.addEventListener('click', function(e) {
+	        e.preventDefault();
+	        if (window.simpleAuthManager) {
+	          window.simpleAuthManager.triggerGoogleSignIn();
+	        }
+	      });
+	    }
+	  });
+	</script>
 
 	<script>
 	// Calcular superficie automáticamente
