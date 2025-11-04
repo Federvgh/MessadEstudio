@@ -201,7 +201,7 @@ html {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background-color: var(--bs-primary);
+    background-color: #fc5404; /* Color naranja - antes var(--bs-primary) */
     transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
