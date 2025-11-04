@@ -26,3 +26,77 @@
 .site-mobile-menu .site-nav-wrap .arrow-collapse:before {
     color: rgba(255, 255, 255, 0.8);
 }
+
+/* Override desktop mega-menu styles for mobile */
+.site-mobile-menu .navbar__servicios-dropdown,
+.site-mobile-menu .navbar__proyectos-dropdown {
+    min-width: auto !important;
+    width: 100% !important;
+    display: none; /* Start hidden, JS will show them */
+    padding: 0 !important;
+    gap: 0 !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.site-mobile-menu .navbar__servicios-root,
+.site-mobile-menu .navbar__proyectos-root {
+    width: 100% !important;
+    flex: none !important;
+}
+
+.site-mobile-menu .navbar__servicios-root > a,
+.site-mobile-menu .navbar__proyectos-root > a {
+    font-size: 13px !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-weight: 600 !important;
+    padding: 10px 40px !important;
+    pointer-events: auto !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.site-mobile-menu .navbar__servicios-submenu,
+.site-mobile-menu .navbar__proyectos-submenu {
+    display: none; /* Start hidden, JS will show them */
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.site-mobile-menu .navbar__servicios-submenu li,
+.site-mobile-menu .navbar__proyectos-submenu li {
+    width: 100% !important;
+    min-width: auto !important;
+}
+
+.site-mobile-menu .navbar__servicios-submenu li a,
+.site-mobile-menu .navbar__proyectos-submenu li a {
+    padding: 8px 60px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    transform: none !important;
+}
+
+.site-mobile-menu .navbar__servicios-submenu li a:hover,
+.site-mobile-menu .navbar__proyectos-submenu li a:hover {
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding-left: 60px !important;
+}
+
+.site-mobile-menu .navbar__proyectos-subroot a:before {
+    content: '' !important;
+    display: none !important;
+}

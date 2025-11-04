@@ -7,10 +7,11 @@
 		duration: 800,
 		easing: 'ease-in-out',
 		once: false, // Allow animations to trigger on every page load
-		offset: 0, // Trigger animations immediately for elements already in viewport
-		anchorPlacement: 'top-bottom', // Trigger when top of element hits bottom of viewport
-		startEvent: 'DOMContentLoaded', // Start animations on DOM ready
-		disable: false // Enable on all devices
+		offset: 0,
+		mirror: false,
+		anchorPlacement: 'top-bottom',
+		startEvent: 'DOMContentLoaded',
+		disable: false
 	});
 
 
@@ -19,11 +20,12 @@
 		var loader = document.querySelector('.loader');
 		var overlay = document.getElementById('overlayer');
 
-		function fadeOut(el) {
+		function fadeOut(el, callback) {
 			el.style.opacity = 1;
 			(function fade() {
 				if ((el.style.opacity -= .1) < 0) {
 					el.style.display = "none";
+					if (callback) callback();
 				} else {
 					requestAnimationFrame(fade);
 				}
@@ -32,11 +34,17 @@
 
 		setTimeout(function() {
 			fadeOut(loader);
-			fadeOut(overlay);
-			// Reinitialize AOS after preloader to ensure fresh animations
-			setTimeout(function() {
-				AOS.refreshHard();
-			}, 100);
+			fadeOut(overlay, function() {
+				// Force animations after preloader is gone
+				setTimeout(function() {
+					// Remove aos-animate class from all elements
+					document.querySelectorAll('[data-aos]').forEach(function(el) {
+						el.classList.remove('aos-animate');
+					});
+					// Hard refresh to trigger all animations
+					AOS.refreshHard();
+				}, 50);
+			});
 		}, 200);
 	};
 	preloader();

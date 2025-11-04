@@ -70,9 +70,11 @@
                     }
                 });
 
-                // Prevenir que el click en el enlace abra el submenú
-                hasChild.querySelector('a').addEventListener('click', function(e) {
-                    if (hasChild.querySelector('.dropdown')) {
+                // Prevenir que el click en el enlace abra el submenú solo si es un anchor (#)
+                var link = hasChild.querySelector('a');
+                link.addEventListener('click', function(e) {
+                    var href = link.getAttribute('href');
+                    if (hasChild.querySelector('.dropdown') && (href === '#' || href === '' || !href)) {
                         e.preventDefault();
                     }
                 });
