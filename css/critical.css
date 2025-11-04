@@ -1,0 +1,139 @@
+/*! Critical CSS - Above-the-fold styles for fast initial render */
+
+/* CSS Variables */
+:root {
+  --bs-primary: #fc5404;
+  --bs-dark: #212529;
+  --bs-white: #fff;
+  --bs-font-sans-serif: "Roboto", -apple-system, sans-serif;
+}
+
+/* Basic Resets */
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Typography */
+h1,h2,h3,h4,h5,h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+
+a {
+  color: var(--bs-primary);
+  text-decoration: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container { max-width: 540px; }
+}
+
+@media (min-width: 768px) {
+  .container { max-width: 720px; }
+}
+
+@media (min-width: 992px) {
+  .container { max-width: 960px; }
+}
+
+@media (min-width: 1200px) {
+  .container { max-width: 1140px; }
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: 1320px; }
+}
+
+/* Navbar Basics */
+.site-nav {
+  padding: 0;
+  background: #fff;
+  position: relative;
+  z-index: 1000;
+}
+
+.site-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.site-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu li {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.site-menu a {
+  color: #212529;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+/* Hero Section */
+.hero-2 {
+  padding: 4rem 0;
+  position: relative;
+}
+
+.hero-2 h1 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.overlay {
+  position: relative;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Utilities */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+
+@media (min-width: 768px) {
+  .d-md-block { display: block !important; }
+  .d-md-none { display: none !important; }
+}
+
+/* Loading state - prevent FOUC */
+.site-nav,
+.hero-2 {
+  visibility: visible;
+  opacity: 1;
+}

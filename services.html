@@ -18,10 +18,8 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-	<!-- Critical CSS - Async loaded to prevent render blocking -->
-	<link rel="preload" href="css/style.css" as="style">
-	<link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
-	<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+	<!-- Critical CSS loaded synchronously -->
+	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Deferred CSS for performance -->
 	<link rel="stylesheet" href="fonts/icomoon/style.css" media="print" onload="this.media='all'">
@@ -201,6 +199,7 @@
 						</ul>
 					</li>
 					<li><a href="about.html">About</a></li>
+					<li><a href="faq.html">FAQ</a></li>
 					<li><a href="contact.html">Contacto</a></li>
 					<li><a href="solicitar-analisis.html">Calculadora</a></li>
 					<li><a href="#" id="loginBtn">Login</a></li>
@@ -568,19 +567,19 @@ Trabajamos de manera interdisciplinaria con especialistas en la materia, para ge
 	</div>
 
 	<script src="js/bootstrap.bundle.min.js" defer></script>
-	<script src="js/tiny-slider.js" defer></script>
-	<script src="js/aos.js" defer></script>
+	<script src="js/tiny-slider.min.js" defer></script>
+	<script src="js/aos.min.js" defer></script>
 	<script src="js/glightbox.min.js" defer></script>
-	<script src="js/navbar.js" defer></script>
-	<script src="js/counter.js" defer></script>
-	<script src="js/custom.js" defer></script>
+	<script src="js/navbar.min.js" defer></script>
+	<script src="js/counter.min.js" defer></script>
+	<script src="js/custom.min.js" defer></script>
 
 	<!-- WhatsApp Widget -->
-	<script src="js/whatsapp-widget.js" defer></script>
+	<script src="js/whatsapp-widget.min.js" defer></script>
 
 	<!-- Simple Authentication Script -->
-	<script src="js/config.js" defer></script>
-	<script src="js/simple-auth.js" defer></script>
+	<script src="js/config.min.js" defer></script>
+	<script src="js/simple-auth.min.js" defer></script>
 	
 	<script>
 	  // Simple Authentication Modal Logic

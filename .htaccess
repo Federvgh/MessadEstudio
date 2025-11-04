@@ -1,0 +1,178 @@
+# ======================================================================
+# Apache Server Caching & Performance Configuration
+# Messad Estudio Website
+# ======================================================================
+
+# Enable mod_rewrite (if not already enabled globally)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+</IfModule>
+
+# ======================================================================
+# BROWSER CACHING
+# ======================================================================
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML - No caching (always fresh)
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS & JavaScript - Cache for 1 year (with versioning)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Images - Cache for 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Fonts - Cache for 1 year
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+
+  # Data files
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+</IfModule>
+
+# ======================================================================
+# CACHE-CONTROL HEADERS (Alternative/Fallback)
+# ======================================================================
+
+<IfModule mod_headers.c>
+  # Default: 1 month
+  Header set Cache-Control "public, max-age=2592000"
+
+  # HTML - No caching
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # CSS & JavaScript - 1 year
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images - 1 year
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Fonts - 1 year
+  <FilesMatch "\.(ttf|otf|woff|woff2|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ======================================================================
+# COMPRESSION (GZIP)
+# ======================================================================
+
+<IfModule mod_deflate.c>
+  # Enable compression for text-based files
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+
+  # Exclude already-compressed files
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp)$ no-gzip
+</IfModule>
+
+# ======================================================================
+# SECURITY HEADERS
+# ======================================================================
+
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevent MIME type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Enable XSS protection
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Content Security Policy (adjust as needed)
+  Header always set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://netdna.bootstrapcdn.com https://alcdn.msauth.net https://accounts.google.com https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;"
+</IfModule>
+
+# ======================================================================
+# FILE ACCESS
+# ======================================================================
+
+# Deny access to sensitive files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+  # Apache 2.4
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+
+  # Apache 2.2
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ======================================================================
+# CHARACTER ENCODING
+# ======================================================================
+
+# Use UTF-8 encoding for everything
+AddDefaultCharset utf-8
+<IfModule mod_mime.c>
+  AddCharset utf-8 .html .css .js .json .xml .txt
+</IfModule>
+
+# ======================================================================
+# MIME TYPES
+# ======================================================================
+
+<IfModule mod_mime.c>
+  # WebP images
+  AddType image/webp .webp
+
+  # Web fonts
+  AddType font/ttf .ttf
+  AddType font/otf .otf
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+</IfModule>
+
+# ======================================================================
+# REWRITE RULES (Optional - for clean URLs)
+# ======================================================================
+
+# Uncomment if you want to force HTTPS
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+
+# ======================================================================
+# ERROR PAGES (Optional)
+# ======================================================================
+
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
