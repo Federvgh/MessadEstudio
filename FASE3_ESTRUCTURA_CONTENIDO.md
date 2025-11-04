@@ -1,9 +1,30 @@
 # Fase 3: Estructura de Contenido - Implementación Completa
 
+## ⚠️ IMPORTANTE: Contenido de Ejemplo
+
+**ATENCIÓN:** Los siguientes componentes contienen contenido **FICTICIO** creado solo para demostración:
+
+### ❌ Testimonios de Clientes
+- Los 5 testimonios en `about.html` son **completamente ficticios**
+- Los nombres, proyectos y comentarios son de ejemplo
+- **ACCIÓN REQUERIDA:** Reemplazar con testimonios reales de clientes o eliminar la sección
+
+### ❌ Preguntas Frecuentes (FAQ)
+- Las 10 preguntas en `faq.html` son **ficticias** basadas en suposiciones
+- La información sobre normativas, FOS/FOT y procesos debe verificarse
+- **ACCIÓN REQUERIDA:** Revisar y actualizar con información real de Santiago del Estero
+
+### ✅ Contenido Validado
+- Estructura de valores corporativos (requiere revisión)
+- Metodología BIM (basado en CLAUDE.md - verificar)
+- Historia del estudio (15+ años - confirmar fecha)
+
+---
+
 ## 📋 Resumen Ejecutivo
 
 **Fecha de Implementación:** Enero 2025
-**Estado:** ✅ Completado
+**Estado:** ✅ Completado (Contenido ficticio - requiere actualización)
 **Archivos Modificados:** 1
 **Archivos Creados:** 5
 **Componentes Implementados:** 4

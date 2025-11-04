@@ -29,7 +29,11 @@
             return;
         }
 
-        testimonials = Array.from(carousel.querySelectorAll('.testimonial-item'));
+        // Soporte para ambas estructuras de HTML
+        testimonials = Array.from(carousel.querySelectorAll('.testimonial-card'));
+        if (testimonials.length === 0) {
+            testimonials = Array.from(carousel.querySelectorAll('.testimonial-item'));
+        }
 
         if (testimonials.length === 0) {
             console.warn('No se encontraron testimonios');
@@ -46,11 +50,18 @@
         showTestimonial(0);
 
         // Iniciar autoplay si está habilitado
-        if (CONFIG.autoplay) {
+        const autoplayAttr = carousel.getAttribute('data-autoplay');
+        const autoplayEnabled = autoplayAttr === 'true' || CONFIG.autoplay;
+
+        if (autoplayEnabled) {
+            const interval = carousel.getAttribute('data-interval');
+            if (interval) {
+                CONFIG.autoplayInterval = parseInt(interval);
+            }
             startAutoplay();
         }
 
-        console.log('✅ Carrusel de testimonios inicializado');
+        console.log('✅ Carrusel de testimonios inicializado con', testimonials.length, 'testimonios');
     }
 
     /**
@@ -68,8 +79,9 @@
      * Configurar controles
      */
     function setupControls() {
-        const prevBtn = document.querySelector('.testimonial-prev');
-        const nextBtn = document.querySelector('.testimonial-next');
+        // Soporte para ambas estructuras de HTML
+        const prevBtn = document.querySelector('.carousel-control.prev') || document.querySelector('.testimonial-prev');
+        const nextBtn = document.querySelector('.carousel-control.next') || document.querySelector('.testimonial-next');
 
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
@@ -131,28 +143,42 @@
      * Configurar indicadores
      */
     function setupIndicators() {
-        const indicatorsContainer = document.querySelector('.testimonial-indicators');
+        // Soporte para ambas estructuras de HTML
+        const indicatorsContainer = document.querySelector('.carousel-indicators') || document.querySelector('.testimonial-indicators');
 
         if (!indicatorsContainer) return;
 
         // Limpiar indicadores existentes
         indicatorsContainer.innerHTML = '';
 
-        // Crear indicadores
-        testimonials.forEach((_, index) => {
-            const indicator = document.createElement('button');
-            indicator.className = 'testimonial-indicator';
-            indicator.setAttribute('aria-label', `Ver testimonio ${index + 1}`);
-            indicator.setAttribute('data-index', index);
+        // Solo crear indicadores si el contenedor está vacío
+        if (indicatorsContainer.children.length === 0) {
+            // Crear indicadores
+            testimonials.forEach((_, index) => {
+                const indicator = document.createElement('button');
+                indicator.className = 'indicator'; // Clase genérica que funciona con ambas estructuras
+                indicator.setAttribute('aria-label', `Ver testimonio ${index + 1}`);
+                indicator.setAttribute('data-index', index);
 
-            indicator.addEventListener('click', () => {
-                stopAutoplay();
-                showTestimonial(index);
-                if (CONFIG.autoplay) startAutoplay();
+                indicator.addEventListener('click', () => {
+                    stopAutoplay();
+                    showTestimonial(index);
+                    if (CONFIG.autoplay) startAutoplay();
+                });
+
+                indicatorsContainer.appendChild(indicator);
             });
-
-            indicatorsContainer.appendChild(indicator);
-        });
+        } else {
+            // Si ya existen indicadores, solo agregar event listeners
+            const existingIndicators = indicatorsContainer.querySelectorAll('.indicator');
+            existingIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopAutoplay();
+                    showTestimonial(index);
+                    if (CONFIG.autoplay) startAutoplay();
+                });
+            });
+        }
 
         // Activar el primer indicador
         updateIndicators(0);
@@ -162,7 +188,8 @@
      * Actualizar indicadores
      */
     function updateIndicators(index) {
-        const indicators = document.querySelectorAll('.testimonial-indicator');
+        // Soporte para ambas clases de indicadores
+        const indicators = document.querySelectorAll('.indicator, .testimonial-indicator');
 
         indicators.forEach((indicator, i) => {
             if (i === index) {
