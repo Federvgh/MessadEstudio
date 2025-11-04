@@ -28,7 +28,7 @@
     }
 
     .contents {
-      background: rgba(44, 54, 57, 0.95);
+      background: linear-gradient(to top, rgba(44, 54, 57, 0.92) 0%, rgba(44, 54, 57, 0.75) 70%, transparent 100%);
 
       h3 {
         color: var(--accent-warm);
