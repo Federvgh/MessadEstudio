@@ -30,6 +30,10 @@
 	<link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/mobile-menu.css" media="print" onload="this.media='all'">
+	<!-- Phase 2 UX Enhancements -->
+	<link rel="stylesheet" href="css/project-filters.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/loading-states.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/whatsapp-widget.css" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="fonts/icomoon/style.css">
 		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -37,6 +41,9 @@
 		<link rel="stylesheet" href="css/aos.css">
 		<link rel="stylesheet" href="css/glightbox.min.css">
 		<link rel="stylesheet" href="css/mobile-menu.css">
+		<link rel="stylesheet" href="css/project-filters.css">
+		<link rel="stylesheet" href="css/loading-states.css">
+		<link rel="stylesheet" href="css/whatsapp-widget.css">
 	</noscript>
 
 	<title>Messad Estudio</title>
@@ -238,10 +245,35 @@
 							<p>Cada proyecto está diseñado con metodología BIM, maximizando el aprovechamiento del terreno según las normativas municipales de Santiago del Estero.</p>
 						</div>
 					</div>
-		
+
+					<!-- Filtros de Proyectos -->
+					<div class="row mb-4">
+						<div class="col-12">
+							<div class="project-filters" data-aos="fade-up">
+								<div class="d-flex flex-wrap gap-2 align-items-center justify-content-center mb-3">
+									<button class="filter-btn active" data-filter="all" aria-pressed="true">
+										Todos <span class="count badge bg-secondary">6</span>
+									</button>
+									<button class="filter-btn" data-filter="residencial" aria-pressed="false">
+										Residencial <span class="count badge bg-secondary">3</span>
+									</button>
+									<button class="filter-btn" data-filter="comercial" aria-pressed="false">
+										Comercial <span class="count badge bg-secondary">2</span>
+									</button>
+									<button class="filter-btn" data-filter="vivienda" aria-pressed="false">
+										Vivienda <span class="count badge bg-secondary">2</span>
+									</button>
+								</div>
+								<div class="d-flex justify-content-center">
+									<p class="results-count text-muted mb-0">6 proyectos</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="row g-4">
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="residencial" data-size="large">
 								<a href="project-single.html">
 									<picture><source srcset="images/0213.webp" type="image/webp"><img loading="lazy" src="images/0213.jpg" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -252,7 +284,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="residencial" data-size="large">
 								<a href="project-single.html">
 									<picture><source srcset="images/01_Photo - 7_Photo - 4.webp" type="image/webp"><img loading="lazy" src="images/01_Photo - 7_Photo - 4.jpg" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -263,7 +295,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="vivienda" data-size="medium">
 								<a href="project-single.html">
 									<picture><source srcset="images/exterior.webp" type="image/webp"><img loading="lazy" src="images/exterior.jpg" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -275,7 +307,7 @@
 						</div>
 
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="400">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="comercial" data-size="medium">
 								<a href="project-single.html">
 									<picture><source srcset="images/11.webp" type="image/webp"><img loading="lazy" src="images/11.jpg" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -286,7 +318,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="500">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="residencial,comercial" data-size="medium">
 								<a href="project-single.html">
 									<picture><source srcset="images/GALERIA.webp" type="image/webp"><img loading="lazy" src="images/GALERIA.jpg" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -297,7 +329,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="600">
-							<div class="single-portfolio">
+							<div class="single-portfolio" data-category="vivienda" data-size="medium">
 								<a href="project-single.html">
 									<picture><source srcset="images/Enscape.webp" type="image/webp"><img loading="lazy" src="images/Enscape.png" alt="Image" class="img-fluid"></picture>
 									<div class="contents">
@@ -468,9 +500,13 @@
 	<script src="js/navbar.js" defer></script>
 	<script src="js/counter.js" defer></script>
 	<script src="js/custom.js" defer></script>
+	<!-- Project Filters -->
+	<script src="js/project-filters.js" defer></script>
+	<!-- WhatsApp Widget -->
+	<script src="js/whatsapp-widget.js" defer></script>
 	<!-- Simple Authentication Script -->
 	<script src="js/config.js" defer></script>
-<script src="js/simple-auth.js" defer></script>
+	<script src="js/simple-auth.js" defer></script>
 	
 	<script>
 	  // Simple Authentication Modal Logic
