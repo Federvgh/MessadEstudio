@@ -4,8 +4,8 @@
 
 
 	AOS.init({
-		duration: 400,
-		easing: 'ease',
+		duration: 800,
+		easing: 'ease-in-out',
 		once: true,
 		offset: 0, // Trigger animations immediately for elements already in viewport
 		anchorPlacement: 'top-bottom', // Trigger when top of element hits bottom of viewport
