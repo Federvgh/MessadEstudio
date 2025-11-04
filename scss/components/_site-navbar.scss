@@ -96,6 +96,7 @@
 					z-index: 999;
 					position: absolute;
 					text-align: left;
+					pointer-events: none;
 
 					// Modern 2025 Dark Glassmorphism
 					background: rgba(20, 20, 22, 0.92);
@@ -226,6 +227,7 @@
 						visibility: visible;
 						opacity: 1;
 						transform: translateY(0);
+						pointer-events: auto;
 					}
 				}
 			}

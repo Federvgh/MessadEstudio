@@ -9928,6 +9928,7 @@ a {
   z-index: 999;
   position: absolute;
   text-align: left;
+  pointer-events: none;
   background: rgba(20, 20, 22, 0.92);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -10030,6 +10031,7 @@ a {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .site-mobile-menu-close {

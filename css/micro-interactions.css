@@ -31,17 +31,17 @@ html {
 }
 
 .single-portfolio:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
     filter: brightness(1.05);
 }
 
 .single-portfolio .contents {
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.4s ease;
+    position: relative;
+    transition: opacity 0.3s ease;
 }
 
 .single-portfolio:hover .contents {
-    transform: translateY(-4px);
+    opacity: 0.95;
 }
 
 .single-portfolio .contents h3 {
