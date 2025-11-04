@@ -56,10 +56,10 @@ class SimpleAuthManager {
                 ux_mode: 'popup', // Use popup mode instead of redirect
                 context: 'signin'
             });
-            
-            // Render the Google button immediately
-            this.renderGoogleButton();
-            
+
+            // Render the Google button immediately (DISABLED - testing button removed)
+            // this.renderGoogleButton();
+
             console.log('Google Sign-In initialized successfully');
         } catch (error) {
             console.error('Error initializing Google Sign-In:', error);
