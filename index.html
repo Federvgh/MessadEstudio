@@ -37,6 +37,7 @@
 	<link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/mobile-menu.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/micro-interactions.css" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="fonts/icomoon/style.css">
 		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -44,11 +45,118 @@
 		<link rel="stylesheet" href="css/aos.css">
 		<link rel="stylesheet" href="css/glightbox.min.css">
 		<link rel="stylesheet" href="css/mobile-menu.css">
+		<link rel="stylesheet" href="css/micro-interactions.css">
 	</noscript>
 
-	<title>Messad Estudio</title>
+	<title>Messad Estudio - Arquitectura y Diseño en Santiago del Estero</title>
+	<meta name="description" content="Estudio de arquitectura especializado en edificios residenciales, comerciales y viviendas en Santiago del Estero. 15 años de experiencia, metodología BIM. Análisis normativo gratis.">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://messadestudio.com/">
+	<meta property="og:title" content="Messad Estudio - Arquitectura en Santiago del Estero">
+	<meta property="og:description" content="¿Querés construir en tu terreno? Te decimos qué podés hacer según las normativas de Santiago del Estero. Gratis, rápido y sin compromiso.">
+	<meta property="og:image" content="https://messadestudio.com/images/02_Photo-12.webp">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://messadestudio.com/">
+	<meta property="twitter:title" content="Messad Estudio - Arquitectura en Santiago del Estero">
+	<meta property="twitter:description" content="¿Querés construir en tu terreno? Te decimos qué podés hacer según las normativas de Santiago del Estero.">
+	<meta property="twitter:image" content="https://messadestudio.com/images/02_Photo-12.webp">
+
+	<!-- Schema.org Structured Data for Local Business -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "ArchitecturalDesign",
+		"name": "Messad Estudio",
+		"description": "Estudio de arquitectura especializado en diseño residencial, comercial y proyectos BIM en Santiago del Estero",
+		"url": "https://messadestudio.com",
+		"logo": "https://messadestudio.com/images/logo.png",
+		"image": "https://messadestudio.com/images/02_Photo-12.webp",
+		"telephone": "+54-9-385-412-3456",
+		"email": "contacto@messadestudio.com",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Santiago del Estero",
+			"addressRegion": "Santiago del Estero",
+			"addressCountry": "AR"
+		},
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": -27.7833,
+			"longitude": -64.2667
+		},
+		"areaServed": {
+			"@type": "City",
+			"name": "Santiago del Estero"
+		},
+		"openingHoursSpecification": {
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": [
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday"
+			],
+			"opens": "09:00",
+			"closes": "18:00"
+		},
+		"priceRange": "$$",
+		"sameAs": [
+			"https://www.facebook.com/messadestudio",
+			"https://www.instagram.com/messadestudio",
+			"https://www.linkedin.com/company/messadestudio"
+		],
+		"hasOfferCatalog": {
+			"@type": "OfferCatalog",
+			"name": "Servicios de Arquitectura",
+			"itemListElement": [
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Proyectos Arquitectónicos",
+						"description": "Diseño integral de edificios residenciales y comerciales"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Metodología BIM",
+						"description": "Modelado de información de construcción para proyectos eficientes"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Renders 3D",
+						"description": "Visualizaciones fotorrealistas de proyectos arquitectónicos"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Análisis Normativo",
+						"description": "Análisis gratuito de normativas urbanas para tu terreno",
+						"price": "0",
+						"priceCurrency": "ARS"
+					}
+				}
+			]
+		}
+	}
+	</script>
 </head>
 <body>
+
+	<!-- Skip to content link for accessibility -->
+	<a href="#main-content" class="skip-to-content">Saltar al contenido principal</a>
 
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -222,7 +330,7 @@
 		</div>
 	</nav>
 
-	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
+	<div id="main-content" class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-8 mx-auto text-center">
@@ -576,67 +684,90 @@
 
 	
 
-	<div class="site-footer bg-light">
+	<footer class="site-footer bg-light">
 		<div class="container">
+			<div class="row pt-5 pb-4">
 
-			<div class="row text-center d-flex justify-content-center pt-5 mb-3">
+				<!-- About Column -->
+				<div class="col-lg-4 col-md-6 mb-4">
+					<h5 class="mb-3 font-weight-bold">Messad Estudio</h5>
+					<p class="text-muted">
+						Estudio de arquitectura en Santiago del Estero especializado en diseño residencial,
+						comercial y proyectos BIM. Transformamos tus ideas en espacios únicos.
+					</p>
+					<a href="solicitar-analisis.html" class="btn btn-sm btn-primary mt-2">
+						Análisis Normativo Gratis
+					</a>
+				</div>
 
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="index.html">Home</a>
-				  </h6>
+				<!-- Quick Links Column -->
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Enlaces</h6>
+					<ul class="list-unstyled footer-links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="projects.html">Proyectos</a></li>
+						<li><a href="services.html">Servicios</a></li>
+						<li><a href="about.html">Nosotros</a></li>
+						<li><a href="contact.html">Contacto</a></li>
+					</ul>
 				</div>
-				<!-- Grid column -->
-		  
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="projects.html">Proyectos</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-		  
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="services.html">Servicios</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-		  
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="about.html">About</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
-		  
-				<!-- Grid column -->
-				<div class="col-md-2 mb-3">
-				  <h6 class="text-uppercase font-weight-bold">
-					<a href="contact.html">Contacto</a>
-				  </h6>
-				</div>
-				<!-- Grid column -->
 
-				
-		  
-			  </div>
-					<div class="widget row text-center d-flex justify-content-center pt-5 mb-3">
-						<ul class="social list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
+				<!-- Services Column -->
+				<div class="col-lg-3 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Servicios</h6>
+					<ul class="list-unstyled footer-links">
+						<li><a href="services.html#arquitectura">Proyectos Arquitectónicos</a></li>
+						<li><a href="services.html#bim">Metodología BIM</a></li>
+						<li><a href="services.html#renders">Renders 3D</a></li>
+						<li><a href="solicitar-analisis.html">Análisis Normativo</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Column -->
+				<div class="col-lg-3 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Contacto</h6>
+					<ul class="list-unstyled text-muted contact-info">
+						<li class="mb-2">
+							<span class="icon-location-pin me-2"></span>
+							Santiago del Estero, Argentina
+						</li>
+						<li class="mb-2">
+							<span class="icon-envelope me-2"></span>
+							<a href="mailto:contacto@messadestudio.com">contacto@messadestudio.com</a>
+						</li>
+						<li class="mb-2">
+							<span class="icon-phone me-2"></span>
+							<a href="tel:+5493854123456">+54 9 385 412-3456</a>
+						</li>
+					</ul>
+
+					<!-- Social Media -->
+					<div class="social-links mt-3">
+						<ul class="social list-unstyled d-flex">
+							<li><a href="#" aria-label="Facebook"><span class="icon-facebook"></span></a></li>
+							<li><a href="#" aria-label="Instagram"><span class="icon-instagram"></span></a></li>
+							<li><a href="#" aria-label="LinkedIn"><span class="icon-linkedin"></span></a></li>
 						</ul>
 					</div>
 				</div>
+
 			</div>
 
+			<!-- Copyright Row -->
+			<div class="row border-top pt-4 pb-4">
+				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+					<p class="mb-0 text-muted small">
+						© 2024 Messad Estudio. Todos los derechos reservados.
+					</p>
+				</div>
+				<div class="col-md-6 text-center text-md-end">
+					<p class="mb-0 text-muted small">
+						Diseñado con <span class="text-danger">♥</span> en Santiago del Estero
+					</p>
+				</div>
+			</div>
 		</div>
-	</div>
+	</footer>
 
 
 	
@@ -656,6 +787,7 @@
 	<script src="js/navbar.js" defer></script>
 	<script src="js/counter.js" defer></script>
 	<script src="js/custom.js" defer></script>
+	<script src="js/animated-counter.js" defer></script>
 
 	<!-- Authentication Scripts -->
 	<script src="js/config.js" defer></script>

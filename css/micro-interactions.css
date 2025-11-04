@@ -1,0 +1,463 @@
+/* ============================================
+   MICRO-INTERACTIONS & POLISH
+   Subtle animations and transitions for premium feel
+   ============================================ */
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ============================================
+   PROJECT CARDS HOVER EFFECTS
+   ============================================ */
+
+.single-portfolio {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.single-portfolio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.single-portfolio img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.4s ease;
+}
+
+.single-portfolio:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+}
+
+.single-portfolio .contents {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s ease;
+}
+
+.single-portfolio:hover .contents {
+    transform: translateY(-4px);
+}
+
+.single-portfolio .contents h3 {
+    transition: color 0.3s ease;
+}
+
+.single-portfolio:hover .contents h3 {
+    color: var(--bs-primary);
+}
+
+/* ============================================
+   ACCORDION SMOOTH TRANSITIONS
+   ============================================ */
+
+.accordion-button {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+}
+
+.accordion-collapse {
+    transition: height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.accordion-body {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   BUTTON INTERACTIONS
+   ============================================ */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button loading state */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+    position: relative;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* ============================================
+   BLOG CARDS HOVER
+   ============================================ */
+
+.post-entry-1 {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-entry-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.post-entry-1 img {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.post-entry-1:hover img {
+    transform: scale(1.05);
+}
+
+.post-entry-1-contents h2 a {
+    transition: color 0.3s ease;
+}
+
+.post-entry-1:hover .post-entry-1-contents h2 a {
+    color: var(--bs-primary);
+}
+
+/* ============================================
+   STATS COUNTER ANIMATION
+   ============================================ */
+
+.stats-bar h3 {
+    font-variant-numeric: tabular-nums;
+}
+
+.stats-bar .counting {
+    display: inline-block;
+}
+
+/* ============================================
+   MORE LINK HOVER EFFECTS
+   ============================================ */
+
+.more-2 {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.more-2 .icon-arrow_forward {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.more-2:hover .icon-arrow_forward {
+    transform: translateX(5px);
+}
+
+.more-2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.more-2:hover::after {
+    width: calc(100% - 30px);
+}
+
+/* ============================================
+   NAVBAR LINK UNDERLINE EFFECT
+   ============================================ */
+
+.site-menu > li > a {
+    position: relative;
+}
+
+.site-menu > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--bs-primary);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.site-menu > li > a:hover::after,
+.site-menu > li.active > a::after {
+    width: 60%;
+}
+
+/* ============================================
+   HERO CTA BUTTONS PULSE EFFECT
+   ============================================ */
+
+.cta-buttons .btn:first-child {
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(var(--accent-warm-rgb, 255, 87, 34), 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(var(--accent-warm-rgb, 255, 87, 34), 0);
+    }
+}
+
+/* ============================================
+   FOCUS STATES FOR ACCESSIBILITY
+   ============================================ */
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid rgba(var(--bs-primary-rgb), 0.5);
+    outline-offset: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Skip to content link for keyboard navigation */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 9999;
+    transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* ============================================
+   SMOOTH SCROLL PADDING FOR ANCHOR LINKS
+   ============================================ */
+
+:target {
+    scroll-margin-top: 100px;
+}
+
+/* ============================================
+   IMAGE LAZY LOAD FADE IN
+   ============================================ */
+
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 991px) {
+    .single-portfolio:hover {
+        transform: translateY(-4px);
+    }
+
+    .post-entry-1:hover {
+        transform: translateY(-3px);
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* ============================================
+   FOOTER IMPROVEMENTS
+   ============================================ */
+
+.site-footer {
+    font-size: 0.95rem;
+}
+
+.site-footer h5,
+.site-footer h6 {
+    color: var(--bs-dark);
+    margin-bottom: 1rem;
+}
+
+.site-footer .footer-links {
+    padding-left: 0;
+}
+
+.site-footer .footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.site-footer .footer-links a,
+.site-footer .contact-info a {
+    color: var(--bs-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.site-footer .footer-links a:hover,
+.site-footer .contact-info a:hover {
+    color: var(--bs-primary);
+    transform: translateX(3px);
+}
+
+.site-footer .contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.site-footer .contact-info .icon-location-pin,
+.site-footer .contact-info .icon-envelope,
+.site-footer .contact-info .icon-phone {
+    margin-top: 0.2rem;
+    color: var(--bs-primary);
+}
+
+.site-footer .social-links .social {
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer .social li {
+    list-style: none;
+}
+
+.site-footer .social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.site-footer .social a:hover {
+    background-color: var(--bs-primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+.site-footer .border-top {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.site-footer .text-danger {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.1);
+    }
+    20%, 40% {
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,12 @@
+# robots.txt for Messad Estudio
+# https://messadestudio.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin and backend paths
+Disallow: /backend/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://messadestudio.com/sitemap.xml
