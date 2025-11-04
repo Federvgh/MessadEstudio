@@ -4,9 +4,13 @@
 
 
 	AOS.init({
-		duration: 800,
-		easing: 'slide',
-		once: true
+		duration: 400,
+		easing: 'ease',
+		once: true,
+		offset: 0, // Trigger animations immediately for elements already in viewport
+		anchorPlacement: 'top-bottom', // Trigger when top of element hits bottom of viewport
+		startEvent: 'load', // Start animations on page load
+		disable: false // Enable on all devices
 	});
 
 
