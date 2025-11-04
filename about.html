@@ -37,6 +37,8 @@
 	<!-- Phase 2 UX Enhancements -->
 	<link rel="stylesheet" href="css/loading-states.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/whatsapp-widget.css" media="print" onload="this.media='all'">
+	<!-- Phase 3 Content Components -->
+	<link rel="stylesheet" href="css/content-components.css" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="fonts/icomoon/style.css">
 		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -46,6 +48,7 @@
 		<link rel="stylesheet" href="css/mobile-menu.css">
 		<link rel="stylesheet" href="css/loading-states.css">
 		<link rel="stylesheet" href="css/whatsapp-widget.css">
+		<link rel="stylesheet" href="css/content-components.css">
 	</noscript>
 
 
@@ -143,7 +146,7 @@
 			<div class="site-navigation">
 				<a href="index.html" class="logo m-0 float-start">Messad Estudio<span class="text-primary">.</span> </a>
 				<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
-					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li class="has-children">
 						<a href="projects.html">Proyectos</a>
 						<ul class="dropdown navbar__proyectos-dropdown" aria-label="Proyectos">
@@ -203,7 +206,8 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="about.html">About</a></li>
+					<li class="active"><a href="about.html">About</a></li>
+					<li><a href="faq.html">FAQ</a></li>
 					<li><a href="contact.html">Contacto</a></li>
 					<li><a href="solicitar-analisis.html">Calculadora</a></li>
 					<li><a href="#" id="loginBtn">Login</a></li>
@@ -226,25 +230,174 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto ">
-					<h1 data-aos="fade-up" data-aos-delay="100" class="mb-5 text-center"><span>About Us</span></h1>
+					<h1 data-aos="fade-up" data-aos-delay="100" class="mb-5 text-center"><span>Sobre Nosotros</span></h1>
 
 
 					<div class="intro-desc text-left" data-aos="fade-up" data-aos-delay="200">
 						<div class="line"></div>
-						<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
+						<p>Con más de 15 años de experiencia, transformamos ideas en espacios arquitectónicos innovadores, combinando diseño de vanguardia con tecnología BIM para crear proyectos únicos en Santiago del Estero.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- Studio History & Values Section -->
+	<div class="section about-history bg-white">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="heading mb-4" data-aos="fade-up">Nuestra Historia</h2>
+					<p class="lead text-black-50" data-aos="fade-up" data-aos-delay="100">
+						Desde 2008, hemos estado comprometidos con la excelencia arquitectónica y la innovación en cada proyecto.
+					</p>
+				</div>
+			</div>
+
+			<div class="row mb-5 align-items-center">
+				<div class="col-lg-6" data-aos="fade-right">
+					<h3 class="h4 mb-3">15+ Años de Experiencia</h3>
+					<p class="text-black-50 mb-4">
+						Fundado en Santiago del Estero, Messad Estudio ha evolucionado desde un pequeño estudio de diseño hasta convertirse en un referente regional en arquitectura contemporánea. Nuestro equipo ha desarrollado más de 200 proyectos, desde viviendas unifamiliares hasta complejos comerciales e institucionales.
+					</p>
+					<p class="text-black-50 mb-4">
+						La adopción temprana de metodología BIM nos posicionó como pioneros en la región, permitiéndonos ofrecer a nuestros clientes proyectos con mayor precisión, eficiencia y visualización detallada desde las etapas iniciales.
+					</p>
+				</div>
+				<div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+					<div class="stats-grid">
+						<div class="stat-card">
+							<div class="stat-number">200+</div>
+							<div class="stat-label">Proyectos Completados</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">15+</div>
+							<div class="stat-label">Años de Experiencia</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">100%</div>
+							<div class="stat-label">Satisfacción del Cliente</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">BIM</div>
+							<div class="stat-label">Tecnología Avanzada</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Values Section -->
+			<div class="row mt-5 pt-5 border-top">
+				<div class="col-lg-12 text-center mb-5">
+					<h2 class="heading" data-aos="fade-up">Nuestros Valores</h2>
+				</div>
+			</div>
+			<div class="row g-4">
+				<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+					<div class="value-card">
+						<div class="value-icon">
+							<i class="flaticon-compass"></i>
+						</div>
+						<h3 class="h5 mb-3">Innovación</h3>
+						<p class="text-black-50">Adoptamos las últimas tecnologías y metodologías para ofrecer soluciones arquitectónicas vanguardistas.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+					<div class="value-card">
+						<div class="value-icon">
+							<i class="flaticon-plan"></i>
+						</div>
+						<h3 class="h5 mb-3">Excelencia</h3>
+						<p class="text-black-50">Cada proyecto es tratado con el máximo nivel de profesionalismo y atención al detalle.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+					<div class="value-card">
+						<div class="value-icon">
+							<i class="flaticon-architect"></i>
+						</div>
+						<h3 class="h5 mb-3">Compromiso</h3>
+						<p class="text-black-50">Nos dedicamos completamente a convertir la visión de nuestros clientes en realidad.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+					<div class="value-card">
+						<div class="value-icon">
+							<i class="flaticon-compass"></i>
+						</div>
+						<h3 class="h5 mb-3">Sostenibilidad</h3>
+						<p class="text-black-50">Diseñamos espacios eficientes y responsables con el medio ambiente.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- BIM Methodology Section -->
+	<div class="section sec-4 bg-light">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="heading mb-4" data-aos="fade-up">Metodología BIM</h2>
+					<p class="lead text-black-50" data-aos="fade-up" data-aos-delay="100">
+						Utilizamos Building Information Modeling (BIM) para crear proyectos más precisos, eficientes y colaborativos.
+					</p>
+				</div>
+			</div>
+
+			<div class="row g-4">
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="0">
+					<div class="methodology-card">
+						<div class="methodology-number">01</div>
+						<h3 class="h5 mb-3">Modelado 3D Integral</h3>
+						<p class="text-black-50">Creamos modelos digitales completos que integran arquitectura, estructura e instalaciones en un solo entorno colaborativo.</p>
+					</div>
+				</div>
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="methodology-card">
+						<div class="methodology-number">02</div>
+						<h3 class="h5 mb-3">Detección de Conflictos</h3>
+						<p class="text-black-50">Identificamos y resolvemos interferencias entre disciplinas antes de la construcción, ahorrando tiempo y costos.</p>
+					</div>
+				</div>
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="methodology-card">
+						<div class="methodology-number">03</div>
+						<h3 class="h5 mb-3">Documentación Automatizada</h3>
+						<p class="text-black-50">Generamos planos, planillas y cómputos actualizados automáticamente desde el modelo, garantizando consistencia.</p>
+					</div>
+				</div>
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="0">
+					<div class="methodology-card">
+						<div class="methodology-number">04</div>
+						<h3 class="h5 mb-3">Visualización Realista</h3>
+						<p class="text-black-50">Ofrecemos renders fotorrealistas y recorridos virtuales para que visualices tu proyecto antes de construir.</p>
+					</div>
+				</div>
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+					<div class="methodology-card">
+						<div class="methodology-number">05</div>
+						<h3 class="h5 mb-3">Planificación 4D y 5D</h3>
+						<p class="text-black-50">Simulamos el cronograma de construcción y estimamos costos con mayor precisión mediante modelos dimensionales.</p>
+					</div>
+				</div>
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+					<div class="methodology-card">
+						<div class="methodology-number">06</div>
+						<h3 class="h5 mb-3">Entrega As-Built</h3>
+						<p class="text-black-50">Proporcionamos modelos actualizados según lo construido, valiosos para gestión y mantenimiento futuro.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="section sec-4">
 		<div class="container">
 			<div class="row border-bottom mb-5 pb-5 justify-content-between">
 				<div class="col-lg-4 align-self-center mb-5">
-					<h2 class="heading mb-4">We create architectural designs</h2>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<h2 class="heading mb-4">Creamos Diseños Arquitectónicos Únicos</h2>
+					<p>Combinamos creatividad, técnica y tecnología para desarrollar espacios que trascienden las expectativas, adaptados al contexto local de Santiago del Estero y las necesidades específicas de cada cliente.</p>
 				</div>
 				<div class="col-lg-7">
 					<a href="https://www.youtube.com/watch?v=mwtbEGNABWU" class="video-wrap glightbox">
@@ -312,33 +465,31 @@
 			</div>
 			<div class="row g-5">
 
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="0">
 					<div class="person">
-						<img loading="lazy" src="images/person_2.jpg" alt="Image" class="img-fluid rounded-circle mx-auto w-50 mb-3">
+						<img loading="lazy" src="images/person_2.jpg" alt="Arquitecta Juliana Caffaro" class="img-fluid rounded-circle mx-auto w-50 mb-3">
 						<h3 class="mb-1">Juliana Caffaro</h3>
-						<span class="d-block text-black-50 mb-3">Arquitecta</span>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<span class="d-block text-black-50 mb-3">Arquitecta - Especialista en Diseño</span>
+						<p class="text-black-50">Especializada en diseño arquitectónico contemporáneo y gestión de proyectos BIM. Con formación en interiorismo y más de 12 años de experiencia, lidera el desarrollo conceptual y la materialización de espacios únicos que equilibran estética y funcionalidad.</p>
 						<ul class="social-2 list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
+							<li><a href="#" aria-label="Facebook de Juliana Caffaro"><span class="icon-facebook"></span></a></li>
+							<li><a href="#" aria-label="Instagram de Juliana Caffaro"><span class="icon-instagram"></span></a></li>
+							<li><a href="#" aria-label="LinkedIn de Juliana Caffaro"><span class="icon-linkedin"></span></a></li>
 						</ul>
 					</div>
 				</div>
 
 
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
 					<div class="person">
-						<img loading="lazy" src="images/person_4.jpg" alt="Image" class="img-fluid rounded-circle mx-auto w-50 mb-3">
+						<img loading="lazy" src="images/person_4.jpg" alt="Arquitecto Sebastian Messad" class="img-fluid rounded-circle mx-auto w-50 mb-3">
 						<h3 class="mb-1">Sebastian Messad</h3>
-						<span class="d-block text-black-50 mb-3">Arquitecto</span>
-						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<span class="d-block text-black-50 mb-3">Arquitecto - Director Técnico</span>
+						<p class="text-black-50">Director técnico y especialista en metodología BIM. Con certificación internacional en Building Information Modeling y más de 15 años en el sector, coordina proyectos multidisciplinarios complejos y lidera la implementación tecnológica del estudio.</p>
 						<ul class="social-2 list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
+							<li><a href="#" aria-label="Facebook de Sebastian Messad"><span class="icon-facebook"></span></a></li>
+							<li><a href="#" aria-label="Instagram de Sebastian Messad"><span class="icon-instagram"></span></a></li>
+							<li><a href="#" aria-label="LinkedIn de Sebastian Messad"><span class="icon-linkedin"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -347,8 +498,167 @@
 		</div>
 	</div>
 
+	<!-- Testimonials Section -->
+	<div class="section testimonials-section bg-light">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-lg-8 mx-auto text-center">
+					<h2 class="heading mb-4" data-aos="fade-up">Lo Que Dicen Nuestros Clientes</h2>
+					<p class="lead text-black-50" data-aos="fade-up" data-aos-delay="100">
+						La satisfacción de nuestros clientes es nuestra mayor recompensa.
+					</p>
+				</div>
+			</div>
 
-	
+			<div class="testimonials-carousel" data-autoplay="true" data-interval="5000">
+				<div class="testimonials-wrapper">
+					<div class="testimonials-track">
+						<!-- Testimonial 1 -->
+						<div class="testimonial-card active">
+							<div class="testimonial-rating">
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+							</div>
+							<p class="testimonial-text">
+								"El equipo de Messad Estudio superó todas nuestras expectativas. El uso de tecnología BIM nos permitió visualizar nuestro edificio comercial antes de construir, y la precisión en los planos ahorró tiempo y dinero en obra. Totalmente profesionales."
+							</p>
+							<div class="testimonial-author">
+								<div class="author-info">
+									<h4 class="author-name">Carlos Fernández</h4>
+									<p class="author-role">Propietario - Centro Comercial La Estación</p>
+								</div>
+							</div>
+							<div class="testimonial-project">
+								<small class="text-muted">Proyecto: Centro Comercial - 2,500m²</small>
+							</div>
+						</div>
+
+						<!-- Testimonial 2 -->
+						<div class="testimonial-card">
+							<div class="testimonial-rating">
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+							</div>
+							<p class="testimonial-text">
+								"Construir nuestra casa fue un sueño hecho realidad gracias a Messad Estudio. Juliana entendió perfectamente nuestra visión y Sebastian coordinó todo impecablemente. El proceso fue transparente, los plazos se cumplieron y el resultado final es hermoso."
+							</p>
+							<div class="testimonial-author">
+								<div class="author-info">
+									<h4 class="author-name">María Elena Ríos</h4>
+									<p class="author-role">Propietaria - Vivienda Unifamiliar</p>
+								</div>
+							</div>
+							<div class="testimonial-project">
+								<small class="text-muted">Proyecto: Casa Moderna - 180m²</small>
+							</div>
+						</div>
+
+						<!-- Testimonial 3 -->
+						<div class="testimonial-card">
+							<div class="testimonial-rating">
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+							</div>
+							<p class="testimonial-text">
+								"Para nuestro proyecto institucional necesitábamos un equipo que manejara complejidad técnica y normativas estrictas. Messad Estudio demostró experiencia en cada etapa, desde factibilidad hasta dirección de obra. La metodología BIM fue clave para coordinar todos los sistemas."
+							</p>
+							<div class="testimonial-author">
+								<div class="author-info">
+									<h4 class="author-name">Dr. Roberto Paz</h4>
+									<p class="author-role">Director - Centro Educativo San Martín</p>
+								</div>
+							</div>
+							<div class="testimonial-project">
+								<small class="text-muted">Proyecto: Edificio Educativo - 1,800m²</small>
+							</div>
+						</div>
+
+						<!-- Testimonial 4 -->
+						<div class="testimonial-card">
+							<div class="testimonial-rating">
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+							</div>
+							<p class="testimonial-text">
+								"Contraté a Messad Estudio para una refacción integral de mi local comercial. El equipo fue eficiente, creativo y se adaptó perfectamente a mi presupuesto. Los renders previos me ayudaron a tomar decisiones con confianza. Excelente relación calidad-precio."
+							</p>
+							<div class="testimonial-author">
+								<div class="author-info">
+									<h4 class="author-name">Jorge Álvarez</h4>
+									<p class="author-role">Dueño - Restaurante El Mirador</p>
+								</div>
+							</div>
+							<div class="testimonial-project">
+								<small class="text-muted">Proyecto: Refacción Comercial - 250m²</small>
+							</div>
+						</div>
+
+						<!-- Testimonial 5 -->
+						<div class="testimonial-card">
+							<div class="testimonial-rating">
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+								<span class="star filled">★</span>
+							</div>
+							<p class="testimonial-text">
+								"Como desarrollador inmobiliario, he trabajado con varios estudios, pero Messad destaca por su compromiso y calidad. El modelo BIM as-built que entregaron es invaluable para gestión futura. Su equipo es una combinación perfecta de creatividad y técnica."
+							</p>
+							<div class="testimonial-author">
+								<div class="author-info">
+									<h4 class="author-name">Ing. Patricia Gómez</h4>
+									<p class="author-role">Desarrolladora - Edificio Residencial Torres del Sol</p>
+								</div>
+							</div>
+							<div class="testimonial-project">
+								<small class="text-muted">Proyecto: Edificio 12 unidades - 1,200m²</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Carousel Controls -->
+				<button class="carousel-control prev" aria-label="Testimonio anterior">
+					<span class="icon-arrow_back"></span>
+				</button>
+				<button class="carousel-control next" aria-label="Siguiente testimonio">
+					<span class="icon-arrow_forward"></span>
+				</button>
+
+				<!-- Indicators -->
+				<div class="carousel-indicators">
+					<button class="indicator active" data-index="0" aria-label="Ir al testimonio 1"></button>
+					<button class="indicator" data-index="1" aria-label="Ir al testimonio 2"></button>
+					<button class="indicator" data-index="2" aria-label="Ir al testimonio 3"></button>
+					<button class="indicator" data-index="3" aria-label="Ir al testimonio 4"></button>
+					<button class="indicator" data-index="4" aria-label="Ir al testimonio 5"></button>
+				</div>
+			</div>
+
+			<!-- Call to Action -->
+			<div class="row mt-5 pt-4">
+				<div class="col-lg-8 mx-auto text-center">
+					<p class="lead mb-4">¿Listo para comenzar tu proyecto?</p>
+					<a href="contact.html" class="btn btn-primary btn-lg">Contáctanos Ahora</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 	<div class="site-footer bg-light">
 		<div class="container">
@@ -402,11 +712,11 @@
 						<div class="col-6 col-sm-6 col-md-4">
 							<div class="widget">
 								<ul class="links list-unstyled">
-									<li><a href="#">Privacy</a></li>
-									<li><a href="#">FAQ</a></li>
-									<li><a href="#">Careers</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="faq.html">FAQ</a></li>
+									<li><a href="about.html">About Us</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="solicitar-analisis.html">Calculadora</a></li>
+									<li><a href="projects.html">Proyectos</a></li>
 								</ul>
 							</div>
 						</div>
@@ -439,6 +749,9 @@
 
 	<!-- WhatsApp Widget -->
 	<script src="js/whatsapp-widget.js" defer></script>
+
+	<!-- Phase 3 Content Components -->
+	<script src="js/testimonials-carousel.js" defer></script>
 
 	<!-- Simple Authentication Script -->
 	<script src="js/config.js" defer></script>

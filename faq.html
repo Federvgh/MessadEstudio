@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="Preguntas frecuentes sobre arquitectura, normativas de Santiago del Estero y servicios de Messad Estudio">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Phase 2 & 3 Components -->
+	<link rel="stylesheet" href="css/loading-states.css">
+	<link rel="stylesheet" href="css/whatsapp-widget.css">
+	<link rel="stylesheet" href="css/content-components.css">
+
+	<title>Preguntas Frecuentes - Messad Estudio</title>
+</head>
+<body>
+
+	<nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation">
+				<a href="index.html" class="logo m-0 float-start">Messad Estudio<span class="text-primary">.</span> </a>
+				<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="projects.html">Proyectos</a></li>
+					<li><a href="services.html">Servicios</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contacto</a></li>
+					<li class="active"><a href="faq.html">FAQ</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero -->
+	<div class="hero-2 overlay" style="background: linear-gradient(135deg, #2C3639 0%, #3a4245 100%); padding: 100px 0 60px; color: white;">
+		<div class="container text-center">
+			<h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 16px;">
+				Preguntas Frecuentes
+			</h1>
+			<p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+				Encuentra respuestas a las preguntas más comunes sobre nuestros servicios, normativas y procesos
+			</p>
+		</div>
+	</div>
+
+	<!-- FAQ Section -->
+	<section class="faq-section">
+		<div class="container">
+			<div class="faq-container">
+
+				<!-- Búsqueda -->
+				<div class="faq-search">
+					<input type="text" class="faq-search-input" placeholder="Buscar preguntas..." aria-label="Buscar en preguntas frecuentes">
+				</div>
+
+				<!-- Categorías -->
+				<div class="faq-categories">
+					<button class="faq-category-filter active" data-category="all">Todas</button>
+					<button class="faq-category-filter" data-category="normativas">Normativas</button>
+					<button class="faq-category-filter" data-category="procesos">Procesos</button>
+					<button class="faq-category-filter" data-category="servicios">Servicios</button>
+					<button class="faq-category-filter" data-category="costos">Costos</button>
+				</div>
+
+				<!-- Lista de FAQs -->
+				<div class="faq-list">
+
+					<!-- Normativas -->
+					<div class="faq-item" data-category="normativas">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Qué puedo construir en mi terreno?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Lo que podés construir depende de varios factores:</p>
+								<ul>
+									<li><strong>Zona normativa:</strong> Santiago del Estero tiene diferentes zonas (AG-C1, AG-C2, AG-R, etc.) con regulaciones específicas</li>
+									<li><strong>FOS (Factor de Ocupación del Suelo):</strong> Porcentaje del terreno que podés ocupar en planta baja</li>
+									<li><strong>FOT (Factor de Ocupación Total):</strong> Superficie total que podés construir considerando todas las plantas</li>
+									<li><strong>Altura máxima:</strong> Depende del perfil urbano de la calle donde está tu terreno</li>
+								</ul>
+								<p>Podés solicitar un <a href="solicitar-analisis.html">análisis normativo gratuito</a> para conocer exactamente el potencial de tu terreno.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="normativas">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Qué es el FOS y el FOT?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p><strong>FOS (Factor de Ocupación del Suelo):</strong> Es el porcentaje del terreno que podés ocupar con construcción en planta baja. Por ejemplo, con un FOS de 0.70 en un terreno de 400m², podés construir hasta 280m² en planta baja.</p>
+								<p><strong>FOT (Factor de Ocupación Total):</strong> Es el total de metros cuadrados que podés construir sumando todas las plantas. Con un FOT de 3.5 en un terreno de 400m², podés construir hasta 1,400m² totales.</p>
+								<p>Estos factores varían según la zona normativa donde esté ubicado tu terreno.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="normativas">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Cuánto tiempo demora un trámite de aprobación?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Los tiempos de aprobación en la Municipalidad de Santiago del Estero varían:</p>
+								<ul>
+									<li><strong>Factibilidad:</strong> 7-15 días hábiles</li>
+									<li><strong>Planos municipales:</strong> 15-30 días hábiles (dependiendo de la complejidad)</li>
+									<li><strong>Permiso de obra:</strong> 10-20 días hábiles una vez aprobados los planos</li>
+								</ul>
+								<p>Nosotros nos encargamos de todo el proceso para que vos no tengas que hacer colas ni trámites.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Procesos -->
+					<div class="faq-item" data-category="procesos">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Cuáles son las etapas de un proyecto?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Un proyecto completo con Messad Estudio pasa por estas etapas:</p>
+								<ol>
+									<li><strong>Análisis Normativo:</strong> Estudiamos el potencial de tu terreno</li>
+									<li><strong>Anteproyecto:</strong> Diseño conceptual según tus necesidades</li>
+									<li><strong>Proyecto Ejecutivo:</strong> Planos detallados para construcción</li>
+									<li><strong>Gestión de Permisos:</strong> Tramitamos aprobaciones municipales</li>
+									<li><strong>Dirección de Obra:</strong> Supervisamos la construcción (opcional)</li>
+								</ol>
+								<p>Podés contratar solo las etapas que necesites o el servicio completo.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="procesos">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Qué documentación necesito para empezar?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Para comenzar un proyecto necesitamos:</p>
+								<ul>
+									<li>Escritura del terreno o boleto de compra-venta</li>
+									<li>Plano de mensura actualizado</li>
+									<li>DNI del/los propietarios</li>
+									<li>Certificado de nomenclatura catastral (si lo tenés)</li>
+								</ul>
+								<p>Si no tenés alguno de estos documentos, te ayudamos a gestionarlo.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="procesos">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Trabajan con metodología BIM?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Sí, todos nuestros proyectos se desarrollan con <strong>metodología BIM (Building Information Modeling)</strong>. Esto significa:</p>
+								<ul>
+									<li><strong>Modelo 3D inteligente:</strong> Podés visualizar tu proyecto antes de construirlo</li>
+									<li><strong>Detección de conflictos:</strong> Identificamos problemas antes de la obra</li>
+									<li><strong>Cómputos automáticos:</strong> Presupuestos más precisos</li>
+									<li><strong>Coordinación multidisciplinaria:</strong> Integración perfecta entre arquitectura, estructura e instalaciones</li>
+									<li><strong>Documentación consistente:</strong> Todos los planos se actualizan automáticamente</li>
+								</ul>
+								<p>Trabajamos principalmente con Revit y ArchiCAD.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Servicios -->
+					<div class="faq-item" data-category="servicios">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Hacen solo edificios o también viviendas unifamiliares?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Realizamos todo tipo de proyectos:</p>
+								<ul>
+									<li><strong>Viviendas unifamiliares:</strong> Casas modernas, funcionales y adaptadas a tu estilo de vida</li>
+									<li><strong>Edificios residenciales:</strong> Especializados en edificios de departamentos de alta densidad</li>
+									<li><strong>Locales comerciales:</strong> Diseños que maximizan la visibilidad y funcionalidad</li>
+									<li><strong>Edificios mixtos:</strong> Combinación de comercio y vivienda</li>
+									<li><strong>Refacciones:</strong> Ampliaciones y remodelaciones de construcciones existentes</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="servicios">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿El análisis normativo es realmente gratis?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p><strong>Sí, es 100% gratuito y sin compromiso.</strong></p>
+								<p>Completás un formulario simple con los datos de tu terreno y en 24 horas te enviamos:</p>
+								<ul>
+									<li>Zona normativa aplicable</li>
+									<li>FOS y FOT permitidos</li>
+									<li>Altura máxima de construcción</li>
+									<li>Metros cuadrados totales que podés construir</li>
+									<li>Recomendaciones para maximizar el aprovechamiento</li>
+								</ul>
+								<p>No pedimos tarjeta de crédito ni datos de facturación. Solo queremos que conozcas el potencial de tu terreno.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Costos -->
+					<div class="faq-item" data-category="costos">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Cuánto cuesta un proyecto de arquitectura?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>Los honorarios profesionales varían según el tipo y complejidad del proyecto:</p>
+								<ul>
+									<li><strong>Vivienda unifamiliar:</strong> Entre 2% y 4% del valor de construcción</li>
+									<li><strong>Edificio de departamentos:</strong> Entre 3% y 5% del valor de construcción</li>
+									<li><strong>Proyecto ejecutivo completo:</strong> Incluye todos los planos necesarios para construcción</li>
+									<li><strong>Dirección de obra:</strong> 3-5% adicional del valor de construcción</li>
+								</ul>
+								<p>Ofrecemos presupuestos personalizados. <a href="contact.html">Contactanos</a> para que evaluemos tu caso específico.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="faq-item" data-category="costos">
+						<div class="faq-question">
+							<h3 class="faq-question-text">¿Cuánto cuesta construir por m²?</h3>
+							<div class="faq-icon"></div>
+						</div>
+						<div class="faq-answer">
+							<div class="faq-answer-text">
+								<p>El costo de construcción en Santiago del Estero (2024) varía según la calidad:</p>
+								<ul>
+									<li><strong>Calidad económica:</strong> $150,000 - $200,000 /m²</li>
+									<li><strong>Calidad media:</strong> $200,000 - $280,000 /m²</li>
+									<li><strong>Calidad premium:</strong> $280,000 - $400,000 /m²</li>
+								</ul>
+								<p><em>Nota: Estos valores son aproximados y pueden variar según materiales, terminaciones y complejidad del proyecto.</em></p>
+								<p>Podemos ayudarte con cómputos y presupuestos detallados para tu proyecto específico.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section style="padding: 60px 0; background: #f8f9fa; text-align: center;">
+		<div class="container">
+			<h2 style="font-size: 2rem; margin-bottom: 16px;">¿No encontraste tu respuesta?</h2>
+			<p style="font-size: 1.1rem; color: #666; margin-bottom: 32px;">
+				Estamos para ayudarte. Contactanos por WhatsApp o envianos tu consulta.
+			</p>
+			<div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+				<a href="contact.html" class="btn btn-primary btn-lg">Contactar</a>
+				<a href="solicitar-analisis.html" class="btn btn-outline-primary btn-lg">Análisis Gratis</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<div class="site-footer bg-light">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3 class="line-top">Messad Estudio</h3>
+						<p class="mb-5">Arquitectura y diseño en Santiago del Estero. Especializados en edificios residenciales, comerciales y viviendas unifamiliares.</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="row">
+						<div class="col-12">
+							<div class="widget">
+								<h3 class="line-top">Enlaces</h3>
+							</div>
+						</div>
+						<div class="col-6 col-sm-6 col-md-4">
+							<div class="widget">
+								<ul class="links list-unstyled">
+									<li><a href="index.html">Home</a></li>
+									<li><a href="projects.html">Proyectos</a></li>
+									<li><a href="services.html">Servicios</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-6 col-sm-6 col-md-4">
+							<div class="widget">
+								<ul class="links list-unstyled">
+									<li><a href="about.html">About</a></li>
+									<li><a href="contact.html">Contacto</a></li>
+									<li><a href="faq.html">FAQ</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/bootstrap.bundle.min.js" defer></script>
+	<script src="js/custom.js" defer></script>
+	<!-- FAQ Accordion -->
+	<script src="js/faq-accordion.js" defer></script>
+	<!-- WhatsApp Widget -->
+	<script src="js/whatsapp-widget.js" defer></script>
+
+</body>
+</html>
