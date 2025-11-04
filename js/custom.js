@@ -33,9 +33,16 @@
 		setTimeout(function() {
 			fadeOut(loader);
 			fadeOut(overlay);
+			// Refresh AOS after preloader to ensure animations work on page navigation
+			AOS.refresh();
 		}, 200);
 	};
 	preloader();
+
+	// Also refresh AOS when page is fully loaded
+	window.addEventListener('load', function() {
+		AOS.refresh();
+	});
 
 
 	var tinyslier = function() {
