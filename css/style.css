@@ -9811,9 +9811,6 @@ body {
 .single-portfolio:hover img {
   transform: scale(1.08);
 }
-.single-portfolio:hover .contents {
-  background: linear-gradient(to top, rgba(44, 54, 57, 0.92) 0%, rgba(44, 54, 57, 0.75) 70%, transparent 100%);
-}
 .single-portfolio:hover .contents h3, .single-portfolio:hover .contents .h3 {
   color: var(--accent-warm);
 }
