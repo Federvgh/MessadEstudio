@@ -305,6 +305,33 @@ img[loading="lazy"].loaded {
     }
 }
 
+@media (max-width: 768px) {
+    /* Reduce pulse animation on mobile to prevent overflow */
+    .cta-buttons .btn:first-child {
+        animation: subtlePulseMobile 3s ease-in-out infinite;
+    }
+
+    @keyframes subtlePulseMobile {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(var(--accent-warm-rgb, 255, 87, 34), 0.3);
+        }
+        50% {
+            box-shadow: 0 0 0 8px rgba(var(--accent-warm-rgb, 255, 87, 34), 0);
+        }
+    }
+
+    /* Ensure buttons fit properly */
+    .cta-buttons .btn {
+        padding: 12px 24px !important;
+        font-size: 15px !important;
+        margin-bottom: 12px;
+    }
+
+    .cta-buttons .btn.me-3 {
+        margin-right: 0 !important;
+    }
+}
+
 /* ============================================
    FOOTER IMPROVEMENTS
    ============================================ */
