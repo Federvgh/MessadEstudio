@@ -6,10 +6,10 @@
 	AOS.init({
 		duration: 800,
 		easing: 'ease-in-out',
-		once: true,
+		once: false, // Allow animations to trigger on every page load
 		offset: 0, // Trigger animations immediately for elements already in viewport
 		anchorPlacement: 'top-bottom', // Trigger when top of element hits bottom of viewport
-		startEvent: 'load', // Start animations on page load
+		startEvent: 'DOMContentLoaded', // Start animations on DOM ready
 		disable: false // Enable on all devices
 	});
 
@@ -33,16 +33,13 @@
 		setTimeout(function() {
 			fadeOut(loader);
 			fadeOut(overlay);
-			// Refresh AOS after preloader to ensure animations work on page navigation
-			AOS.refresh();
+			// Reinitialize AOS after preloader to ensure fresh animations
+			setTimeout(function() {
+				AOS.refreshHard();
+			}, 100);
 		}, 200);
 	};
 	preloader();
-
-	// Also refresh AOS when page is fully loaded
-	window.addEventListener('load', function() {
-		AOS.refresh();
-	});
 
 
 	var tinyslier = function() {
