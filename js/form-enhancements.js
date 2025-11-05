@@ -147,10 +147,15 @@ class FormValidator {
     validateAll() {
         let allValid = true;
         Object.keys(this.fields).forEach(fieldId => {
-            if (!this.validateField(fieldId, true)) {
+            const isFieldValid = this.validateField(fieldId, true);
+            if (!isFieldValid) {
+                console.log(`❌ Campo inválido: ${fieldId}`, this.fields[fieldId]);
                 allValid = false;
+            } else {
+                console.log(`✅ Campo válido: ${fieldId}`);
             }
         });
+        console.log(`📊 Validación final: ${allValid ? 'ÉXITO' : 'FALLA'}`);
         return allValid;
     }
 
@@ -205,7 +210,7 @@ class ProgressBar {
                                 </div>
                             </div>
                             <h4 class="mb-3" id="progressTitle">Procesando tu solicitud...</h4>
-                            <p class="text-muted mb-4" id="progressMessage">Esto tomará solo unos segundos</p>
+                            <p class="text-muted mb-4" id="progressMessage" style="font-size: 0.95rem; line-height: 1.6;">Esto tomará solo unos segundos</p>
 
                             <div class="progress" style="height: 8px;">
                                 <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated"
@@ -271,7 +276,12 @@ class ProgressBar {
             clearInterval(this.progressInterval);
         }
         this.setProgress(100);
-        setTimeout(() => this.hide(), 500);
+        setTimeout(() => {
+            this.hide();
+            // Asegurar que el backdrop se elimine completamente
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => backdrop.remove());
+        }, 500);
     }
 }
 
@@ -347,7 +357,11 @@ class NotificationModal {
         // Insertar modals
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = successHTML + errorHTML;
-        document.body.appendChild(tempDiv);
+
+        // Agregar cada modal al body (no el div temporal)
+        while (tempDiv.firstChild) {
+            document.body.appendChild(tempDiv.firstChild);
+        }
 
         this.successModal = new bootstrap.Modal(document.getElementById('successModal'));
         this.errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
@@ -358,6 +372,45 @@ class NotificationModal {
             document.getElementById('successMessage').textContent = message;
         }
         this.successModal.show();
+
+        // Agregar evento al botón "Entendido" para cerrar y redirigir
+        const entendidoBtn = document.querySelector('#successModal [data-bs-dismiss="modal"]');
+        if (entendidoBtn) {
+            // Remover event listeners anteriores
+            entendidoBtn.replaceWith(entendidoBtn.cloneNode(true));
+            const newBtn = document.querySelector('#successModal [data-bs-dismiss="modal"]');
+
+            newBtn.addEventListener('click', () => {
+                // Forzar cierre del modal
+                this.successModal.hide();
+
+                // Limpiar backdrops
+                setTimeout(() => {
+                    const backdrops = document.querySelectorAll('.modal-backdrop');
+                    backdrops.forEach(backdrop => backdrop.remove());
+                    document.body.classList.remove('modal-open');
+                    document.body.style.removeProperty('padding-right');
+                    document.body.style.removeProperty('overflow');
+
+                    // Redirigir al home después de cerrar
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 300);
+                }, 200);
+            });
+        }
+
+        // Auto-redirect: Redirigir al home en 3 segundos automáticamente
+        setTimeout(() => {
+            console.log('⚠️ Auto-redirect activado - redirigiendo al home...');
+            this.successModal.hide();
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => backdrop.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('padding-right');
+            document.body.style.removeProperty('overflow');
+            window.location.href = 'index.html';
+        }, 3000);
     }
 
     showError(message = null) {
@@ -372,11 +425,6 @@ class NotificationModal {
 // 4. INICIALIZACIÓN Y EXPORTACIÓN
 // ==========================================
 
-// Instancias globales
-let formValidator;
-let progressBar;
-let notificationModal;
-
 // Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFormEnhancements);
@@ -385,14 +433,13 @@ if (document.readyState === 'loading') {
 }
 
 function initFormEnhancements() {
-    formValidator = new FormValidator('analisis-form');
-    progressBar = new ProgressBar();
-    notificationModal = new NotificationModal();
+    // Crear instancias
+    window.formValidator = new FormValidator('analisis-form');
+    window.progressBar = new ProgressBar();
+    window.notificationModal = new NotificationModal();
 
     console.log('✅ Form enhancements initialized');
+    console.log('✅ formValidator:', window.formValidator);
+    console.log('✅ progressBar:', window.progressBar);
+    console.log('✅ notificationModal:', window.notificationModal);
 }
-
-// Exportar para uso global
-window.formValidator = formValidator;
-window.progressBar = progressBar;
-window.notificationModal = notificationModal;
