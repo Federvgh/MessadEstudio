@@ -336,8 +336,15 @@ img[loading="lazy"].loaded {
    FOOTER IMPROVEMENTS
    ============================================ */
 
+footer.site-footer,
 .site-footer {
     font-size: 0.95rem;
+    background-color: #f8f9fa !important; /* Light grey consistente en todas las páginas */
+}
+
+/* Forzar background light grey en todos los footers */
+footer.site-footer.bg-light {
+    background-color: #f8f9fa !important;
 }
 
 .site-footer h5,

@@ -11350,6 +11350,7 @@ a {
   padding-top: 70px;
   padding-bottom: 30px;
   font-size: 14px;
+  background-color: #f8f9fa !important;
 }
 @media (max-width: 767.98px) {
   .site-footer {

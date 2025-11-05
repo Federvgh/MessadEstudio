@@ -1,12 +1,33 @@
 # robots.txt for Messad Estudio
 # https://messadestudio.com/robots.txt
 
+# Allow all crawlers
 User-agent: *
 Allow: /
 
 # Disallow admin and backend paths
 Disallow: /backend/
 Disallow: /admin/
+Disallow: /node_modules/
+Disallow: /package/
+
+# Disallow backup and template files
+Disallow: /*.bak$
+Disallow: /*_backup.html$
+Disallow: /single.html
+Disallow: /project-single.html
+
+# Disallow scripts and internal directories
+Disallow: /scripts/
+Disallow: /.git/
+Disallow: /.vscode/
+
+# Crawl-delay for aggressive bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
 
 # Sitemap location
 Sitemap: https://messadestudio.com/sitemap.xml
