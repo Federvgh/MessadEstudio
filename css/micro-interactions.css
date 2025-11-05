@@ -385,7 +385,7 @@ footer.site-footer.bg-light {
 .site-footer .contact-info .icon-envelope,
 .site-footer .contact-info .icon-phone {
     margin-top: 0.2rem;
-    color: var(--bs-primary);
+    color: #fc5404;  /* Naranja hard-coded para evitar override de calculadora.css */
 }
 
 .site-footer .social-links .social {
@@ -405,16 +405,16 @@ footer.site-footer.bg-light {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(var(--bs-primary-rgb), 0.1);
-    color: var(--bs-primary);
+    background-color: rgba(252, 84, 4, 0.1);
+    color: #fc5404;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .site-footer .social a:hover {
-    background-color: var(--bs-primary);
+    background-color: #fc5404;
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(var(--bs-primary-rgb), 0.3);
+    box-shadow: 0 5px 15px rgba(252, 84, 4, 0.3);
 }
 
 .site-footer .border-top {

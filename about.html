@@ -38,8 +38,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 	<!-- Critical CSS - Async loaded to prevent render blocking -->
-	<link rel="preload" href="css/style.css" as="style">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="preload" href="css/style.css?v=20251105" as="style">
+	<link rel="stylesheet" href="css/style.css?v=20251105">
 
 	<!-- Deferred CSS for performance -->
 	<link rel="stylesheet" href="fonts/icomoon/style.css" media="print" onload="this.media='all'">
@@ -48,7 +48,7 @@
 	<link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/mobile-menu.css" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="css/micro-interactions.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="css/micro-interactions.css?v=20251105" media="print" onload="this.media='all'">
 	<!-- Phase 2 UX Enhancements -->
 	<link rel="stylesheet" href="css/loading-states.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/whatsapp-widget.css" media="print" onload="this.media='all'">
@@ -93,6 +93,30 @@
 		.site-footer h5,
 		.site-footer h6 {
 			color: #212529 !important;
+		}
+		/* Iconos sociales deben ser naranjas, no grises */
+		.site-footer .social a {
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			width: 40px !important;
+			height: 40px !important;
+			border-radius: 50% !important;
+			background-color: rgba(252, 84, 4, 0.1) !important;
+			color: #fc5404 !important;
+			transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+		}
+		.site-footer .social a:hover {
+			background-color: #fc5404 !important;
+			color: white !important;
+			transform: translateY(-3px) !important;
+			box-shadow: 0 5px 15px rgba(252, 84, 4, 0.3) !important;
+		}
+		/* Iconos de contacto también naranjas */
+		.site-footer .contact-info .icon-location-pin,
+		.site-footer .contact-info .icon-envelope,
+		.site-footer .contact-info .icon-phone {
+			color: #fc5404 !important;
 		}
 	</style>
 

@@ -632,4 +632,35 @@ body .info-box h4 {
     color: #16697a !important;
 }
 
-/* Browser cache buster comment - v1.0.1 */
+/* ============================================
+   FOOTER OVERRIDES - Forzar colores correctos
+   ============================================ */
+
+/* Forzar background light grey en footer - MÁXIMA ESPECIFICIDAD */
+html body footer.site-footer,
+html body footer.site-footer.bg-light,
+html body .site-footer,
+html body .site-footer.bg-light {
+    background-color: #f8f9fa !important;
+    background: #f8f9fa !important;
+}
+
+/* Forzar iconos naranjas en footer */
+html body .site-footer .social a {
+    background-color: rgba(252, 84, 4, 0.1) !important;
+    color: #fc5404 !important;
+}
+
+html body .site-footer .social a:hover {
+    background-color: #fc5404 !important;
+    color: white !important;
+}
+
+/* Forzar iconos de contacto naranjas */
+html body .site-footer .contact-info .icon-location-pin,
+html body .site-footer .contact-info .icon-envelope,
+html body .site-footer .contact-info .icon-phone {
+    color: #fc5404 !important;
+}
+
+/* Browser cache buster comment - v1.0.2 */

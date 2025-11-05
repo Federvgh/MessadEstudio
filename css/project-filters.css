@@ -128,21 +128,13 @@
     gap: 24px;
 }
 
-/* Tarjeta de proyecto */
-.single-portfolio {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
+/* Filtrado de proyectos - solo controlar visibilidad para filtros */
 .single-portfolio[style*="display: none"] {
     display: none !important;
 }
 
-/* Hover effect en proyectos */
-.single-portfolio:hover {
-    transform: translateY(-4px);
-}
+/* NOTA: Los estilos de hover de .single-portfolio están en style.css
+   No sobrescribir aquí para mantener consistencia en todo el sitio */
 
 /* ========================================
    ESTADOS VACÍOS
@@ -364,11 +356,12 @@
 
 @media (prefers-reduced-motion: reduce) {
     .filter-btn,
-    .single-portfolio,
     .results-count {
         animation: none !important;
         transition: none !important;
     }
+
+    /* .single-portfolio animations controlled in style.css */
 }
 
 /* High contrast mode */
