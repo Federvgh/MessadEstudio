@@ -1,0 +1,62 @@
+<!-- ============================================
+     TEMPLATE: Tarjeta de Proyecto
+     ============================================
+
+     INSTRUCCIONES:
+     1. Copiar este bloque completo
+     2. Pegar en la página de categoría correspondiente (comercial.html, edificios.html, etc.)
+     3. Reemplazar los valores entre [CORCHETES]
+     4. Guardar y visualizar en el navegador
+
+     VALORES A REEMPLAZAR:
+     - [NOMBRE_PROYECTO]: Ej: "Edificio San Martín 350"
+     - [DESCRIPCION_CORTA]: Ej: "Edificio residencial de 8 pisos con amenities"
+     - [UBICACION]: Ej: "Centro, Santiago del Estero"
+     - [ANIO]: Ej: "2024"
+     - [SUPERFICIE]: Ej: "1,200 m²"
+     - [URL_IMAGEN_PRINCIPAL]: Ruta relativa, ej: "../images/projects/edificios/san-martin-350/principal.webp"
+     - [URL_PAGINA_PROYECTO]: Ej: "proyecto-san-martin-350.html" (si existe) o "#" (si no)
+
+     ============================================ -->
+
+<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="0">
+	<div class="project-item h-100">
+		<!-- Imagen del proyecto -->
+		<a href="[URL_PAGINA_PROYECTO]" class="project-link">
+			<img
+				loading="lazy"
+				src="[URL_IMAGEN_PRINCIPAL]"
+				alt="[NOMBRE_PROYECTO] - Messad Estudio"
+				class="img-fluid project-image"
+				width="800"
+				height="600"
+			>
+		</a>
+
+		<!-- Información del proyecto -->
+		<div class="project-info p-4">
+			<h3 class="project-title">
+				<a href="[URL_PAGINA_PROYECTO]">[NOMBRE_PROYECTO]</a>
+			</h3>
+			<p class="project-description text-muted mb-3">
+				[DESCRIPCION_CORTA]
+			</p>
+
+			<!-- Detalles técnicos -->
+			<ul class="project-details list-unstyled small text-muted">
+				<li><strong>Ubicación:</strong> [UBICACION]</li>
+				<li><strong>Año:</strong> [ANIO]</li>
+				<li><strong>Superficie:</strong> [SUPERFICIE]</li>
+			</ul>
+
+			<!-- Botón ver más -->
+			<a href="[URL_PAGINA_PROYECTO]" class="btn btn-sm btn-outline-primary mt-2">
+				Ver Proyecto →
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- ============================================
+     FIN DEL TEMPLATE
+     ============================================ -->

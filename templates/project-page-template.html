@@ -1,0 +1,262 @@
+<!-- ============================================
+     TEMPLATE: Página Completa de Proyecto Individual
+     ============================================
+
+     ARCHIVO: Guardar como "proyecto-[nombre-url].html" en la raíz
+     Ejemplo: proyecto-edificio-san-martin.html
+
+     INSTRUCCIONES:
+     1. Copiar todo este archivo
+     2. Guardar con el nombre del proyecto
+     3. Reemplazar TODOS los valores entre [CORCHETES]
+     4. Agregar imágenes en la galería (copiar/pegar bloques de imagen)
+     5. Guardar y probar en navegador
+
+     IMPORTANTE: Este es un template COMPLETO. No copiar solo partes.
+
+     ============================================ -->
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="[NOMBRE_PROYECTO] - [DESCRIPCION_CORTA] | Messad Estudio">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://messadestudio.com/[NOMBRE_ARCHIVO].html">
+	<meta property="og:title" content="[NOMBRE_PROYECTO] - Messad Estudio">
+	<meta property="og:description" content="[DESCRIPCION_CORTA]">
+	<meta property="og:image" content="https://messadestudio.com/[URL_IMAGEN_PRINCIPAL]">
+	<meta property="og:site_name" content="Messad Estudio">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://messadestudio.com/[NOMBRE_ARCHIVO].html">
+	<meta property="twitter:title" content="[NOMBRE_PROYECTO] - Messad Estudio">
+	<meta property="twitter:description" content="[DESCRIPCION_CORTA]">
+	<meta property="twitter:image" content="https://messadestudio.com/[URL_IMAGEN_PRINCIPAL]">
+
+	<title>[NOMBRE_PROYECTO] - Messad Estudio</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/glightbox.min.css">
+	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+</head>
+<body>
+
+	<!-- ============ HEADER (COPIAR DE CUALQUIER PÁGINA) ============ -->
+	<nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation">
+				<a href="index.html" class="logo m-0">
+					<img src="images/logo.svg" alt="Messad Estudio" height="50">
+					<span>Messad Estudio</span>
+				</a>
+
+				<ul class="js-clone-nav site-menu-main d-none d-lg-block ms-auto">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="projects.html">Proyectos</a></li>
+					<li><a href="services.html">Servicios</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- ============ HERO CON IMAGEN PRINCIPAL ============ -->
+	<div class="hero-2 overlay" style="background-image: url('[URL_IMAGEN_PRINCIPAL]');">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 mx-auto text-center">
+					<h1 class="mb-3">[NOMBRE_PROYECTO]</h1>
+					<p class="lead text-white">[DESCRIPCION_CORTA]</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ============ CONTENIDO DEL PROYECTO ============ -->
+	<div class="section">
+		<div class="container">
+			<div class="row">
+
+				<!-- Columna principal: Descripción y galería -->
+				<div class="col-lg-8">
+
+					<!-- Descripción del proyecto -->
+					<div class="mb-5">
+						<h2 class="mb-4">Sobre el Proyecto</h2>
+						<p>
+							[DESCRIPCION_LARGA_PARRAFO_1]
+						</p>
+						<p>
+							[DESCRIPCION_LARGA_PARRAFO_2]
+						</p>
+						<p>
+							[DESCRIPCION_LARGA_PARRAFO_3]
+						</p>
+					</div>
+
+					<!-- Galería de imágenes -->
+					<div class="mb-5">
+						<h3 class="mb-4">Galería</h3>
+						<div class="row g-3">
+
+							<!-- Imagen 1 -->
+							<div class="col-md-6">
+								<a href="[URL_IMAGEN_GALERIA_1]" class="glightbox">
+									<img src="[URL_IMAGEN_GALERIA_1]" alt="[NOMBRE_PROYECTO] - Vista 1" class="img-fluid rounded">
+								</a>
+							</div>
+
+							<!-- Imagen 2 -->
+							<div class="col-md-6">
+								<a href="[URL_IMAGEN_GALERIA_2]" class="glightbox">
+									<img src="[URL_IMAGEN_GALERIA_2]" alt="[NOMBRE_PROYECTO] - Vista 2" class="img-fluid rounded">
+								</a>
+							</div>
+
+							<!-- Imagen 3 -->
+							<div class="col-md-6">
+								<a href="[URL_IMAGEN_GALERIA_3]" class="glightbox">
+									<img src="[URL_IMAGEN_GALERIA_3]" alt="[NOMBRE_PROYECTO] - Vista 3" class="img-fluid rounded">
+								</a>
+							</div>
+
+							<!-- Imagen 4 -->
+							<div class="col-md-6">
+								<a href="[URL_IMAGEN_GALERIA_4]" class="glightbox">
+									<img src="[URL_IMAGEN_GALERIA_4]" alt="[NOMBRE_PROYECTO] - Vista 4" class="img-fluid rounded">
+								</a>
+							</div>
+
+							<!-- AGREGAR MÁS IMÁGENES: Copiar y pegar el bloque anterior -->
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Barra lateral: Información técnica -->
+				<div class="col-lg-4">
+					<div class="sidebar sticky-top" style="top: 100px;">
+
+						<!-- Ficha técnica -->
+						<div class="card mb-4">
+							<div class="card-body">
+								<h4 class="card-title mb-4">Ficha Técnica</h4>
+
+								<ul class="list-unstyled project-specs">
+									<li class="mb-3">
+										<strong>Categoría:</strong><br>
+										<span class="text-muted">[CATEGORIA]</span>
+										<!-- Opciones: Comercial, Edificios, Institucional, Vivienda -->
+									</li>
+									<li class="mb-3">
+										<strong>Ubicación:</strong><br>
+										<span class="text-muted">[UBICACION_COMPLETA]</span>
+									</li>
+									<li class="mb-3">
+										<strong>Año:</strong><br>
+										<span class="text-muted">[ANIO]</span>
+									</li>
+									<li class="mb-3">
+										<strong>Superficie:</strong><br>
+										<span class="text-muted">[SUPERFICIE]</span>
+									</li>
+									<li class="mb-3">
+										<strong>Estado:</strong><br>
+										<span class="text-muted">[ESTADO]</span>
+										<!-- Opciones: Proyecto, En Construcción, Finalizado -->
+									</li>
+									<li class="mb-3">
+										<strong>Cliente:</strong><br>
+										<span class="text-muted">[CLIENTE_O_PRIVADO]</span>
+										<!-- Usar "Privado" si no se puede revelar -->
+									</li>
+								</ul>
+
+								<!-- Botón de contacto -->
+								<a href="contact.html" class="btn btn-primary w-100 mt-3">
+									Consultá por tu proyecto
+								</a>
+							</div>
+						</div>
+
+						<!-- Servicios utilizados -->
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title mb-3">Servicios Aplicados</h5>
+								<ul class="list-unstyled">
+									<!-- Marcar con ✓ los servicios utilizados -->
+									<li>✓ Diseño Arquitectónico</li>
+									<li>✓ Modelado BIM</li>
+									<li>✓ Documentación Técnica</li>
+									<li>✓ Dirección de Obra</li>
+									<!-- Agregar o quitar según corresponda -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ============ PROYECTOS RELACIONADOS (OPCIONAL) ============ -->
+	<div class="section bg-light">
+		<div class="container">
+			<h3 class="mb-4 text-center">Proyectos Relacionados</h3>
+			<div class="row">
+				<!-- Aquí copiar 2-3 tarjetas de otros proyectos similares -->
+			</div>
+		</div>
+	</div>
+
+	<!-- ============ FOOTER (COPIAR DE CUALQUIER PÁGINA) ============ -->
+	<footer class="site-footer bg-light">
+		<div class="container">
+			<div class="row pt-5 pb-4">
+				<div class="col-lg-4 col-md-6 mb-4">
+					<h5 class="mb-3 font-weight-bold">Messad Estudio</h5>
+					<p class="text-muted">
+						Estudio de arquitectura en Santiago del Estero especializado en diseño residencial,
+						comercial y proyectos BIM.
+					</p>
+					<a href="solicitar-analisis.html" class="btn btn-sm btn-primary mt-2">
+						Análisis Normativo Gratis
+					</a>
+				</div>
+				<div class="col-lg-2 col-md-6 mb-4">
+					<h6 class="mb-3 font-weight-bold">Enlaces</h6>
+					<ul class="list-unstyled footer-links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="projects.html">Proyectos</a></li>
+						<li><a href="services.html">Servicios</a></li>
+						<li><a href="contact.html">Contacto</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/glightbox.min.js"></script>
+	<script>
+		// Inicializar animaciones
+		AOS.init();
+
+		// Inicializar lightbox para galería
+		const lightbox = GLightbox({
+			selector: '.glightbox'
+		});
+	</script>
+</body>
+</html>
