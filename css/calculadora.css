@@ -663,4 +663,9 @@ html body .site-footer .contact-info .icon-phone {
     color: #fc5404 !important;
 }
 
-/* Browser cache buster comment - v1.0.2 */
+/* Separador visual entre sección blanca y footer gris */
+html body .site-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Browser cache buster comment - v1.0.3 */

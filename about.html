@@ -37,9 +37,12 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-	<!-- Critical CSS - Async loaded to prevent render blocking -->
+	<!-- Critical CSS - Loaded synchronously -->
 	<link rel="preload" href="css/style.css?v=20251105" as="style">
 	<link rel="stylesheet" href="css/style.css?v=20251105">
+
+	<!-- Micro-interactions CSS - CRITICAL para footer, cargar sincrónicamente -->
+	<link rel="stylesheet" href="css/micro-interactions.css?v=20251105b">
 
 	<!-- Deferred CSS for performance -->
 	<link rel="stylesheet" href="fonts/icomoon/style.css" media="print" onload="this.media='all'">
@@ -48,7 +51,6 @@
 	<link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/mobile-menu.css" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="css/micro-interactions.css?v=20251105" media="print" onload="this.media='all'">
 	<!-- Phase 2 UX Enhancements -->
 	<link rel="stylesheet" href="css/loading-states.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/whatsapp-widget.css" media="print" onload="this.media='all'">
@@ -68,16 +70,36 @@
 	</noscript>
 
 	<style>
-		/* Forzar background light grey en footer */
-		footer.site-footer,
-		footer.site-footer.bg-light,
-		.site-footer,
-		.site-footer.bg-light {
+		/* Forzar background light grey en footer - MÁXIMA ESPECIFICIDAD */
+		html body footer.site-footer,
+		html body footer.site-footer.bg-light,
+		html body .site-footer,
+		html body .site-footer.bg-light {
 			background-color: #f8f9fa !important;
 			background: #f8f9fa !important;
 		}
-		body .site-footer {
+		html body .site-footer {
 			background-color: #f8f9fa !important;
+		}
+		/* Sobrescribir cualquier clase bg-* de Bootstrap */
+		html body footer.site-footer[class*="bg-"] {
+			background-color: #f8f9fa !important;
+		}
+		/* FORZAR background en TODOS los elementos dentro del footer */
+		html body .site-footer *,
+		html body .site-footer .container,
+		html body .site-footer .row,
+		html body .site-footer div {
+			background-color: transparent !important;
+		}
+		/* Forzar que el footer y solo el footer tenga el gris */
+		html body .site-footer::before,
+		html body .site-footer::after {
+			display: none !important;
+		}
+		/* Separador visual entre sección blanca y footer gris */
+		html body .site-footer {
+			border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
 		}
 		/* Forzar texto oscuro visible en footer */
 		.site-footer,
@@ -558,7 +580,7 @@
 	</div>
 
 	<!-- Achievements Section (Reemplaza testimonios ficticios) -->
-	<div class="section achievements-section bg-light">
+	<div class="section achievements-section bg-white">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-lg-8 mx-auto text-center">
@@ -654,7 +676,7 @@
 
 
 
-	<footer class="site-footer bg-light">
+	<footer class="site-footer bg-light" style="background-color: #f8f9fa !important;">
 		<div class="container">
 			<div class="row pt-5 pb-4">
 
@@ -880,5 +902,6 @@
 	    });
 	  });
 	</script>
+<!-- VERSION: 2025-11-05 22:00 - Sección achievements cambiada a blanco - Footer fix con estilo inline -->
 </body>
 </html>
