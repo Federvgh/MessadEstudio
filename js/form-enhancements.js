@@ -312,11 +312,13 @@ class NotificationModal {
                             <p class="text-muted mb-4" id="successMessage">
                                 Te enviaremos el análisis normativo de tu lote a tu email en las próximas 24 horas.
                             </p>
-                            <div class="alert alert-info">
+                            <div class="alert alert-info mb-3">
                                 <strong>📧 Revisá tu bandeja de entrada</strong><br>
                                 <small>Si no lo ves, chequeá spam/correo no deseado</small>
                             </div>
-                            <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal">Entendido</button>
+                            <div class="alert alert-success">
+                                <small><strong>✅ Esta ventana se cerrará automáticamente en 3 segundos...</strong></small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -373,43 +375,22 @@ class NotificationModal {
         }
         this.successModal.show();
 
-        // Agregar evento al botón "Entendido" para cerrar y redirigir
-        const entendidoBtn = document.querySelector('#successModal [data-bs-dismiss="modal"]');
-        if (entendidoBtn) {
-            // Remover event listeners anteriores
-            entendidoBtn.replaceWith(entendidoBtn.cloneNode(true));
-            const newBtn = document.querySelector('#successModal [data-bs-dismiss="modal"]');
-
-            newBtn.addEventListener('click', () => {
-                // Forzar cierre del modal
-                this.successModal.hide();
-
-                // Limpiar backdrops
-                setTimeout(() => {
-                    const backdrops = document.querySelectorAll('.modal-backdrop');
-                    backdrops.forEach(backdrop => backdrop.remove());
-                    document.body.classList.remove('modal-open');
-                    document.body.style.removeProperty('padding-right');
-                    document.body.style.removeProperty('overflow');
-
-                    // Redirigir al home después de cerrar
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 300);
-                }, 200);
-            });
-        }
-
         // Auto-redirect: Redirigir al home en 3 segundos automáticamente
         setTimeout(() => {
-            console.log('⚠️ Auto-redirect activado - redirigiendo al home...');
+            console.log('✅ Redirigiendo al home en 3 segundos...');
             this.successModal.hide();
-            const backdrops = document.querySelectorAll('.modal-backdrop');
-            backdrops.forEach(backdrop => backdrop.remove());
-            document.body.classList.remove('modal-open');
-            document.body.style.removeProperty('padding-right');
-            document.body.style.removeProperty('overflow');
-            window.location.href = 'index.html';
+
+            // Limpiar backdrops y estilos de modal
+            setTimeout(() => {
+                const backdrops = document.querySelectorAll('.modal-backdrop');
+                backdrops.forEach(backdrop => backdrop.remove());
+                document.body.classList.remove('modal-open');
+                document.body.style.removeProperty('padding-right');
+                document.body.style.removeProperty('overflow');
+
+                // Redirigir al home
+                window.location.href = 'index.html';
+            }, 300);
         }, 3000);
     }
 
