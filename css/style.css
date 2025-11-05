@@ -11273,6 +11273,8 @@ a {
   transform: scale(1);
   width: 100%;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 .single-portfolio > a:hover:before {
   /* En hover, oscurece más el overlay */
