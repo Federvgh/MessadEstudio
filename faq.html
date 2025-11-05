@@ -21,7 +21,11 @@
 	<meta property="twitter:description" content="Preguntas frecuentes sobre arquitectura, normativas de Santiago del Estero y servicios de Messad Estudio">
 	<meta property="twitter:image" content="https://messadestudio.com/images/02_Photo-12.webp">
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<!-- Performance optimizations -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" as="image" href="images/02_Photo-12.webp" type="image/webp">
+
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 	<!-- Icon Fonts -->
@@ -270,14 +274,13 @@
 	</nav>
 
 	<!-- Hero -->
-	<div class="hero-2 overlay" style="background: linear-gradient(135deg, #2C3639 0%, #3a4245 100%); padding: 100px 0 60px; color: white;">
-		<div class="container text-center">
-			<h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 16px;">
-				Preguntas Frecuentes
-			</h1>
-			<p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">
-				Encuentra respuestas a las preguntas más comunes sobre nuestros servicios, normativas y procesos
-			</p>
+	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-5 mx-auto">
+					<h1 data-aos="fade-up" data-aos-delay="100" class="mb-5 text-center"><span>Preguntas Frecuentes</span></h1>
+				</div>
+			</div>
 		</div>
 	</div>
 
