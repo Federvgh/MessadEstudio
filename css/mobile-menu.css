@@ -14,6 +14,16 @@
     color: #ffffff !important;
 }
 
+/* Hide background of close button */
+.site-mobile-menu-close > button,
+.site-mobile-menu-close > span {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.site-mobile-menu-close > button:before,
+.site-mobile-menu-close > button:after,
 .site-mobile-menu-close > span:before,
 .site-mobile-menu-close > span:after {
     background: rgba(255, 255, 255, 0.8) !important;
