@@ -15,17 +15,26 @@
 }
 
 /* Hide background of close button */
+.site-mobile-menu-close,
 .site-mobile-menu-close > button,
-.site-mobile-menu-close > span {
+.site-mobile-menu-close > span,
+.site-mobile-menu-close .icofont-close,
+.site-mobile-menu-close button.icofont-close,
+button.icofont-close.js-menu-toggle {
     background: transparent !important;
+    background-color: transparent !important;
     border: none !important;
     padding: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .site-mobile-menu-close > button:before,
 .site-mobile-menu-close > button:after,
 .site-mobile-menu-close > span:before,
-.site-mobile-menu-close > span:after {
+.site-mobile-menu-close > span:after,
+.site-mobile-menu-close .icofont-close:before,
+.site-mobile-menu-close .icofont-close:after {
     background: rgba(255, 255, 255, 0.8) !important;
 }
 
