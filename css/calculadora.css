@@ -101,7 +101,7 @@ body {
 
 .calculator-form .form-label {
     font-weight: 600;
-    color: var(--bs-primary);
+    color: #212529 !important;
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
@@ -170,6 +170,32 @@ body {
 .calculator-form .btn-lg {
     padding: 12px 30px;
     font-size: 1.05rem;
+}
+
+/* Submit button - FORCE ORANGE COLOR */
+.calculator-form .btn-primary,
+.calculator-form #submit-btn,
+#submit-btn.btn-primary {
+    background-color: #fc5404 !important;
+    border-color: #fc5404 !important;
+    color: white !important;
+}
+
+.calculator-form .btn-primary:hover,
+.calculator-form #submit-btn:hover,
+#submit-btn.btn-primary:hover {
+    background-color: #e04d03 !important;
+    border-color: #e04d03 !important;
+    color: white !important;
+}
+
+.calculator-form .btn-primary:active,
+.calculator-form .btn-primary:focus,
+#submit-btn:active,
+#submit-btn:focus {
+    background-color: #d64703 !important;
+    border-color: #d64703 !important;
+    box-shadow: 0 0 0 0.2rem rgba(252, 84, 4, 0.25) !important;
 }
 
 /* Results Grid */
@@ -453,7 +479,7 @@ body {
 
 /* Títulos de secciones */
 #lead-form h3 {
-    color: #16697a !important;
+    color: #212529 !important;
     font-family: 'Playfair Display', serif !important;
 }
 
@@ -463,14 +489,14 @@ body {
 #analisis-form label,
 label[for],
 label[style*="color"] {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* Labels con atributo style específico */
 label[style*="#D4876E"],
 label[style*="#2C3639"],
 label[style*="color: #"] {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* Iconos y spans dentro de labels */
@@ -486,7 +512,7 @@ label .icon-phone {
 [style*="color: #2C3639"],
 [style*="color:#D4876E"],
 [style*="color:#2C3639"] {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* ULTRA-SPECIFIC label overrides by ID */
@@ -501,48 +527,48 @@ label .icon-phone {
 #analisis-form label[for="comentarios"],
 #lead-form label,
 #lead-form .form-label {
-    color: #16697a !important;
+    color: #212529 !important;
     font-weight: 600 !important;
 }
 
 /* Botón submit principal */
 #submit-btn {
-    background-color: #007bff !important;
-    background-image: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    background-color: #fc5404 !important;
+    background-image: linear-gradient(135deg, #fc5404 0%, #e04d03 100%) !important;
     border: none !important;
     transition: all 0.3s ease !important;
 }
 
 #submit-btn:hover {
-    background-color: #0056b3 !important;
+    background-color: #e04d03 !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3) !important;
+    box-shadow: 0 8px 20px rgba(252, 84, 4, 0.3) !important;
 }
 
 /* Display de superficie calculada */
 #superficie-display {
-    background-color: #e7f3ff !important;
-    border-left: 4px solid #007bff !important;
+    background-color: #fff5f0 !important;
+    border-left: 4px solid #fc5404 !important;
 }
 
 #superficie-calculada {
-    color: #007bff !important;
+    color: #fc5404 !important;
 }
 
 /* Info boxes del sidebar */
 .info-box h4 {
-    color: #16697a !important;
+    color: #212529 !important;
     font-family: 'Playfair Display', serif !important;
 }
 
 /* Check marks en lista de beneficios */
 .info-box li span {
-    color: #007bff !important;
+    color: #fc5404 !important;
 }
 
 /* Info box premium (naranja) - mantener pero ajustar al accent warm del sitio */
 .info-box[style*="linear-gradient"] {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    background: linear-gradient(135deg, #fc5404 0%, #e04d03 100%) !important;
 }
 
 /* Mensaje de éxito - usar colores del sitio */
@@ -551,27 +577,27 @@ label .icon-phone {
 }
 
 #success-message .alert {
-    background-color: #e7f3ff !important;
-    border-left: 4px solid #007bff !important;
+    background-color: #fff5f0 !important;
+    border-left: 4px solid #fc5404 !important;
 }
 
 #success-message .alert h5 {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* Links de WhatsApp en mensaje de éxito */
 #success-message a[href*="wa.me"] {
-    color: #007bff !important;
+    color: #fc5404 !important;
 }
 
 /* Botón secundario en mensaje de éxito */
 #success-message .btn[style*="#2C3639"] {
-    background-color: #16697a !important;
-    border-color: #16697a !important;
+    background-color: #fc5404 !important;
+    border-color: #fc5404 !important;
 }
 
 #success-message .btn[style*="#2C3639"]:hover {
-    background-color: #0d4f5c !important;
+    background-color: #e04d03 !important;
 }
 
 /* ============================================
@@ -592,7 +618,7 @@ body label[for="email"],
 body label[for="whatsapp"],
 body label[for="nombre"],
 body label[for="comentarios"] {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* Force removal of any potential inline or dynamic color styles */
@@ -613,11 +639,11 @@ body .calculator-hero h1 {
 }
 
 body #lead-form h3 {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 body .info-box h4 {
-    color: #16697a !important;
+    color: #212529 !important;
 }
 
 /* ============================================
@@ -656,4 +682,4 @@ html body .site-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Browser cache buster comment - v1.0.3 */
+/* Browser cache buster comment - v1.0.4 - Color naranja forzado en botones */
