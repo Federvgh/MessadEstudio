@@ -17,7 +17,7 @@
 
         setTimeout(function(){
             var hasChildrens = document.querySelector('.site-mobile-menu').querySelectorAll('.has-children');
-            
+
             // Handle login button in cloned menu
             var clonedLoginBtn = document.querySelector('.site-mobile-menu #loginBtn');
             if (clonedLoginBtn) {
@@ -38,27 +38,27 @@
                     }
                 });
             }
-            
+
             hasChildrens.forEach(hasChild => {
                 // Agregar la flecha
                 var arrow = document.createElement('span');
                 arrow.className = 'arrow-collapse';
                 hasChild.insertBefore(arrow, hasChild.querySelector('a').nextSibling);
-                
+
                 // Manejar el click en la flecha
                 arrow.addEventListener('click', function(e) {
                     e.preventDefault();
-                    var dropdown = hasChild.querySelector('.dropdown');
+                    var dropdown = hasChild.querySelector(':scope > .dropdown');
                     if (dropdown.style.display === 'block') {
                         dropdown.style.display = 'none';
                         arrow.classList.remove('active');
                     } else {
                         // Cerrar otros submenús del mismo nivel
-                        var siblings = hasChild.parentNode.querySelectorAll('.has-children');
+                        var siblings = hasChild.parentNode.querySelectorAll(':scope > .has-children');
                         siblings.forEach(sibling => {
                             if (sibling !== hasChild) {
-                                var siblingDropdown = sibling.querySelector('.dropdown');
-                                var siblingArrow = sibling.querySelector('.arrow-collapse');
+                                var siblingDropdown = sibling.querySelector(':scope > .dropdown');
+                                var siblingArrow = sibling.querySelector(':scope > .arrow-collapse');
                                 if (siblingDropdown) {
                                     siblingDropdown.style.display = 'none';
                                     if (siblingArrow) siblingArrow.classList.remove('active');
@@ -71,10 +71,11 @@
                 });
 
                 // Prevenir que el click en el enlace abra el submenú solo si es un anchor (#)
-                var link = hasChild.querySelector('a');
+                var link = hasChild.querySelector(':scope > a');
                 link.addEventListener('click', function(e) {
                     var href = link.getAttribute('href');
-                    if (hasChild.querySelector('.dropdown') && (href === '#' || href === '' || !href)) {
+                    var dropdown = hasChild.querySelector(':scope > .dropdown');
+                    if (dropdown && (href === '#' || href === '' || !href)) {
                         e.preventDefault();
                     }
                 });
