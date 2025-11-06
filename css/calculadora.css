@@ -1,27 +1,15 @@
 /* Calculadora Normativa - Estilos Específicos */
-/* VERSION: 2025010402 - CACHE BUSTER */
+/* VERSION: 2025110501 - Unificado con paleta del sitio */
 
 /* ============================================
-   OVERRIDE CSS VARIABLES - CRITICAL FIX
-   style.css sets --bs-primary to #fc5404 (orange)
-   We need to override it for this page ONLY
+   MANTENER COLOR PRIMARIO NARANJA DEL SITIO
+   style.css ya tiene --bs-primary: #fc5404
+   No sobrescribir para mantener consistencia
    ============================================ */
-:root {
-    --bs-primary: #16697a !important;
-    --bs-primary-rgb: 22, 105, 122 !important;
-}
 
-/* TEST: Temporary background to confirm CSS is loading */
+/* Background sutil para la sección del formulario */
 body {
-    background: #f0f0f0 !important;
-}
-
-/* Override inline styles para consistencia con el resto del sitio */
-.calculator-hero {
-    /* Sobrescribir background inline con colores del sitio */
-    background: linear-gradient(135deg, #16697a 0%, #0d4f5c 100%) !important;
-    position: relative;
-    overflow: hidden;
+    background: #f8f9fa;
 }
 
 .calculator-hero::before {
@@ -101,8 +89,8 @@ body {
 
 .calculator-form .form-control:focus,
 .calculator-form .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+    border-color: #fc5404;
+    box-shadow: 0 0 0 0.2rem rgba(252, 84, 4, 0.15);
     outline: none;
 }
 
@@ -126,8 +114,8 @@ body {
 
 /* Superficie Display */
 .superficie-auto {
-    background-color: #e7f3ff;
-    border-left: 4px solid #007bff;
+    background-color: #fff5f0;
+    border-left: 4px solid #fc5404;
     padding: 15px;
     border-radius: 8px;
     margin-top: 20px;
