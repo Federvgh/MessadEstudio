@@ -45,6 +45,8 @@
 	<link rel="stylesheet" href="css/glightbox.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/style.min.css?v=20251105" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="css/micro-interactions.css" media="print" onload="this.media='all'">
+	<!-- Accessibility Enhancements -->
+	<link rel="stylesheet" href="css/accessibility.css" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="fonts/icomoon/style.min.css">
 		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -53,12 +55,16 @@
 		<link rel="stylesheet" href="css/glightbox.min.css">
 		<link rel="stylesheet" href="css/style.min.css?v=20251105">
 		<link rel="stylesheet" href="css/micro-interactions.css">
+		<link rel="stylesheet" href="css/accessibility.css">
 	</noscript>
 	
 
 	<title>Messad Estudio</title>
 </head>
 <body>
+
+	<!-- Skip to content link for accessibility -->
+	<a href="#main-content" class="skip-to-main">Saltar al contenido principal</a>
 
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -254,7 +260,7 @@
 
 
 
-	<div class="section sec-5">
+	<div class="section sec-5" id="main-content">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-lg-" data-aos="fade-up" 6">
@@ -467,6 +473,8 @@
 	<script src="js/navbar.min.js"></script>
 	<script src="js/counter.min.js"></script>
 	<script src="js/custom.min.js"></script>
+	<!-- Accessibility Enhancements -->
+	<script src="js/accessibility.js" defer></script>
 	<!-- Simple Authentication Script -->
 	<script src="js/config.min.js"></script>
 <script src="js/simple-auth.min.js"></script>

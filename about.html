@@ -56,6 +56,8 @@
 	<link rel="stylesheet" href="css/whatsapp-widget.css" media="print" onload="this.media='all'">
 	<!-- Phase 3 Content Components -->
 	<link rel="stylesheet" href="css/content-components.css" media="print" onload="this.media='all'">
+	<!-- Accessibility Enhancements -->
+	<link rel="stylesheet" href="css/accessibility.css" media="print" onload="this.media='all'">
 	<noscript>
 		<link rel="stylesheet" href="fonts/icomoon/style.min.css">
 		<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -67,6 +69,7 @@
 		<link rel="stylesheet" href="css/loading-states.css">
 		<link rel="stylesheet" href="css/whatsapp-widget.css">
 		<link rel="stylesheet" href="css/content-components.css">
+		<link rel="stylesheet" href="css/accessibility.css">
 	</noscript>
 
 	<style>
@@ -149,6 +152,9 @@
 	<link rel="preload" as="image" href="images/02_Photo-12.webp" type="image/webp">
 </head>
 <body>
+
+	<!-- Skip to content link for accessibility -->
+	<a href="#main-content" class="skip-to-main">Saltar al contenido principal</a>
 
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -316,7 +322,7 @@
 		</div>
 	</nav>
 
-	<div class="hero-2 overlay" style="background-image: url('images/02_Photo-12.webp');">
+	<div class="hero-2 overlay" id="main-content" style="background-image: url('images/02_Photo-12.webp');">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-5 mx-auto ">
@@ -786,6 +792,9 @@
 
 	<!-- Phase 3 Content Components -->
 	<script src="js/testimonials-carousel.min.js" defer></script>
+
+	<!-- Accessibility Enhancements -->
+	<script src="js/accessibility.js" defer></script>
 
 	<!-- Simple Authentication Script -->
 	<script src="js/config.min.js" defer></script>
