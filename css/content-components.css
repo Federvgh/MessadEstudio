@@ -700,6 +700,7 @@
     margin-top: 40px;
 }
 
+/* Stats para fondo oscuro (hero section) */
 .stat-item {
     text-align: center;
     padding: 24px;
@@ -707,16 +708,52 @@
     border-radius: 12px;
 }
 
-.stat-number {
+.stat-item .stat-number {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 8px;
     color: #fff;
 }
 
-.stat-label {
+.stat-item .stat-label {
     font-size: 14px;
     opacity: 0.9;
+    color: #fff;
+}
+
+/* Stats Grid para fondo claro (historia section) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 32px 24px;
+    background: rgba(173, 216, 230, 0.3); /* Celeste claro translúcido */
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    background: rgba(173, 216, 230, 0.4);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #2C3639; /* Gris oscuro para contraste */
+    line-height: 1;
+}
+
+.stat-card .stat-label {
+    font-size: 14px;
+    color: #5a6c7d; /* Gris azulado */
+    font-weight: 500;
 }
 
 .team-section {
@@ -857,8 +894,23 @@
         gap: 20px;
     }
 
-    .stat-number {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .stat-card {
+        padding: 24px 16px;
+    }
+
+    .stat-card .stat-number,
+    .stat-item .stat-number {
         font-size: 36px;
+    }
+
+    .stat-card .stat-label,
+    .stat-item .stat-label {
+        font-size: 13px;
     }
 
     .team-grid {
