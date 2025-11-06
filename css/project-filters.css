@@ -136,6 +136,23 @@
 /* NOTA: Los estilos de hover de .single-portfolio están en style.css
    No sobrescribir aquí para mantener consistencia en todo el sitio */
 
+/* Fix: Asegurar que las imágenes se muestren correctamente */
+.single-portfolio img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Mantener efecto hover consistente con el home */
+.single-portfolio {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.single-portfolio:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
 /* ========================================
    ESTADOS VACÍOS
    ======================================== */
