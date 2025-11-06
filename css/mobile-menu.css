@@ -2,6 +2,15 @@
     background: rgba(28, 28, 28, 0.95) !important;
 }
 
+/* Force transparent background on mobile menu header to prevent white square */
+.site-mobile-menu-header {
+    background: transparent !important;
+}
+
+.site-mobile-menu-header * {
+    background: transparent !important;
+}
+
 .site-mobile-menu .site-nav-wrap a {
     color: rgba(255, 255, 255, 0.8) !important;
 }
