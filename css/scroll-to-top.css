@@ -1,0 +1,118 @@
+/**
+ * Scroll to Top Button - Messad Estudio
+ * Botón para volver arriba con animación suave
+ */
+
+/* ========================================
+   BOTÓN SCROLL TO TOP
+   ======================================== */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #fc5404 0%, #e04d03 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(252, 84, 4, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+/* Estado visible */
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover effect */
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, #e04d03 0%, #d04602 100%);
+    box-shadow: 0 6px 20px rgba(252, 84, 4, 0.4);
+    transform: translateY(-4px);
+}
+
+/* Active/click effect */
+.scroll-to-top:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 84, 4, 0.3);
+}
+
+/* Focus visible for accessibility */
+.scroll-to-top:focus-visible {
+    outline: 3px solid rgba(252, 84, 4, 0.5);
+    outline-offset: 3px;
+}
+
+/* Icono de flecha */
+.scroll-to-top::before {
+    content: '↑';
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 95px;
+        right: 20px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 90px;
+        right: 15px;
+        font-size: 18px;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
+/* Reducir animaciones para usuarios con preferencia */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-to-top {
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transform: none !important;
+    }
+
+    .scroll-to-top:hover {
+        transform: none !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .scroll-to-top {
+        border: 2px solid white;
+    }
+}
+
+/* Dark mode (si se implementa en el futuro) */
+@media (prefers-color-scheme: dark) {
+    .scroll-to-top {
+        box-shadow: 0 4px 12px rgba(252, 84, 4, 0.5);
+    }
+}
