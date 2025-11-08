@@ -772,15 +772,26 @@
 		const superficie = frente && profundidad ? parseFloat(frente) * parseFloat(profundidad) : null;
 
 		// Obtener dirección y agregar ciudad/provincia/país si no está incluida
+		const ciudad = document.getElementById('ciudad').value;
 		let direccion = document.getElementById('direccion').value.trim();
-		if (!direccion.toLowerCase().includes('santiago')) {
-			direccion = direccion + ', Santiago del Estero, Santiago del Estero, Argentina';
-		} else if (!direccion.toLowerCase().includes('argentina')) {
-			direccion = direccion + ', Santiago del Estero, Argentina';
+
+		// Agregar ciudad completa según la selección
+		if (ciudad === 'santiago') {
+			if (!direccion.toLowerCase().includes('santiago')) {
+				direccion = direccion + ', Santiago del Estero, Santiago del Estero, Argentina';
+			} else if (!direccion.toLowerCase().includes('argentina')) {
+				direccion = direccion + ', Santiago del Estero, Argentina';
+			}
+		} else if (ciudad === 'cordoba') {
+			if (!direccion.toLowerCase().includes('córdoba') && !direccion.toLowerCase().includes('cordoba')) {
+				direccion = direccion + ', Córdoba, Córdoba, Argentina';
+			} else if (!direccion.toLowerCase().includes('argentina')) {
+				direccion = direccion + ', Córdoba, Argentina';
+			}
 		}
 
 		const formData = {
-			ciudad: document.getElementById('ciudad').value, // NUEVO: ciudad seleccionada
+			ciudad: ciudad,
 			direccion: direccion,
 			entreCalles: document.getElementById('entre_calles').value,
 			frente: frente ? parseFloat(frente) : null,
