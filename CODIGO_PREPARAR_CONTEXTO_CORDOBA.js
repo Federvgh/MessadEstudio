@@ -52,11 +52,10 @@ console.log('📍 Dirección normalizada:', direccion_normalizada);
 // ============================================================================
 // 3. PROCESAR DATOS DE IDECOR (Catastro Oficial Córdoba)
 // ============================================================================
-// NOTA: Temporalmente deshabilitado - API IDECOR requiere investigación
-// Los datos vienen vacíos desde "Formatear Coordenadas Georef"
+// Leer datos directamente del nodo "Consultar IDECOR WFS"
 // ============================================================================
 
-const idecorResponse = georefData.idecor_response || { features: [] };
+const idecorResponse = $('Consultar IDECOR WFS').first().json;
 
 let barrioCatastral = 'No disponible';
 let superficieCatastral = 'No disponible';
@@ -64,25 +63,44 @@ let padronCatastral = 'No disponible';
 let nomenclatura_catastral = 'No disponible';
 let idecorEncontrado = false;
 
+// Log completo de respuesta IDECOR para debugging
+console.log('🔍 Respuesta IDECOR completa:', JSON.stringify(idecorResponse, null, 2));
+
 if (idecorResponse.features && idecorResponse.features.length > 0) {
   const feature = idecorResponse.features[0];
   const props = feature.properties;
 
-  // Campos típicos de IDECOR (ajustar según respuesta real)
-  barrioCatastral = props.barrio || props.nombre_barrio || props.BARRIO || 'No disponible';
-  superficieCatastral = props.superficie || props.sup_hectareas || props.SUPERFICIE || 'No disponible';
-  padronCatastral = props.nomenclatura || props.padron || props.NOMENCLATURA || 'No disponible';
-  nomenclatura_catastral = props.nomenclatura_catastral || props.NOMENCLAT || props.nomenclatura || 'No disponible';
+  // Log de properties para ver campos disponibles
+  console.log('📋 Properties disponibles en IDECOR:', Object.keys(props));
+
+  // Campos de IDECOR (nombres pueden variar - intentar múltiples opciones)
+  // Nomenclatura catastral
+  nomenclatura_catastral = props.Nomenclatura || props.nomenclatura || props.NOMENCLATURA ||
+                          props.nomenclatura_catastral || props.NOMENCLAT || 'No disponible';
+
+  // Superficie (puede venir en m2 o hectáreas)
+  superficieCatastral = props.Superficie_Tierra_Urbana || props.superficie || props.SUPERFICIE ||
+                       props.sup_terreno || props.sup_hectareas || 'No disponible';
+
+  // Padrón / Número de cuenta
+  padronCatastral = props.Nro_Cuenta || props.nro_cuenta || props.NRO_CUENTA ||
+                   props.padron || props.cuenta || 'No disponible';
+
+  // Barrio
+  barrioCatastral = props.Barrio || props.barrio || props.BARRIO ||
+                   props.nombre_barrio || props.NOMBRE_BARRIO || 'No disponible';
+
   idecorEncontrado = true;
 
-  console.log('🏛️ Datos IDECOR encontrados:', {
-    barrio: barrioCatastral,
+  console.log('✅ Datos IDECOR procesados:', {
+    nomenclatura: nomenclatura_catastral,
     superficie: superficieCatastral,
     padron: padronCatastral,
-    nomenclatura: nomenclatura_catastral
+    barrio: barrioCatastral
   });
 } else {
-  console.warn('⚠️ No se encontraron datos catastrales en IDECOR (servicio temporalmente deshabilitado)');
+  console.warn('⚠️ No se encontraron parcelas en IDECOR para las coordenadas especificadas');
+  console.log('📍 Coordenadas consultadas:', { lat, lon });
 }
 
 // ============================================================================
