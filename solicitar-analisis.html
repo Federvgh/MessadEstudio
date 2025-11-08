@@ -257,18 +257,31 @@
 		<div class="container">
 			<div class="row">
 				<!-- Formulario -->
-				<div class="col-lg-7 mx-auto">
+				<div class="col-lg-7">
 					<div id="lead-form" class="calculator-form" style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
 
 						<h3 class="mb-4">📋 Datos de tu Lote</h3>
 
 						<form id="analisis-form" onsubmit="handleSubmit(event)">
 
+							<!-- Selector de Ciudad -->
+							<div class="mb-4">
+								<label for="ciudad" class="form-label">🏙️ Ciudad *</label>
+								<select id="ciudad" name="ciudad" class="form-control form-control-lg" required>
+									<option value="">Seleccioná tu ciudad...</option>
+									<option value="santiago">Santiago del Estero</option>
+									<option value="cordoba">Córdoba Capital</option>
+									<option value="rosario" disabled style="color: #999;">Rosario (próximamente)</option>
+									<option value="mendoza" disabled style="color: #999;">Mendoza (próximamente)</option>
+								</select>
+								<small class="text-muted">Seleccioná la ciudad donde está ubicado tu lote</small>
+							</div>
+
 							<!-- Dirección -->
 							<div class="mb-4">
 								<label for="direccion" class="form-label">📍 Dirección del lote *</label>
 								<input type="text" class="form-control form-control-lg" id="direccion" name="direccion" placeholder="Ej: Belgrano 850" required autocomplete="street-address">
-								<small class="text-muted">Solo calle y número (agregaremos Santiago del Estero automáticamente)</small>
+								<small class="text-muted" id="direccion-hint">Primero seleccioná una ciudad</small>
 							</div>
 
 							<!-- Entre calles -->
@@ -277,7 +290,7 @@
 								<input type="text" class="form-control form-control-lg" id="entre_calles" name="entre_calles" placeholder="Ej: Entre Tucumán y Santiago">
 							</div>
 
-							<hr class="my-4">
+											<hr class="my-4">
 
 							<h3 class="mb-3">📏 Dimensiones del Lote (opcional)</h3>
 							<p class="text-muted mb-4" style="font-size: 0.95rem;">
@@ -395,52 +408,42 @@
 
 				</div>
 
-				<!-- Sidebar Info -->
-				<div class="col-lg-4 mt-5 mt-lg-0">
-					<div class="info-box" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 20px;">
-						<h4 style="color: #2C3639; font-weight: 600; margin-bottom: 20px;">
-							✨ ¿Qué incluye el análisis?
-						</h4>
-						<ul style="list-style: none; padding-left: 0;">
-							<li style="margin-bottom: 15px;">
-								<span style="color: #fc5404; font-size: 1.3rem;">✓</span>
-								<strong>Zona normativa aplicable</strong><br>
-								<small class="text-muted">Según Digesto de SDE</small>
-							</li>
-							<li style="margin-bottom: 15px;">
-								<span style="color: #fc5404; font-size: 1.3rem;">✓</span>
-								<strong>Superficie construible</strong><br>
-								<small class="text-muted">FOS y FOT aplicables</small>
-							</li>
-							<li style="margin-bottom: 15px;">
-								<span style="color: #fc5404; font-size: 1.3rem;">✓</span>
-								<strong>Altura máxima permitida</strong><br>
-								<small class="text-muted">Cantidad de pisos posibles</small>
-							</li>
-							<li style="margin-bottom: 15px;">
-								<span style="color: #fc5404; font-size: 1.3rem;">✓</span>
-								<strong>Estimación de rentabilidad</strong><br>
-								<small class="text-muted">ROI aproximado del proyecto</small>
-							</li>
-							<li>
-								<span style="color: #fc5404; font-size: 1.3rem;">✓</span>
-								<strong>Recomendaciones iniciales</strong><br>
-								<small class="text-muted">Mejor uso del terreno</small>
-							</li>
-						</ul>
+				<!-- Sidebar: Mapa Preview -->
+				<div class="col-lg-5 mt-5 mt-lg-0">
+					<!-- Mapa Preview (se muestra cuando seleccionan ciudad e ingresan dirección) -->
+					<div id="mapa-container" style="display: none;">
+						<div style="background: white; border-radius: 15px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 100px;">
+							<h4 class="mb-3" style="color: #2C3639; font-weight: 700; font-size: 1.3rem;">
+								📍 Visualización del Lote
+							</h4>
+
+							<div id="mapa-preview" style="height: 400px; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); margin-bottom: 20px; border: 2px solid #e0e0e0; overflow: hidden;">
+								<!-- Google Maps se carga aquí dinámicamente -->
+							</div>
+
+							<!-- Info de la parcela detectada -->
+							<div id="info-parcela" class="alert alert-light" style="display: none; border-left: 4px solid #fc5404; background-color: #fff9f5; margin-bottom: 15px;">
+								<strong id="info-parcela-title" style="color: #2C3639; font-size: 0.95rem;">📊 Información:</strong>
+								<ul id="info-parcela-list" style="margin-bottom: 0; padding-left: 20px; margin-top: 10px; color: #555; font-size: 0.9rem;">
+									<!-- Se llena dinámicamente con JavaScript -->
+								</ul>
+							</div>
+
+							<div style="background-color: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 8px;">
+								<small style="color: #2e7d32; font-size: 0.85rem;">
+									<strong>💡 Tip:</strong> Arrastrá el marcador 📍 para ajustar la ubicación exacta.
+								</small>
+							</div>
+						</div>
 					</div>
 
-					<div class="info-box" style="background: linear-gradient(135deg, #fc5404 0%, #e04d03 100%); border-radius: 15px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); color: white;">
-						<h4 style="font-weight: 600; margin-bottom: 15px;">
-							🚀 ¿Querés el análisis completo?
-						</h4>
-						<p style="margin-bottom: 20px; opacity: 0.95;">
-							Incluye 15 páginas con 3 alternativas de proyecto, cálculos detallados de ROI y distribución óptima de unidades.
+					<!-- Mensaje cuando no hay ciudad seleccionada -->
+					<div id="mapa-placeholder" style="background: white; border-radius: 15px; padding: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; border: 2px dashed #e0e0e0;">
+						<div style="font-size: 4rem; margin-bottom: 15px; opacity: 0.3;">🗺️</div>
+						<h5 style="color: #999; font-weight: 600; margin-bottom: 10px;">Vista Previa del Lote</h5>
+						<p style="color: #aaa; font-size: 0.9rem; margin: 0;">
+							Seleccioná una ciudad e ingresá la dirección para ver la ubicación en el mapa
 						</p>
-						<div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 5px;">
-							$8,000
-						</div>
-						<small style="opacity: 0.9;">ARS - Entrega en 24hs</small>
 					</div>
 				</div>
 
@@ -659,6 +662,12 @@
 	<script src="js/config.min.js" defer></script>
 	<script src="js/simple-auth.min.js" defer></script>
 
+	<!-- Mapa Adaptativo (se carga primero, antes de Google Maps) -->
+	<script src="js/mapa-adaptativo.js"></script>
+
+	<!-- Google Maps API con callback (se carga DESPUÉS y llama a initGoogleMaps cuando está listo) -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNxmV9m0cein7H4pOj6Kakboj5c30v-ho&callback=initGoogleMaps&libraries=places" async defer></script>
+
 	<script>
 	// Simple Authentication Modal Logic
 	document.addEventListener('DOMContentLoaded', function() {
@@ -771,6 +780,7 @@
 		}
 
 		const formData = {
+			ciudad: document.getElementById('ciudad').value, // NUEVO: ciudad seleccionada
 			direccion: direccion,
 			entreCalles: document.getElementById('entre_calles').value,
 			frente: frente ? parseFloat(frente) : null,

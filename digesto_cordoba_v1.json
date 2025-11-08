@@ -1,0 +1,162 @@
+{
+  "version": "1.0",
+  "ciudad": "Córdoba Capital",
+  "provincia": "Córdoba",
+  "pais": "Argentina",
+  "normativa_principal": "Ordenanza 8256/2000 y modificatorias",
+  "fecha_actualizacion": "2025-01-07",
+  "fuentes": [
+    {
+      "nombre": "Ordenanza 8256",
+      "url": "https://servicios2.cordoba.gov.ar/docs/obrasprivadas/Ord%208256textoOrde.pdf",
+      "tipo": "Zonificación y Uso del Suelo"
+    },
+    {
+      "nombre": "Código de Edificación",
+      "url": "https://documentos.cordoba.gob.ar/MUNCBA/AreasGob/Desurb/CodigodeEdificacion.pdf",
+      "tipo": "Normativa técnica constructiva"
+    }
+  ],
+
+  "zonas": {
+    "A": {
+      "nombre": "Zona Residencial Especial",
+      "descripcion": "Zona de baja densidad con preservación de características urbanas",
+      "fos": 0.60,
+      "fot": 1.20,
+      "altura_maxima": 9.0,
+      "altura_minima": null,
+      "perfil": "R1",
+      "usos_permitidos": ["vivienda unifamiliar", "vivienda multifamiliar"],
+      "usos_prohibidos": ["industrial", "comercio mayorista"],
+      "retiros": {
+        "frente": 3.0,
+        "fondo": 3.0,
+        "lateral": 3.0
+      }
+    },
+    "B": {
+      "nombre": "Zona Residencial Media",
+      "descripcion": "Zona residencial de media densidad",
+      "fos": 0.70,
+      "fot": 2.10,
+      "altura_maxima": 12.0,
+      "altura_minima": null,
+      "perfil": "R2",
+      "usos_permitidos": ["vivienda", "comercio minorista", "oficinas"],
+      "usos_prohibidos": ["industrial"],
+      "retiros": {
+        "frente": 3.0,
+        "fondo": 3.0,
+        "lateral": 3.0
+      }
+    },
+    "C1": {
+      "nombre": "Zona Central 1",
+      "descripcion": "Zona central de alta densidad",
+      "fos": 1.0,
+      "fot": 4.0,
+      "altura_maxima": null,
+      "altura_minima": null,
+      "perfil": "C1",
+      "usos_permitidos": ["todos los usos urbanos"],
+      "usos_prohibidos": [],
+      "retiros": {
+        "frente": 0,
+        "fondo": 0,
+        "lateral": 0
+      },
+      "notas": "Altura libre según perfil urbano. Consultar caso por caso."
+    },
+    "TODO": "COMPLETAR CON TODAS LAS ZONAS DE CÓRDOBA (C2, C3, C4, D, E, etc.)"
+  },
+
+  "perfiles_edificacion": {
+    "R1": {
+      "descripcion": "Perfil residencial bajo",
+      "altura_maxima": 9.0,
+      "plantas_maximas": 3,
+      "retiro_linea_municipal": 3.0
+    },
+    "R2": {
+      "descripcion": "Perfil residencial medio",
+      "altura_maxima": 12.0,
+      "plantas_maximas": 4,
+      "retiro_linea_municipal": 3.0
+    },
+    "C1": {
+      "descripcion": "Perfil central sin restricción de altura",
+      "altura_maxima": null,
+      "plantas_maximas": null,
+      "retiro_linea_municipal": 0
+    },
+    "TODO": "COMPLETAR CON TODOS LOS PERFILES"
+  },
+
+  "mapeo_calles_zonas": {
+    "Av. Colón": {
+      "zona": "C1",
+      "tramos": [
+        {
+          "desde": "Plaza San Martín",
+          "hasta": "Av. Hipólito Yrigoyen",
+          "zona": "C1",
+          "perfil": "C1"
+        }
+      ]
+    },
+    "Av. Vélez Sarsfield": {
+      "zona": "C1",
+      "tramos": []
+    },
+    "Av. General Paz": {
+      "zona": "C2",
+      "tramos": []
+    },
+    "TODO": "MAPEAR CALLES PRINCIPALES DE CÓRDOBA"
+  },
+
+  "algoritmo_deteccion": {
+    "pasos": [
+      "1. Obtener dirección y coordenadas del lote",
+      "2. Consultar GeoServer IDECOR para datos catastrales",
+      "3. Buscar calle en mapeo_calles_zonas",
+      "4. Si no se encuentra, usar zona default según ubicación geográfica",
+      "5. Consultar datos de la zona (FOS, FOT, altura, perfil)",
+      "6. Aplicar cálculos según superficie del lote",
+      "7. Generar recomendaciones según normativa"
+    ],
+    "zona_default": "B",
+    "notas": "En Córdoba, la zonificación es más compleja que en Santiago. Consultar siempre normativa actualizada."
+  },
+
+  "calculos": {
+    "superficie_construible_pb": "superficie_lote * fos",
+    "superficie_construible_total": "superficie_lote * fot",
+    "plantas_estimadas": "Math.floor(fot / fos)",
+    "retiro_fondo_categoria_1": "Math.max(altura_maxima * 0.25, 3.0)",
+    "retiro_fondo_categoria_2": 3.0
+  },
+
+  "notas_importantes": [
+    "La Ordenanza 8256 es compleja y tiene múltiples modificatorias",
+    "Zonas C1, C2, C3 tienen reglas especiales según ubicación",
+    "Algunas zonas requieren consulta obligatoria con Planeamiento Urbano",
+    "FOS puede ser 1.0 en zonas centrales (100% de ocupación)",
+    "Verificar siempre actualizaciones en: https://gobiernoabierto.cordoba.gob.ar"
+  ],
+
+  "validacion": {
+    "casos_prueba": [
+      {
+        "direccion": "Av. Vélez Sarsfield 100, Córdoba",
+        "zona_esperada": "C1",
+        "fos_esperado": 1.0,
+        "fot_esperado": 4.0
+      },
+      {
+        "direccion": "TODO: Agregar más casos de prueba"
+      }
+    ]
+  }
+}
