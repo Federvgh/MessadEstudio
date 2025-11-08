@@ -52,8 +52,11 @@ console.log('📍 Dirección normalizada:', direccion_normalizada);
 // ============================================================================
 // 3. PROCESAR DATOS DE IDECOR (Catastro Oficial Córdoba)
 // ============================================================================
+// NOTA: Temporalmente deshabilitado - API IDECOR requiere investigación
+// Los datos vienen vacíos desde "Formatear Coordenadas Georef"
+// ============================================================================
 
-const idecorResponse = items[0].json;
+const idecorResponse = georefData.idecor_response || { features: [] };
 
 let barrioCatastral = 'No disponible';
 let superficieCatastral = 'No disponible';
@@ -79,7 +82,7 @@ if (idecorResponse.features && idecorResponse.features.length > 0) {
     nomenclatura: nomenclatura_catastral
   });
 } else {
-  console.warn('⚠️ No se encontraron datos catastrales en IDECOR');
+  console.warn('⚠️ No se encontraron datos catastrales en IDECOR (servicio temporalmente deshabilitado)');
 }
 
 // ============================================================================
